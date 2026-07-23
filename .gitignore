@@ -1,0 +1,7 @@
+# Editor/agent config not meant for the public repo
+app/.claude/
+app/.vscode/
+
+# Personal/copyrighted test fixtures - keep local only
+app/immersive_reader/test/fixtures/*.pdf
+app/immersive_reader/test/fixtures/*.docx

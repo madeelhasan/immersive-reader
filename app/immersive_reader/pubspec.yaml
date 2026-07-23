@@ -1,0 +1,21 @@
+name: immersive_reader
+description: A cross-platform reading app that teaches German through progressive word replacement while reading English documents.
+version: 1.0.0+1
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  syncfusion_flutter_pdf: ^34.1.31 # Updated library for PDF text extraction and viewing
+  archive: ^3.6.1                  # Manual DOCX/EPUB zip/XML parsing (docx_to_text/epubx conflict with syncfusion's xml version)
+  path_provider: ^2.0.14           # Library for file paths management
+  path: ^1.9.1
+  sqflite: ^2.4.3
+  file_picker: ^8.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
