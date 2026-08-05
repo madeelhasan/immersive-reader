@@ -748,5 +748,305 @@
     "de": "tun",
     "cefr_level": "A1",
     "part_of_speech": "verb"
+  },
+  {
+    "en": "bread",
+    "de": "Brot",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "butter",
+    "de": "Butter",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cheese",
+    "de": "Käse",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "egg",
+    "de": "Ei",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "milk",
+    "de": "Milch",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "water",
+    "de": "Wasser",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "coffee",
+    "de": "Kaffee",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tea",
+    "de": "Tee",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "juice",
+    "de": "Saft",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "apple",
+    "de": "Apfel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "banana",
+    "de": "Banane",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "orange",
+    "de": "Orange",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "potato",
+    "de": "Kartoffel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tomato",
+    "de": "Tomate",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "meat",
+    "de": "Fleisch",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fish",
+    "de": "Fisch",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "chicken",
+    "de": "Huhn",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rice",
+    "de": "Reis",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sugar",
+    "de": "Zucker",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "salt",
+    "de": "Salz",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mother",
+    "de": "Mutter",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "father",
+    "de": "Vater",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "brother",
+    "de": "Bruder",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sister",
+    "de": "Schwester",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "son",
+    "de": "Sohn",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "daughter",
+    "de": "Tochter",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "grandmother",
+    "de": "Großmutter",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "grandfather",
+    "de": "Großvater",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "head",
+    "de": "Kopf",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "face",
+    "de": "Gesicht",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "eye",
+    "de": "Auge",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ear",
+    "de": "Ohr",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nose",
+    "de": "Nase",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mouth",
+    "de": "Mund",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hand",
+    "de": "Hand",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "foot",
+    "de": "Fuß",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leg",
+    "de": "Bein",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "arm",
+    "de": "Arm",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shirt",
+    "de": "Hemd",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pants",
+    "de": "Hose",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shoes",
+    "de": "Schuhe",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hat",
+    "de": "Hut",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "coat",
+    "de": "Mantel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rain",
+    "de": "Regen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "snow",
+    "de": "Schnee",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wind",
+    "de": "Wind",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sun",
+    "de": "Sonne",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "morning",
+    "de": "Morgen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "evening",
+    "de": "Abend",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "night",
+    "de": "Nacht",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
   }
 ]
