@@ -1,0 +1,5 @@
+auto-test: true
+test-cmd: flutter test
+lint-cmd: dart analyze
+auto-commit: true
+yes-always: true
