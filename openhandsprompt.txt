@@ -1,0 +1,33 @@
+Load the project located at: C:\Users\adeel\Documents\Qwen\ImmersiveReader\app\immersive_reader
+
+Read the specification file(s):
+- C:\Users\adeel\Documents\Qwen\ImmersiveReader\spec
+
+Evaluate the entire project structure, including:
+- lib/
+- assets/
+- test/
+- pubspec.yaml
+- any existing feature modules
+
+Determine:
+1. What features from the spec are already implemented.
+2. What features are partially implemented.
+3. What features are missing or incomplete.
+4. Any inconsistencies between the codebase and the spec.
+
+Next:
+- Generate a clear plan for continuing development based on the remaining items in the spec.
+- Implement the next logical feature or fix based on that plan.
+- Follow the existing architecture, folder structure, and coding style.
+- Do not introduce new libraries unless required by the spec.
+
+Then:
+- Run all tests.
+- Fix any failing tests.
+- Add new tests for new features when appropriate.
+- Ensure the project builds successfully.
+
+Finally:
+- Continue development iteratively until the next spec item is fully completed.
+- Stop only when the feature is implemented, tested, and stable.
