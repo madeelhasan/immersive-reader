@@ -1,0 +1,602 @@
+[
+  {
+    "en": "I",
+    "de": "ich",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "you",
+    "de": "du",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "he",
+    "de": "er",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "she",
+    "de": "sie",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "it",
+    "de": "es",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "we",
+    "de": "wir",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "they",
+    "de": "sie",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "this",
+    "de": "dies",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "that",
+    "de": "das",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "these",
+    "de": "diese",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "those",
+    "de": "jene",
+    "cefr_level": "A1",
+    "part_of_speech": "pronoun"
+  },
+  {
+    "en": "a",
+    "de": "ein",
+    "cefr_level": "A1",
+    "part_of_speech": "article"
+  },
+  {
+    "en": "an",
+    "de": "ein",
+    "cefr_level": "A1",
+    "part_of_speech": "article"
+  },
+  {
+    "en": "the",
+    "de": "der/die/das",
+    "cefr_level": "A1",
+    "part_of_speech": "article"
+  },
+  {
+    "en": "and",
+    "de": "und",
+    "cefr_level": "A1",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "or",
+    "de": "oder",
+    "cefr_level": "A1",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "but",
+    "de": "aber",
+    "cefr_level": "A1",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "not",
+    "de": "nicht",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "yes",
+    "de": "ja",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "no",
+    "de": "nein",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "hello",
+    "de": "hallo",
+    "cefr_level": "A1",
+    "part_of_speech": "interjection"
+  },
+  {
+    "en": "goodbye",
+    "de": "auf Wiedersehen",
+    "cefr_level": "A1",
+    "part_of_speech": "interjection"
+  },
+  {
+    "en": "please",
+    "de": "bitte",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "thank you",
+    "de": "danke",
+    "cefr_level": "A1",
+    "part_of_speech": "interjection"
+  },
+  {
+    "en": "sorry",
+    "de": "Entschuldigung",
+    "cefr_level": "A1",
+    "part_of_speech": "interjection"
+  },
+  {
+    "en": "good",
+    "de": "gut",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bad",
+    "de": "schlecht",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "big",
+    "de": "groß",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "small",
+    "de": "klein",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "new",
+    "de": "neu",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "old",
+    "de": "alt",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "young",
+    "de": "jung",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "hot",
+    "de": "heiß",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cold",
+    "de": "kalt",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "happy",
+    "de": "glücklich",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sad",
+    "de": "traurig",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "beautiful",
+    "de": "schön",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ugly",
+    "de": "hässlich",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "easy",
+    "de": "einfach",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "difficult",
+    "de": "schwierig",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "fast",
+    "de": "schnell",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "slow",
+    "de": "langsam",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "early",
+    "de": "früh",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "late",
+    "de": "spät",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "here",
+    "de": "hier",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "there",
+    "de": "dort",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "now",
+    "de": "jetzt",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "later",
+    "de": "später",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "today",
+    "de": "heute",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "tomorrow",
+    "de": "morgen",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "yesterday",
+    "de": "gestern",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "always",
+    "de": "immer",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "never",
+    "de": "nie",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "often",
+    "de": "oft",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "sometimes",
+    "de": "manchmal",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "very",
+    "de": "sehr",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "too",
+    "de": "auch",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "also",
+    "de": "auch",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "only",
+    "de": "nur",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "just",
+    "de": "gerade",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "more",
+    "de": "mehr",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "less",
+    "de": "weniger",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "much",
+    "de": "viel",
+    "cefr_level": "A1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "many",
+    "de": "viele",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "some",
+    "de": "einige",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "any",
+    "de": "irgendein",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "all",
+    "de": "alle",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "each",
+    "de": "jeder",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "every",
+    "de": "jeder",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "other",
+    "de": "andere",
+    "cefr_level": "A1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "in",
+    "de": "in",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "on",
+    "de": "auf",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "at",
+    "de": "an",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "to",
+    "de": "zu",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "from",
+    "de": "von",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "with",
+    "de": "mit",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "for",
+    "de": "für",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "of",
+    "de": "von",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "by",
+    "de": "bei",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "without",
+    "de": "ohne",
+    "cefr_level": "A1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "five",
+    "de": "fünf",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "six",
+    "de": "sechs",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "seven",
+    "de": "sieben",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "eight",
+    "de": "acht",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "nine",
+    "de": "neun",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "ten",
+    "de": "zehn",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "hundred",
+    "de": "hundert",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "thousand",
+    "de": "tausend",
+    "cefr_level": "A1",
+    "part_of_speech": "numeral"
+  },
+  {
+    "en": "person",
+    "de": "Person",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "man",
+    "de": "Mann",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "woman",
+    "de": "Frau",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "child",
+    "de": "Kind",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boy",
+    "de": "Junge",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "girl",
+    "de": "Mädchen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "friend",
+    "de": "Freund",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "family",
+    "de": "Familie",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "house",
+    "de": "Haus",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "home",
+    "de": "Zuhause",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "school",
+    "de": "Schule",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "work",
+    "de": "Arbeit",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  }
+]
