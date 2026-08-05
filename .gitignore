@@ -5,3 +5,4 @@ app/.vscode/
 # Personal/copyrighted test fixtures - keep local only
 app/immersive_reader/test/fixtures/*.pdf
 app/immersive_reader/test/fixtures/*.docx
+.aider*
