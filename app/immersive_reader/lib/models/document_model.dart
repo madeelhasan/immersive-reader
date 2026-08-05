@@ -5,16 +5,28 @@ class DocumentModel {
   final String document_id;
   final String title;
   final List<ParagraphModel> paragraphs;
+  final List<ChapterMarker> chapters;
 
   DocumentModel({
     required this.document_id,
     required this.title,
     required this.paragraphs,
+    this.chapters = const [],
   });
 
   @override
   String toString() =>
       'DocumentModel(document_id: $document_id, title: $title, paragraphs: $paragraphs)';
+}
+
+/// Marks where a chapter starts within DocumentModel.paragraphs. Only
+/// populated by parsers whose source format actually has chapters (EPUB);
+/// other formats leave DocumentModel.chapters empty.
+class ChapterMarker {
+  final String title;
+  final int paragraphIndex;
+
+  ChapterMarker({required this.title, required this.paragraphIndex});
 }
 
 class ParagraphModel {

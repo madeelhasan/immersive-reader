@@ -69,6 +69,42 @@ class _ReaderViewState extends State<ReaderView> {
     });
   }
 
+  // Paragraphs are capped at a fairly uniform size (see
+  // DocumentParser.buildParagraphs), so a chapter's fraction of the total
+  // paragraph count is a good approximation of its fraction of total scroll
+  // extent. Exact pixel-perfect jumps aren't worth the complexity of
+  // tracking per-item heights in a lazy ListView.builder for Phase 1.
+  void _jumpToChapter(ChapterMarker chapter) {
+    if (!_scrollController.hasClients || widget.document.paragraphs.isEmpty) return;
+    final fraction = chapter.paragraphIndex / widget.document.paragraphs.length;
+    final target = fraction * _scrollController.position.maxScrollExtent;
+    _scrollController.animateTo(
+      target.clamp(0.0, _scrollController.position.maxScrollExtent),
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void _showChapterList() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          children: widget.document.chapters.map((chapter) {
+            return ListTile(
+              title: Text(chapter.title),
+              onTap: () {
+                Navigator.pop(context);
+                _jumpToChapter(chapter);
+              },
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -76,6 +112,12 @@ class _ReaderViewState extends State<ReaderView> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if (widget.document.chapters.isNotEmpty)
+              IconButton(
+                icon: const Icon(Icons.list),
+                tooltip: 'Chapters',
+                onPressed: _showChapterList,
+              ),
             IconButton(
               icon: const Icon(Icons.remove),
               tooltip: 'Decrease font size',

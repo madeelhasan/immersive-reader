@@ -35,9 +35,18 @@ abstract class DocumentParser {
   /// position_index running across the whole document. Blocks longer than
   /// [maxParagraphWords] are further chunked so no single paragraph can
   /// blow up the reader view.
-  List<ParagraphModel> buildParagraphs(Iterable<String> blocks) {
+  ///
+  /// [startPosition]/[startParagraphId] let a caller that builds paragraphs
+  /// in multiple batches (e.g. one call per EPUB chapter) keep token
+  /// position and paragraph numbering continuous across the whole document
+  /// instead of resetting to 0 on every call.
+  List<ParagraphModel> buildParagraphs(
+    Iterable<String> blocks, {
+    int startPosition = 0,
+    int startParagraphId = 0,
+  }) {
     final paragraphs = <ParagraphModel>[];
-    var position = 0;
+    var position = startPosition;
 
     for (final block in blocks) {
       final words =
@@ -47,11 +56,10 @@ abstract class DocumentParser {
             words.skip(i).take(maxParagraphWords).join(' ');
         final tokens = tokenize(chunk, startIndex: position);
         position += tokens.length;
+        final id = '${startParagraphId + paragraphs.length}';
         paragraphs.add(ParagraphModel(
-          paragraph_id: '${paragraphs.length}',
-          sentences: [
-            SentenceModel(sentence_id: '${paragraphs.length}', tokens: tokens),
-          ],
+          paragraph_id: id,
+          sentences: [SentenceModel(sentence_id: id, tokens: tokens)],
         ));
       }
     }

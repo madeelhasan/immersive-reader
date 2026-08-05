@@ -4,7 +4,7 @@ Flutter desktop app (Windows/macOS first) that will eventually teach German thro
 
 ## Where things stand
 
-Phase 1 (SPEC.md section 5): a clean reflowed reader that opens TXT/DOCX/EPUB/PDF, no translation logic yet. The parser pipeline and reader view work end-to-end and are tested against real files. Four Phase 1 checklist items are still unbuilt: adjustable font size, light/dark theme toggle, persisted per-document scroll position, and EPUB chapter navigation. See `QWEN_TASK_BRIEF.md` for the actionable breakdown of that remaining work, including dependency and design pitfalls already discovered.
+Phase 1 (SPEC.md section 5) is functionally complete: opens TXT/DOCX/EPUB/PDF, adjustable font size, light/dark/system theme, persisted per-document scroll position, and EPUB chapter navigation, no translation logic yet. The parser pipeline and reader view work end-to-end and are tested against real files. `QWEN_TASK_BRIEF.md` documents the design/dependency pitfalls hit while building the last four items, for reference if similar work comes up in later phases.
 
 Phases 2–5 (vocabulary replacement, backend, SM-2 progress tracking, mobile) are out of scope — don't build toward them yet, per SPEC.md section 6.
 
@@ -24,8 +24,9 @@ lib/
     epub_parser.dart              # unzips, resolves OPF spine reading order, splits on <p>/<br>, then buildParagraphs()
     pdf_parser.dart                # syncfusion_flutter_pdf text extraction per page, then buildParagraphs()
   reader/
-    reader_controller.dart       # ChangeNotifier: scrollPosition, positionIndex (in-memory only, not persisted)
-    reader_view.dart              # ListView.builder over paragraphs; each paragraph = Column of Wrap of Text
+    reader_controller.dart       # ChangeNotifier: scrollPosition, positionIndex (in-memory only)
+    reader_view.dart              # ListView.builder over paragraphs; font size, scroll persistence
+                                   # (SharedPreferences, debounced), and chapter-nav bottom sheet all live here
   storage/
     local_db.dart                 # sqflite word_progress table (SPEC.md section 3.3) — defined but NOT wired
                                    # into the app anywhere yet; it's Phase 3/4 vocabulary-progress storage,
@@ -39,6 +40,7 @@ test/
   pdf_smoke_test.dart             # PdfParser against a syncfusion-generated in-memory PDF
   fixtures_check_test.dart        # runs every file in test/fixtures/ through ParserRegistry, asserts non-empty
   reader_view_fixture_test.dart   # pumps ReaderView with the real PDF fixture, checks it renders without hanging
+  epub_chapter_test.dart          # builds a synthetic EPUB in-memory, checks chapter markers + continuous position_index
   widget_test.dart                # ImmersiveReaderApp smoke test
 ```
 
@@ -51,13 +53,16 @@ Every parser ends by calling the shared `DocumentParser.buildParagraphs(blocks)`
 ## Data model (matches SPEC.md section 3.1)
 
 ```dart
-DocumentModel(document_id, title, paragraphs: List<ParagraphModel>)
+DocumentModel(document_id, title, paragraphs: List<ParagraphModel>, chapters: List<ChapterMarker>)
 ParagraphModel(paragraph_id, sentences: List<SentenceModel>)
 SentenceModel(sentence_id, tokens: List<Token>)
 Token(tokenId, text, isWord, positionIndex)
+ChapterMarker(title, paragraphIndex)  // optional; only EpubParser populates this
 ```
 
-Note the deliberate mix of styles: `DocumentModel`/`ParagraphModel`/`SentenceModel` fields are snake_case (`document_id`, etc.) to mirror the SPEC's JSON shape exactly; `Token` fields are camelCase (Dart convention). This was a conscious choice, not an oversight — don't "fix" it.
+Note the deliberate mix of styles: `DocumentModel`/`ParagraphModel`/`SentenceModel` fields are snake_case (`document_id`, etc.) to mirror the SPEC's JSON shape exactly; `Token`/`ChapterMarker` fields are camelCase (Dart convention). This was a conscious choice, not an oversight — don't "fix" it.
+
+`chapters` defaults to `const []`, so TXT/DOCX/PDF parsers are unaffected. `EpubParser` builds it by calling `buildParagraphs()` once per chapter with `startPosition`/`startParagraphId` carried over from the previous chapter, so `position_index` and paragraph numbering stay continuous across the whole document rather than resetting per chapter.
 
 ## Dependencies of note (`pubspec.yaml`)
 

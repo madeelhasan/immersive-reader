@@ -15,14 +15,48 @@ class EpubParser extends DocumentParser {
   Future<DocumentModel> parse(File file) async {
     final bytes = await file.readAsBytes();
     final archive = ZipDecoder().decodeBytes(bytes);
-    final chapters = _readingOrderContent(archive);
-    final blocks = chapters.expand(_splitIntoBlocks);
+    final rawChapters = _readingOrderContent(archive);
+
+    final paragraphs = <ParagraphModel>[];
+    final chapterMarkers = <ChapterMarker>[];
+    var position = 0;
+
+    for (final rawChapter in rawChapters) {
+      final blocks = _splitIntoBlocks(rawChapter);
+      if (blocks.isEmpty) continue;
+
+      chapterMarkers.add(ChapterMarker(
+        title: _extractChapterTitle(rawChapter) ?? 'Chapter ${chapterMarkers.length + 1}',
+        paragraphIndex: paragraphs.length,
+      ));
+
+      final chapterParagraphs = buildParagraphs(
+        blocks,
+        startPosition: position,
+        startParagraphId: paragraphs.length,
+      );
+      position += chapterParagraphs
+          .expand((para) => para.sentences)
+          .expand((sentence) => sentence.tokens)
+          .length;
+      paragraphs.addAll(chapterParagraphs);
+    }
 
     return DocumentModel(
       document_id: p.basenameWithoutExtension(file.path),
       title: p.basenameWithoutExtension(file.path),
-      paragraphs: buildParagraphs(blocks),
+      paragraphs: paragraphs,
+      chapters: chapterMarkers,
     );
+  }
+
+  /// Pulls a heading out of a chapter's raw HTML to use as its nav title.
+  String? _extractChapterTitle(String html) {
+    final match = RegExp(r'<h[12]\b[^>]*>(.*?)</h[12]>', dotAll: true, caseSensitive: false)
+        .firstMatch(html);
+    if (match == null) return null;
+    final title = _stripHtml(match.group(1)!).trim();
+    return title.isEmpty ? null : title;
   }
 
   /// Splits chapter HTML into paragraph-sized text blocks using <p>/<br>

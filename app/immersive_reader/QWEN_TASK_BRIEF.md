@@ -1,5 +1,7 @@
 # Task brief: finish Phase 1 of Immersive Reader
 
+**Status: all four items below are now implemented** (scroll persistence, font size, theme toggle, EPUB chapter nav) — see `CLAUDE.md`'s "Delegating to other coding agents" section for how that actually went (local-model delegation failed 6/6 times; all four were implemented directly). Kept here as a reference for the design/dependency pitfalls hit along the way, in case similar work comes up in later phases.
+
 Read `../../spec/SPEC.md` first — it is the source of truth for architecture decisions (section 2) and the Phase 1 scope/acceptance checklist (section 5). Everything below assumes you've read it.
 
 ## Current status
