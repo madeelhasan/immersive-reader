@@ -4,13 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/document_model.dart';
+import '../models/token.dart';
 import 'reader_controller.dart';
 
 class ReaderView extends StatefulWidget {
   final DocumentModel document;
   final ReaderController controller;
 
-  const ReaderView({super.key, required this.document, required this.controller});
+  /// tokenId -> German translation, for tokens the replacement engine
+  /// selected. Tokens not present here are never replaced. See
+  /// ReplacementEngine.selectReplacements (SPEC.md section 4/6).
+  final Map<String, String> replacements;
+
+  const ReaderView({
+    super.key,
+    required this.document,
+    required this.controller,
+    this.replacements = const {},
+  });
 
   @override
   State<ReaderView> createState() => _ReaderViewState();
@@ -24,6 +35,12 @@ class _ReaderViewState extends State<ReaderView> {
   late ScrollController _scrollController;
   Timer? _saveDebounce;
   double _fontSize = 16.0;
+
+  /// tokenIds the user has manually tapped back to English. Replaced tokens
+  /// show German by default; toggling flips a single occurrence, not every
+  /// occurrence of that word (SPEC.md section 1: "tap any translated word to
+  /// toggle it back to English").
+  final Set<String> _toggledToEnglish = {};
 
   String get _prefsKey => 'scroll_position_${widget.document.document_id}';
 
@@ -67,6 +84,34 @@ class _ReaderViewState extends State<ReaderView> {
     setState(() {
       _fontSize = (_fontSize + delta).clamp(_minFontSize, _maxFontSize);
     });
+  }
+
+  void _toggleToken(String tokenId) {
+    setState(() {
+      if (!_toggledToEnglish.add(tokenId)) {
+        _toggledToEnglish.remove(tokenId);
+      }
+    });
+  }
+
+  Widget _buildToken(Token token) {
+    final germanText = widget.replacements[token.tokenId];
+    if (germanText == null) {
+      return Text('${token.text} ', style: TextStyle(fontSize: _fontSize));
+    }
+
+    final showingGerman = !_toggledToEnglish.contains(token.tokenId);
+    return GestureDetector(
+      onTap: () => _toggleToken(token.tokenId),
+      child: Text(
+        '${showingGerman ? germanText : token.text} ',
+        style: TextStyle(
+          fontSize: _fontSize,
+          color: showingGerman ? Colors.blue : null,
+          decoration: showingGerman ? TextDecoration.underline : null,
+        ),
+      ),
+    );
   }
 
   // Paragraphs are capped at a fairly uniform size (see
@@ -140,9 +185,7 @@ class _ReaderViewState extends State<ReaderView> {
               return Column(
                 children: paragraph.sentences.map((sentence) {
                   return Wrap(
-                    children: sentence.tokens.map((token) {
-                      return Text('${token.text} ', style: TextStyle(fontSize: _fontSize));
-                    }).toList(),
+                    children: sentence.tokens.map(_buildToken).toList(),
                   );
                 }).toList(),
               );

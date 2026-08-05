@@ -7,6 +7,8 @@ import 'models/document_model.dart';
 import 'parsers/parser_registry.dart';
 import 'reader/reader_controller.dart';
 import 'reader/reader_view.dart';
+import 'replacement/replacement_engine.dart';
+import 'vocabulary/vocabulary_repository.dart';
 
 void main() {
   runApp(const ImmersiveReaderApp());
@@ -56,7 +58,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ReaderController _controller = ReaderController();
+  final VocabularyRepository _vocabularyRepository = VocabularyRepository();
   DocumentModel? _document;
+  Map<String, String> _replacements = {};
   String? _error;
 
   Future<void> _openFile() async {
@@ -70,23 +74,35 @@ class _HomePageState extends State<HomePage> {
     try {
       final parser = ParserRegistry.forFileName(path);
       final document = await parser.parse(File(path));
-      final hasText = document.paragraphs
-          .any((para) => para.sentences.any((s) => s.tokens.isNotEmpty));
+      final tokens = document.paragraphs
+          .expand((para) => para.sentences)
+          .expand((sentence) => sentence.tokens)
+          .toList();
+      final hasText = tokens.isNotEmpty;
 
-      setState(() {
-        if (hasText) {
-          _document = document;
-          _error = null;
-        } else {
+      if (!hasText) {
+        setState(() {
           _document = null;
+          _replacements = {};
           _error = 'No text could be extracted from this file. '
               'If it\'s a PDF, it may be a scanned/image-based document '
               'with no selectable text layer.';
-        }
+        });
+        return;
+      }
+
+      final vocabulary = await _vocabularyRepository.load();
+      final replacements = ReplacementEngine().selectReplacements(tokens, vocabulary);
+
+      setState(() {
+        _document = document;
+        _replacements = replacements;
+        _error = null;
       });
     } catch (e) {
       setState(() {
         _document = null;
+        _replacements = {};
         _error = 'Could not open file: $e';
       });
     }
@@ -122,7 +138,11 @@ class _HomePageState extends State<HomePage> {
                 _error ?? 'Open a .txt, .docx, .epub, or .pdf file to start reading.',
               ),
             )
-          : ReaderView(document: _document!, controller: _controller),
+          : ReaderView(
+              document: _document!,
+              controller: _controller,
+              replacements: _replacements,
+            ),
     );
   }
 }
