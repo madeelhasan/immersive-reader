@@ -1048,5 +1048,3689 @@
     "de": "Nacht",
     "cefr_level": "A1",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "table",
+    "de": "Tisch",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "chair",
+    "de": "Stuhl",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bed",
+    "de": "Bett",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "door",
+    "de": "Tür",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "window",
+    "de": "Fenster",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wall",
+    "de": "Wand",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "floor",
+    "de": "Boden",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ceiling",
+    "de": "Decke",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lamp",
+    "de": "Lampe",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "clock",
+    "de": "Uhr",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mirror",
+    "de": "Spiegel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sofa",
+    "de": "Sofa",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "carpet",
+    "de": "Teppich",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "curtain",
+    "de": "Vorhang",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shelf",
+    "de": "Regal",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "drawer",
+    "de": "Schublade",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cupboard",
+    "de": "Schrank",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fridge",
+    "de": "Kühlschrank",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "oven",
+    "de": "Ofen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stove",
+    "de": "Herd",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sink",
+    "de": "Spüle",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bath",
+    "de": "Bad",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shower",
+    "de": "Dusche",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "toilet",
+    "de": "Toilette",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "car",
+    "de": "Auto",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bus",
+    "de": "Bus",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "train",
+    "de": "Zug",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bicycle",
+    "de": "Fahrrad",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "motorcycle",
+    "de": "Motorrad",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "truck",
+    "de": "Lastwagen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "airplane",
+    "de": "Flugzeug",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ship",
+    "de": "Schiff",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boat",
+    "de": "Boot",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "street",
+    "de": "Straße",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "road",
+    "de": "Weg",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bridge",
+    "de": "Brücke",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "park",
+    "de": "Park",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "garden",
+    "de": "Garten",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shop",
+    "de": "Geschäft",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "market",
+    "de": "Markt",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hospital",
+    "de": "Krankenhaus",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "doctor",
+    "de": "Arzt",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nurse",
+    "de": "Krankenschwester",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "police",
+    "de": "Polizei",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fire",
+    "de": "Feuer",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "station",
+    "de": "Bahnhof",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "airport",
+    "de": "Flughafen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hotel",
+    "de": "Hotel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "restaurant",
+    "de": "Restaurant",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bank",
+    "de": "Bank",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "library",
+    "de": "Bibliothek",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "museum",
+    "de": "Museum",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "church",
+    "de": "Kirche",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cat",
+    "de": "Katze",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dog",
+    "de": "Hund",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bird",
+    "de": "Vogel",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "horse",
+    "de": "Pferd",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cow",
+    "de": "Kuh",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pig",
+    "de": "Schwein",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sheep",
+    "de": "Schaf",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mouse",
+    "de": "Maus",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rabbit",
+    "de": "Kaninchen",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "teacher",
+    "de": "Lehrer",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "student",
+    "de": "Schüler",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "engineer",
+    "de": "Ingenieur",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pilot",
+    "de": "Pilot",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "singer",
+    "de": "Sänger",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "artist",
+    "de": "Künstler",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cook",
+    "de": "Koch",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "driver",
+    "de": "Fahrer",
+    "cefr_level": "A1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "can",
+    "de": "können",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "must",
+    "de": "müssen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "should",
+    "de": "sollen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "may",
+    "de": "dürfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "will",
+    "de": "werden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "would",
+    "de": "würde",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "could",
+    "de": "könnte",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "should",
+    "de": "sollte",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "open",
+    "de": "öffnen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "close",
+    "de": "schließen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "start",
+    "de": "starten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stop",
+    "de": "stoppen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "help",
+    "de": "helfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ask",
+    "de": "fragen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "answer",
+    "de": "antworten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "call",
+    "de": "anrufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "send",
+    "de": "senden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "receive",
+    "de": "erhalten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "find",
+    "de": "finden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lose",
+    "de": "verlieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "bring",
+    "de": "bringen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "carry",
+    "de": "tragen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "put",
+    "de": "legen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sit",
+    "de": "sitzen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stand",
+    "de": "stehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lie",
+    "de": "liegen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "turn",
+    "de": "drehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "jump",
+    "de": "springen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dance",
+    "de": "tanzen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sing",
+    "de": "singen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fly",
+    "de": "fliegen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drive",
+    "de": "fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ride",
+    "de": "reiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cook",
+    "de": "kochen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "bake",
+    "de": "backen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "wash",
+    "de": "waschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "clean",
+    "de": "putzen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sweep",
+    "de": "fegen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "iron",
+    "de": "bügeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sew",
+    "de": "nähen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "knit",
+    "de": "stricken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "paint",
+    "de": "malen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "draw",
+    "de": "zeichnen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "write",
+    "de": "schreiben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "read",
+    "de": "lesen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "study",
+    "de": "lernen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "learn",
+    "de": "lernen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "teach",
+    "de": "unterrichten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "work",
+    "de": "arbeiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "rest",
+    "de": "ruhen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "wait",
+    "de": "warten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "meet",
+    "de": "treffen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "visit",
+    "de": "besuchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "travel",
+    "de": "reisen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stay",
+    "de": "bleiben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "leave",
+    "de": "verlassen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "arrive",
+    "de": "ankommen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "depart",
+    "de": "abfahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "return",
+    "de": "zurückkehren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "enter",
+    "de": "eintreten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exit",
+    "de": "aussteigen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fall",
+    "de": "fallen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lift",
+    "de": "heben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lower",
+    "de": "senken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "raise",
+    "de": "erhöhen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drop",
+    "de": "fallen lassen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hold",
+    "de": "halten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "grab",
+    "de": "greifen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "release",
+    "de": "freilassen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "touch",
+    "de": "berühren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "feel",
+    "de": "fühlen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "smell",
+    "de": "riechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "taste",
+    "de": "schmecken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hear",
+    "de": "hören",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "see",
+    "de": "sehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "watch",
+    "de": "schauen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "look",
+    "de": "schauen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "listen",
+    "de": "hören",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "speak",
+    "de": "sprechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "talk",
+    "de": "reden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tell",
+    "de": "erzählen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "say",
+    "de": "sagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ask",
+    "de": "fragen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "answer",
+    "de": "antworten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "explain",
+    "de": "erklären",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "describe",
+    "de": "beschreiben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "repeat",
+    "de": "wiederholen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "remember",
+    "de": "erinnern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "forget",
+    "de": "vergessen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "understand",
+    "de": "verstehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "believe",
+    "de": "glauben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hope",
+    "de": "hoffen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "wish",
+    "de": "wünschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "need",
+    "de": "brauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "want",
+    "de": "wollen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "like",
+    "de": "mögen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "love",
+    "de": "lieben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hate",
+    "de": "hassen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "prefer",
+    "de": "bevorzugen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "choose",
+    "de": "wählen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "decide",
+    "de": "entscheiden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "plan",
+    "de": "planen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "prepare",
+    "de": "vorbereiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "organize",
+    "de": "organisieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "arrange",
+    "de": "arrangieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "collect",
+    "de": "sammeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "gather",
+    "de": "versammeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "share",
+    "de": "teilen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "divide",
+    "de": "teilen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "multiply",
+    "de": "multiplizieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "add",
+    "de": "addieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "subtract",
+    "de": "subtrahieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "count",
+    "de": "zählen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "measure",
+    "de": "messen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "weigh",
+    "de": "wiegen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "compare",
+    "de": "vergleichen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "match",
+    "de": "passen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "mix",
+    "de": "mischen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stir",
+    "de": "rühren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pour",
+    "de": "gießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fill",
+    "de": "füllen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "empty",
+    "de": "leeren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cut",
+    "de": "schneiden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "break",
+    "de": "brechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fix",
+    "de": "reparieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "repair",
+    "de": "reparieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "build",
+    "de": "bauen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "destroy",
+    "de": "zerstören",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "create",
+    "de": "schaffen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "produce",
+    "de": "produzieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "grow",
+    "de": "wachsen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "plant",
+    "de": "pflanzen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "water",
+    "de": "gießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "harvest",
+    "de": "ernten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sell",
+    "de": "verkaufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "buy",
+    "de": "kaufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pay",
+    "de": "bezahlen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cost",
+    "de": "kosten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "spend",
+    "de": "ausgeben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "save",
+    "de": "sparen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "borrow",
+    "de": "leihen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lend",
+    "de": "verleihen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "owe",
+    "de": "schulden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "earn",
+    "de": "verdienen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "win",
+    "de": "gewinnen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lose",
+    "de": "verlieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "beat",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "defeat",
+    "de": "besiegen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "succeed",
+    "de": "gelingen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fail",
+    "de": "scheitern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "try",
+    "de": "versuchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "attempt",
+    "de": "versuchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "succeed",
+    "de": "erfolgreich sein",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fail",
+    "de": "scheitern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "practice",
+    "de": "üben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "train",
+    "de": "trainieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exercise",
+    "de": "trainieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stretch",
+    "de": "dehnen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "bend",
+    "de": "beugen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kneel",
+    "de": "knien",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "crawl",
+    "de": "kriechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "roll",
+    "de": "rollen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "spin",
+    "de": "drehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "twist",
+    "de": "drehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shake",
+    "de": "schütteln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "wave",
+    "de": "winken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "point",
+    "de": "zeigen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "nod",
+    "de": "nicken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "smile",
+    "de": "lächeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "laugh",
+    "de": "lachen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cry",
+    "de": "weinen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "scream",
+    "de": "schreien",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "whisper",
+    "de": "flüstern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shout",
+    "de": "rufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "call",
+    "de": "anrufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "visit",
+    "de": "besuchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "invite",
+    "de": "einladen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "accept",
+    "de": "akzeptieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "refuse",
+    "de": "ablehnen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "agree",
+    "de": "zustimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disagree",
+    "de": "nicht zustimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "argue",
+    "de": "streiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "discuss",
+    "de": "diskutieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "debate",
+    "de": "debattieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "decide",
+    "de": "entscheiden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "choose",
+    "de": "wählen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "select",
+    "de": "auswählen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pick",
+    "de": "pflücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "gather",
+    "de": "sammeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "collect",
+    "de": "sammeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "gather",
+    "de": "versammeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "assemble",
+    "de": "zusammenbauen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disassemble",
+    "de": "auseinanderbauen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "connect",
+    "de": "verbinden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disconnect",
+    "de": "trennen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "attach",
+    "de": "befestigen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "detach",
+    "de": "lösen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fasten",
+    "de": "befestigen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "loosen",
+    "de": "lockern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tighten",
+    "de": "festziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "loosen",
+    "de": "lockern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "screw",
+    "de": "schrauben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "unscrew",
+    "de": "abschrauben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hammer",
+    "de": "hämmern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "nail",
+    "de": "nageln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glue",
+    "de": "kleben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tape",
+    "de": "kleben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "paint",
+    "de": "streichen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "polish",
+    "de": "polieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sand",
+    "de": "schleifen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drill",
+    "de": "bohren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "saw",
+    "de": "sägen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "chop",
+    "de": "hacken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slice",
+    "de": "schneiden",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "peel",
+    "de": "schälen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "grate",
+    "de": "reiben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "mash",
+    "de": "zerstampfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "whisk",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "beat",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "knead",
+    "de": "kneten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "roll",
+    "de": "rollen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "flatten",
+    "de": "flach drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "spread",
+    "de": "streichen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sprinkle",
+    "de": "streuen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "season",
+    "de": "würzen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "taste",
+    "de": "probieren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "smell",
+    "de": "riechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "feel",
+    "de": "fühlen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "touch",
+    "de": "berühren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hold",
+    "de": "halten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "carry",
+    "de": "tragen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lift",
+    "de": "heben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lower",
+    "de": "senken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "raise",
+    "de": "erhöhen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drop",
+    "de": "fallen lassen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "surf",
+    "de": "surfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "ski",
+    "de": "Ski fahren",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "skate",
+    "de": "Schlittschuh laufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "climb",
+    "de": "klettern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hike",
+    "de": "wandern",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "camp",
+    "de": "zelten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fish",
+    "de": "angeln",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hunt",
+    "de": "jagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "shoot",
+    "de": "schießen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "aim",
+    "de": "zielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "throw",
+    "de": "werfen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "catch",
+    "de": "fangen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "kick",
+    "de": "treten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "punch",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hit",
+    "de": "schlagen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "push",
+    "de": "drücken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pull",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drag",
+    "de": "ziehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "slide",
+    "de": "rutschen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "glide",
+    "de": "gleiten",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "float",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sink",
+    "de": "sinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dive",
+    "de": "tauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "swim",
+    "de": "schwimmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb" 
   }
 ]
