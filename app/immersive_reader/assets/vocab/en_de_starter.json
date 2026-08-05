@@ -2758,5 +2758,605 @@
     "de": "zielen",
     "cefr_level": "A1",
     "part_of_speech": "verb"
+  },
+  {
+    "en": "ability",
+    "de": "Fähigkeit",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "abroad",
+    "de": "im Ausland",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "accept",
+    "de": "akzeptieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "accident",
+    "de": "Unfall",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "achieve",
+    "de": "erreichen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "act",
+    "de": "handeln",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "active",
+    "de": "aktiv",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "activity",
+    "de": "Aktivität",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "actually",
+    "de": "tatsächlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "add",
+    "de": "hinzufügen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "address",
+    "de": "Adresse",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "adult",
+    "de": "Erwachsener",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "advice",
+    "de": "Rat",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "afraid",
+    "de": "ängstlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "after",
+    "de": "nach",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "again",
+    "de": "wieder",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "age",
+    "de": "Alter",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ago",
+    "de": "vor",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "agree",
+    "de": "zustimmen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "air",
+    "de": "Luft",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "almost",
+    "de": "fast",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "alone",
+    "de": "allein",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "along",
+    "de": "entlang",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "already",
+    "de": "schon",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "although",
+    "de": "obwohl",
+    "cefr_level": "A2",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "among",
+    "de": "unter",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "amount",
+    "de": "Menge",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ancient",
+    "de": "antik",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "animal",
+    "de": "Tier",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "appear",
+    "de": "erscheinen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "area",
+    "de": "Gebiet",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "army",
+    "de": "Armee",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "around",
+    "de": "herum",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "art",
+    "de": "Kunst",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "article",
+    "de": "Artikel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "attack",
+    "de": "Angriff",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "attention",
+    "de": "Aufmerksamkeit",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "attract",
+    "de": "anziehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "audience",
+    "de": "Publikum",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "autumn",
+    "de": "Herbst",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "available",
+    "de": "verfügbar",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "average",
+    "de": "Durchschnitt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "avoid",
+    "de": "vermeiden",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "awake",
+    "de": "wach",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "award",
+    "de": "Preis",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "aware",
+    "de": "bewusst",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "away",
+    "de": "weg",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "baby",
+    "de": "Baby",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "back",
+    "de": "zurück",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "background",
+    "de": "Hintergrund",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bag",
+    "de": "Tasche",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "balance",
+    "de": "Gleichgewicht",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ball",
+    "de": "Ball",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "band",
+    "de": "Band",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "base",
+    "de": "Basis",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "basic",
+    "de": "grundlegend",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "battle",
+    "de": "Schlacht",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "beach",
+    "de": "Strand",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bear",
+    "de": "Bär",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "because",
+    "de": "weil",
+    "cefr_level": "A2",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "become",
+    "de": "werden",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "before",
+    "de": "vor",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "begin",
+    "de": "beginnen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "behind",
+    "de": "hinter",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "below",
+    "de": "unter",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "best",
+    "de": "beste",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "better",
+    "de": "besser",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "between",
+    "de": "zwischen",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "beyond",
+    "de": "jenseits",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "bill",
+    "de": "Rechnung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "birth",
+    "de": "Geburt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bit",
+    "de": "Stück",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "black",
+    "de": "schwarz",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "blood",
+    "de": "Blut",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "blow",
+    "de": "blasen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "blue",
+    "de": "blau",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "board",
+    "de": "Brett",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "body",
+    "de": "Körper",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bone",
+    "de": "Knochen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "book",
+    "de": "Buch",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "border",
+    "de": "Grenze",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "born",
+    "de": "geboren",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bottle",
+    "de": "Flasche",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bottom",
+    "de": "Boden",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "box",
+    "de": "Kiste",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "brain",
+    "de": "Gehirn",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "branch",
+    "de": "Zweig",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "brave",
+    "de": "mutig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "breakfast",
+    "de": "Frühstück",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "breath",
+    "de": "Atem",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bright",
+    "de": "hell",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "broad",
+    "de": "breit",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "brown",
+    "de": "braun",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "brush",
+    "de": "Bürste",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "burn",
+    "de": "brennen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "business",
+    "de": "Geschäft",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "busy",
+    "de": "beschäftigt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cake",
+    "de": "Kuchen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "camera",
+    "de": "Kamera",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "capital",
+    "de": "Hauptstadt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
   }
 ]
