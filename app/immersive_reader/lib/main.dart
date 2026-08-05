@@ -12,21 +12,43 @@ void main() {
   runApp(const ImmersiveReaderApp());
 }
 
-class ImmersiveReaderApp extends StatelessWidget {
+class ImmersiveReaderApp extends StatefulWidget {
   const ImmersiveReaderApp({super.key});
+
+  @override
+  State<ImmersiveReaderApp> createState() => _ImmersiveReaderAppState();
+}
+
+class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void _cycleThemeMode() {
+    setState(() {
+      _themeMode = switch (_themeMode) {
+        ThemeMode.light => ThemeMode.dark,
+        ThemeMode.dark => ThemeMode.system,
+        ThemeMode.system => ThemeMode.light,
+      };
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Immersive Reader',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomePage(),
+      darkTheme: ThemeData.dark(),
+      themeMode: _themeMode,
+      home: HomePage(themeMode: _themeMode, onToggleTheme: _cycleThemeMode),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final ThemeMode themeMode;
+  final VoidCallback onToggleTheme;
+
+  const HomePage({super.key, required this.themeMode, required this.onToggleTheme});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -70,12 +92,23 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  IconData get _themeIcon => switch (widget.themeMode) {
+        ThemeMode.light => Icons.light_mode,
+        ThemeMode.dark => Icons.dark_mode,
+        ThemeMode.system => Icons.brightness_auto,
+      };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(_document?.title ?? 'Immersive Reader'),
         actions: [
+          IconButton(
+            icon: Icon(_themeIcon),
+            tooltip: 'Toggle light/dark theme (currently ${widget.themeMode.name})',
+            onPressed: widget.onToggleTheme,
+          ),
           IconButton(
             icon: const Icon(Icons.folder_open),
             tooltip: 'Open file',
