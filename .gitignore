@@ -6,3 +6,8 @@ app/.vscode/
 app/immersive_reader/test/fixtures/*.pdf
 app/immersive_reader/test/fixtures/*.docx
 .aider*
+
+# API keys - never commit these
+**/deepseekapi.txt
+**/*.env
+.env*
