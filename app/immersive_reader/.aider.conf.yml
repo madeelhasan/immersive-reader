@@ -1,6 +1,6 @@
 auto-test: true
 test-cmd: "C:\\src\\flutter\\bin\\flutter.bat test"
-lint-cmd: "C:\\src\\flutter\\bin\\dart.bat analyze"
+lint-cmd: "C:\\src\\flutter\\bin\\flutter.bat analyze"
 auto-commits: true
 yes-always: true
 chat-language: english
