@@ -598,5 +598,155 @@
     "de": "Arbeit",
     "cefr_level": "A1",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "go",
+    "de": "gehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "come",
+    "de": "kommen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "see",
+    "de": "sehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "know",
+    "de": "wissen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "think",
+    "de": "denken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "want",
+    "de": "wollen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "need",
+    "de": "brauchen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "like",
+    "de": "mögen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "love",
+    "de": "lieben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "eat",
+    "de": "essen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "drink",
+    "de": "trinken",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sleep",
+    "de": "schlafen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "read",
+    "de": "lesen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "write",
+    "de": "schreiben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "speak",
+    "de": "sprechen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "listen",
+    "de": "hören",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "play",
+    "de": "spielen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "run",
+    "de": "rennen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "walk",
+    "de": "gehen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "buy",
+    "de": "kaufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sell",
+    "de": "verkaufen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "give",
+    "de": "geben",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "take",
+    "de": "nehmen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "make",
+    "de": "machen",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "do",
+    "de": "tun",
+    "cefr_level": "A1",
+    "part_of_speech": "verb"
   }
 ]
