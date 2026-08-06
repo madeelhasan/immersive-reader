@@ -18,29 +18,31 @@ Everything else already exists and works: Phase 1 (reader, TXT/DOCX/EPUB/PDF/HTM
 
 ## Production-readiness backlog (post-POC, not blocking it)
 
-**Content quality**
-- Full native-speaker/dictionary-verified review of the vocabulary dataset (the spot-check above is a stopgap, not a substitute)
+**The app lives on users' machines, not a server you control — prioritized accordingly.** Distribution and update delivery matter far more than backend hosting: once installed, there's no other way to reach a user's machine, whereas the backend's only remaining purpose (serving the vocabulary dataset) already has a working bundled-JSON fallback that's the *actual* source of truth today (`CLAUDE.md`: on a normal install, the client always falls through to the bundled copy, since the backend isn't deployed anywhere). **Decision (2026-08-07): the backend's role is deprioritized for v1** - the bundled dataset stays authoritative; Postgres/containerization/CORS-hardening is deferred until there's a real need to push vocab updates without a full app release, not built preemptively.
 
-**Security / config**
-- ~~`JWT_SECRET_KEY` has a dev-only default...~~ **No longer applicable**: the app has no accounts (SPEC.md section 1), so `/auth` never gets called in production regardless of this setting. Only matters again if accounts come back into scope.
-- ~~Rate limiting on `/auth/login` and `/auth/register`~~ **Done, but now moot for the same reason as above** - `backend/app/rate_limit.py` (in-memory fixed-window limiter, TDD-delegated to DeepSeek, independently verified: 21/21 backend tests pass) still exists and still works, it's just guarding endpoints nothing calls anymore.
-- TLS in front of the backend (currently bare `uvicorn`) - still relevant for the vocabulary API, which stays in active use
+**Client distribution (top priority)**
+- Release (not debug) build; code signing (unsigned `.exe` gets SmartScreen-blocked) - the actual current blocker to anyone else running this at all
+- Real installer - MSI/MSIX on Windows, a signed/notarized bundle on macOS (SPEC.md's Phase 1-4 target)
+- Auto-update mechanism - without this, every future bug fix and every vocabulary addition is permanently stuck at whatever version a user happened to install; this is the client-side equivalent of the now-deprioritized backend vocab-sync question, and the more important half of it
+- Client-side crash reporting - non-optional specifically because there's no server log to notice something broke; the only way bugs in the wild become visible at all
 
-**Backend deployment**
-- Migrate SQLite → Postgres (the path SPEC.md section 2 already names)
-- Containerize; run behind a real ASGI process manager, not a dev server
-- Restrict CORS to the real client origin
-- Structured logging, error tracking (Sentry-class), health checks
-
-**Client distribution**
-- Release (not debug) build; code signing (unsigned `.exe` gets SmartScreen-blocked)
-- Real installer + update mechanism
-- Client-side crash reporting - currently a crash on someone else's machine is invisible to us
+**Local data lifecycle** (surfaced by planning for local-machine deployment, not previously explicit)
+- Confirm `LocalDb` (`sqflite`)/`SharedPreferences` store in OS-standard per-user app-data directories - should already be correct via the plugins' own defaults, worth confirming rather than assuming
+- Decide uninstall behavior for local progress data deliberately (leaving it behind, the common desktop-app default, is a reasonable choice here too - just shouldn't be an accident)
 
 **CI**
-- `flutter analyze`/`flutter test` only run via a local git pre-commit hook right now - needs to run in GitHub Actions (or similar) gating PRs
-- Backend's pytest suite needs the same treatment
+- `flutter analyze`/`flutter test` only run via a local git pre-commit hook right now - needs to run in GitHub Actions (or similar) gating PRs, especially before cutting a real release
+- Backend's pytest suite needs the same treatment, lower urgency now that backend hosting itself is deprioritized
+
+**Backend (deprioritized for v1 - see decision above)**
+- TLS in front of the backend - only matters once/if the vocabulary API is actually deployed somewhere reachable
+- Migrate SQLite → Postgres, containerize behind a real ASGI process manager, restrict CORS, add structured logging/error tracking/health checks - all deferred together; revisit only if live vocab-update delivery becomes a real product need
+- ~~`JWT_SECRET_KEY` has a dev-only default...~~ **No longer applicable**: the app has no accounts (SPEC.md section 1), so `/auth` never gets called in production regardless of this setting.
+- ~~Rate limiting on `/auth/login` and `/auth/register`~~ **Done, but moot for the same reason** - `backend/app/rate_limit.py` still exists and works (21/21 backend tests pass), just guarding endpoints nothing calls anymore.
+
+**Content quality**
+- Full native-speaker/dictionary-verified review of the vocabulary dataset (the spot-check done during the POC is a stopgap, not a substitute)
 
 **Data / privacy**
-- Privacy policy - still relevant even with no accounts: the vocabulary API is still a network call, and if the app ever ships crash reporting or similar telemetry (see Client distribution, above) that's real data leaving the device.
+- Privacy policy - still relevant even with no accounts: the vocabulary API is a network call if/when deployed, and client-side crash reporting (above) means real data leaving the device once built
 - ~~A migration path for merging local placeholder-UUID progress into a real account once client-side login exists~~ **No longer applicable**: there's no real account for local progress to migrate into (SPEC.md section 1) - the placeholder `user_id` is the permanent scheme now, not a bridge to anything.
