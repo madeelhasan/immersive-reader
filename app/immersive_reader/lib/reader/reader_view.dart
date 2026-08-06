@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/document_model.dart';
 import '../models/token.dart';
 import 'reader_controller.dart';
+import 'reading_progress_view.dart';
 
 class ReaderView extends StatefulWidget {
   final DocumentModel document;
@@ -115,19 +117,25 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   // Paragraphs are capped at a fairly uniform size (see
-  // DocumentParser.buildParagraphs), so a chapter's fraction of the total
-  // paragraph count is a good approximation of its fraction of total scroll
-  // extent. Exact pixel-perfect jumps aren't worth the complexity of
-  // tracking per-item heights in a lazy ListView.builder for Phase 1.
-  void _jumpToChapter(ChapterMarker chapter) {
-    if (!_scrollController.hasClients || widget.document.paragraphs.isEmpty) return;
-    final fraction = chapter.paragraphIndex / widget.document.paragraphs.length;
+  // DocumentParser.buildParagraphs), so a fraction of the total paragraph
+  // count is a good approximation of a fraction of total scroll extent.
+  // Exact pixel-perfect jumps aren't worth the complexity of tracking
+  // per-item heights in a lazy ListView.builder for Phase 1. Shared by
+  // chapter jumps, the reading-progress page's slider/chapter taps, and
+  // the Ctrl+G go-to-page dialog below.
+  void _jumpToFraction(double fraction) {
+    if (!_scrollController.hasClients) return;
     final target = fraction * _scrollController.position.maxScrollExtent;
     _scrollController.animateTo(
       target.clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+  }
+
+  void _jumpToChapter(ChapterMarker chapter) {
+    if (widget.document.paragraphs.isEmpty) return;
+    _jumpToFraction(chapter.paragraphIndex / widget.document.paragraphs.length);
   }
 
   void _showChapterList() {
@@ -150,49 +158,131 @@ class _ReaderViewState extends State<ReaderView> {
     );
   }
 
+  double get _currentFraction {
+    if (!_scrollController.hasClients) return 0.0;
+    final maxExtent = _scrollController.position.maxScrollExtent;
+    if (maxExtent <= 0) return 0.0;
+    return (_scrollController.position.pixels / maxExtent).clamp(0.0, 1.0);
+  }
+
+  Future<void> _openReadingProgress() async {
+    final fraction = await Navigator.push<double>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ReadingProgressView(
+          documentTitle: widget.document.title,
+          totalParagraphs: widget.document.paragraphs.length,
+          currentFraction: _currentFraction,
+          chapters: widget.document.chapters,
+        ),
+      ),
+    );
+    if (fraction != null) _jumpToFraction(fraction);
+  }
+
+  // "Page" here means paragraph number (1-based) - the app doesn't paginate,
+  // so a paragraph index is the closest equivalent, consistent with the
+  // fraction-based navigation used everywhere else in this file.
+  Future<void> _showGoToPageDialog() async {
+    final totalPages = widget.document.paragraphs.length;
+    if (totalPages == 0) return;
+
+    final controller = TextEditingController();
+    int? parseValidPage() {
+      final page = int.tryParse(controller.text);
+      if (page == null || page < 1 || page > totalPages) return null;
+      return page;
+    }
+
+    final page = await showDialog<int>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Go to page'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(hintText: 'Page 1-$totalPages'),
+          onSubmitted: (_) {
+            final validPage = parseValidPage();
+            if (validPage != null) Navigator.pop(dialogContext, validPage);
+          },
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              final validPage = parseValidPage();
+              if (validPage != null) Navigator.pop(dialogContext, validPage);
+            },
+            child: const Text('Go'),
+          ),
+        ],
+      ),
+    );
+
+    if (page != null) _jumpToFraction((page - 1) / totalPages);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return CallbackShortcuts(
+      bindings: {
+        const SingleActivator(LogicalKeyboardKey.keyG, control: true): _showGoToPageDialog,
+      },
+      child: Focus(
+        autofocus: true,
+        child: Column(
           children: [
-            if (widget.document.chapters.isNotEmpty)
-              IconButton(
-                icon: const Icon(Icons.list),
-                tooltip: 'Chapters',
-                onPressed: _showChapterList,
-              ),
-            IconButton(
-              icon: const Icon(Icons.remove),
-              tooltip: 'Decrease font size',
-              onPressed: _fontSize > _minFontSize ? () => _adjustFontSize(-2) : null,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (widget.document.chapters.isNotEmpty)
+                  IconButton(
+                    icon: const Icon(Icons.list),
+                    tooltip: 'Chapters',
+                    onPressed: _showChapterList,
+                  ),
+                IconButton(
+                  icon: const Icon(Icons.bar_chart),
+                  tooltip: 'Reading progress',
+                  onPressed: _openReadingProgress,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.remove),
+                  tooltip: 'Decrease font size',
+                  onPressed: _fontSize > _minFontSize ? () => _adjustFontSize(-2) : null,
+                ),
+                Text('${_fontSize.round()}'),
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  tooltip: 'Increase font size',
+                  onPressed: _fontSize < _maxFontSize ? () => _adjustFontSize(2) : null,
+                ),
+              ],
             ),
-            Text('${_fontSize.round()}'),
-            IconButton(
-              icon: const Icon(Icons.add),
-              tooltip: 'Increase font size',
-              onPressed: _fontSize < _maxFontSize ? () => _adjustFontSize(2) : null,
+            Expanded(
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: widget.document.paragraphs.length,
+                itemBuilder: (context, index) {
+                  final paragraph = widget.document.paragraphs[index];
+                  return Column(
+                    children: paragraph.sentences.map((sentence) {
+                      return Wrap(
+                        children: sentence.tokens.map(_buildToken).toList(),
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
             ),
           ],
         ),
-        Expanded(
-          child: ListView.builder(
-            controller: _scrollController,
-            itemCount: widget.document.paragraphs.length,
-            itemBuilder: (context, index) {
-              final paragraph = widget.document.paragraphs[index];
-              return Column(
-                children: paragraph.sentences.map((sentence) {
-                  return Wrap(
-                    children: sentence.tokens.map(_buildToken).toList(),
-                  );
-                }).toList(),
-              );
-            },
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
