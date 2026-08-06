@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 import '../storage/local_db.dart';
@@ -45,7 +47,34 @@ class ProgressSyncService {
   /// server-reported synced count. Throws [ProgressSyncException] (with the
   /// backend's `detail` message) on any non-200 response.
   Future<int> push(String token) async {
-    throw UnimplementedError();
+    final rows = await _db.getAllWordProgress(localUserId);
+    final entries = rows.map((row) => {
+          'en_word': row['en_word'],
+          'exposures': row['exposures'],
+          'times_toggled_back': row['times_toggled_back'],
+          'times_toggled_forward': row['times_toggled_forward'],
+          'last_seen_at': row['last_seen_at'],
+          'ease_factor': (row['ease_factor'] as num).toDouble(),
+          'interval_days': (row['interval_days'] as num).toDouble(),
+          'status': row['status'],
+        }).toList();
+
+    final response = await _client
+        .post(
+          Uri.parse('$baseUrl/progress'),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+          body: jsonEncode({'entries': entries}),
+        )
+        .timeout(timeout);
+
+    if (response.statusCode != 200) {
+      throw _syncExceptionFromResponse(response);
+    }
+    final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+    return decoded['synced'] as int;
   }
 
   /// GETs /progress and upserts every returned row into LocalDb under
@@ -54,6 +83,44 @@ class ProgressSyncService {
   /// [ProgressSyncException] (with the backend's `detail` message) on any
   /// non-200 response.
   Future<int> pull(String token) async {
-    throw UnimplementedError();
+    final response = await _client
+        .get(
+          Uri.parse('$baseUrl/progress'),
+          headers: {'Authorization': 'Bearer $token'},
+        )
+        .timeout(timeout);
+
+    if (response.statusCode != 200) {
+      throw _syncExceptionFromResponse(response);
+    }
+    final entries = jsonDecode(response.body) as List<dynamic>;
+    for (final dynamic item in entries) {
+      final map = item as Map<String, dynamic>;
+      await _db.insertOrUpdateWordProgress({
+        'user_id': localUserId,
+        'en_word': map['en_word'],
+        'exposures': map['exposures'],
+        'times_toggled_back': map['times_toggled_back'],
+        'times_toggled_forward': map['times_toggled_forward'],
+        'last_seen_at': map['last_seen_at'],
+        'ease_factor': (map['ease_factor'] as num).toDouble(),
+        'interval_days': (map['interval_days'] as num).toDouble(),
+        'status': map['status'],
+      });
+    }
+    return entries.length;
+  }
+
+  ProgressSyncException _syncExceptionFromResponse(http.Response response) {
+    try {
+      final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+      final detail = decoded['detail'];
+      if (detail is String) {
+        return ProgressSyncException(detail);
+      }
+    } catch (_) {
+      // fall through to the generic message below
+    }
+    return ProgressSyncException('Request failed with status ${response.statusCode}');
   }
 }
