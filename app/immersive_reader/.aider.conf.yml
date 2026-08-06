@@ -4,3 +4,4 @@ lint-cmd: "C:\\src\\flutter\\bin\\flutter.bat analyze"
 auto-commits: true
 yes-always: true
 chat-language: english
+cache-prompts: true
