@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/document_model.dart';
 import '../models/token.dart';
 import 'reader_controller.dart';
-import 'reading_progress_view.dart';
 
 class ReaderView extends StatefulWidget {
   final DocumentModel document;
@@ -121,8 +120,7 @@ class _ReaderViewState extends State<ReaderView> {
   // count is a good approximation of a fraction of total scroll extent.
   // Exact pixel-perfect jumps aren't worth the complexity of tracking
   // per-item heights in a lazy ListView.builder for Phase 1. Shared by
-  // chapter jumps, the reading-progress page's slider/chapter taps, and
-  // the Ctrl+G go-to-page dialog below.
+  // chapter jumps and the Ctrl+G go-to-page dialog below.
   void _jumpToFraction(double fraction) {
     if (!_scrollController.hasClients) return;
     final target = fraction * _scrollController.position.maxScrollExtent;
@@ -163,21 +161,6 @@ class _ReaderViewState extends State<ReaderView> {
     final maxExtent = _scrollController.position.maxScrollExtent;
     if (maxExtent <= 0) return 0.0;
     return (_scrollController.position.pixels / maxExtent).clamp(0.0, 1.0);
-  }
-
-  Future<void> _openReadingProgress() async {
-    final fraction = await Navigator.push<double>(
-      context,
-      MaterialPageRoute(
-        builder: (_) => ReadingProgressView(
-          documentTitle: widget.document.title,
-          totalParagraphs: widget.document.paragraphs.length,
-          currentFraction: _currentFraction,
-          chapters: widget.document.chapters,
-        ),
-      ),
-    );
-    if (fraction != null) _jumpToFraction(fraction);
   }
 
   // "Page" here means paragraph number (1-based) - the app doesn't paginate,
@@ -238,7 +221,6 @@ class _ReaderViewState extends State<ReaderView> {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (widget.document.chapters.isNotEmpty)
                   IconButton(
@@ -246,10 +228,23 @@ class _ReaderViewState extends State<ReaderView> {
                     tooltip: 'Chapters',
                     onPressed: _showChapterList,
                   ),
-                IconButton(
-                  icon: const Icon(Icons.bar_chart),
-                  tooltip: 'Reading progress',
-                  onPressed: _openReadingProgress,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: AnimatedBuilder(
+                      animation: _scrollController,
+                      builder: (context, _) {
+                        final fraction = _currentFraction;
+                        return Row(
+                          children: [
+                            Expanded(child: LinearProgressIndicator(value: fraction)),
+                            const SizedBox(width: 8),
+                            Text('${(fraction * 100).round()}%'),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.remove),

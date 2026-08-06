@@ -6,18 +6,24 @@ import 'package:immersive_reader/models/token.dart';
 import 'package:immersive_reader/reader/reader_controller.dart';
 import 'package:immersive_reader/reader/reader_view.dart';
 
-DocumentModel _buildDocument({List<ChapterMarker> chapters = const []}) {
+DocumentModel _buildDocument({List<ChapterMarker> chapters = const [], int paragraphCount = 10}) {
   return DocumentModel(
     document_id: 'doc1',
     title: 'Test Document',
     paragraphs: List.generate(
-      10,
+      paragraphCount,
       (i) => ParagraphModel(
         paragraph_id: 'p$i',
         sentences: [
           SentenceModel(
             sentence_id: 's$i',
-            tokens: [Token(tokenId: 't$i', text: 'word$i', isWord: true, positionIndex: i)],
+            // Several tokens per paragraph, repeated across many paragraphs,
+            // so the list is tall enough to actually scroll in the test
+            // viewport - a handful of one-word paragraphs wouldn't overflow.
+            tokens: List.generate(
+              20,
+              (j) => Token(tokenId: 't${i}_$j', text: 'word${i}_$j', isWord: true, positionIndex: i * 20 + j),
+            ),
           ),
         ],
       ),
@@ -27,17 +33,28 @@ DocumentModel _buildDocument({List<ChapterMarker> chapters = const []}) {
 }
 
 void main() {
-  testWidgets('tapping the reading-progress button navigates to ReadingProgressView', (tester) async {
+  testWidgets('shows an inline progress bar starting at 0%', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: ReaderView(document: _buildDocument(), controller: ReaderController()),
     ));
     await tester.pump();
 
-    await tester.tap(find.byIcon(Icons.bar_chart));
-    await tester.pumpAndSettle();
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+    expect(find.text('0%'), findsOneWidget);
+  });
 
-    expect(find.text('Test Document'), findsOneWidget);
-    expect(find.byType(Slider), findsOneWidget);
+  testWidgets('progress percentage updates as the reader scrolls', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: ReaderView(document: _buildDocument(paragraphCount: 200), controller: ReaderController()),
+    ));
+    await tester.pump();
+
+    expect(find.text('0%'), findsOneWidget);
+
+    await tester.drag(find.byType(ListView), const Offset(0, -5000));
+    await tester.pump();
+
+    expect(find.text('0%'), findsNothing);
   });
 
   testWidgets('Ctrl+G opens the go-to-page dialog', (tester) async {
