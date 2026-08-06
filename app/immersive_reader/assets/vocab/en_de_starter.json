@@ -9568,5 +9568,59 @@
     "de": "es kommt darauf an",
     "cefr_level": "B1",
     "part_of_speech": "adverb"
+  },
+  {
+    "en": "patient",
+    "de": "geduldig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sensitive",
+    "de": "empfindlich",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "talkative",
+    "de": "gesprächig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "thoughtful",
+    "de": "nachdenklich",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "discussion",
+    "de": "Diskussion",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fold",
+    "de": "falten",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tidy",
+    "de": "aufräumen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "bucket",
+    "de": "Eimer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sponge",
+    "de": "Schwamm",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
   }
 ]
