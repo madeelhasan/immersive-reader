@@ -3340,5 +3340,707 @@
     "de": "Hauptstadt",
     "cefr_level": "A2",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "airport",
+    "de": "Flughafen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ticket",
+    "de": "Fahrkarte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "luggage",
+    "de": "Gepäck",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "passport",
+    "de": "Reisepass",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "map",
+    "de": "Karte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "direction",
+    "de": "Richtung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "turn left",
+    "de": "links abbiegen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "turn right",
+    "de": "rechts abbiegen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "go straight",
+    "de": "geradeaus gehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cross the street",
+    "de": "die Straße überqueren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "near",
+    "de": "in der Nähe",
+    "cefr_level": "A2",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "far",
+    "de": "weit",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "left",
+    "de": "links",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "right",
+    "de": "rechts",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "straight",
+    "de": "geradeaus",
+    "cefr_level": "A2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "corner",
+    "de": "Ecke",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "traffic light",
+    "de": "Ampel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "crosswalk",
+    "de": "Fußgängerüberweg",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "subway",
+    "de": "U-Bahn",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bus stop",
+    "de": "Bushaltestelle",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "train station",
+    "de": "Bahnhof",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "platform",
+    "de": "Bahnsteig",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "departure",
+    "de": "Abfahrt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "arrival",
+    "de": "Ankunft",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "delay",
+    "de": "Verspätung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cancel",
+    "de": "stornieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "book",
+    "de": "buchen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "reserve",
+    "de": "reservieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tourist",
+    "de": "Tourist",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "guide",
+    "de": "Reiseführer",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "souvenir",
+    "de": "Andenken",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "currency",
+    "de": "Währung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "exchange",
+    "de": "umtauschen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cash",
+    "de": "Bargeld",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "credit card",
+    "de": "Kreditkarte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "price",
+    "de": "Preis",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cost",
+    "de": "kosten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cheap",
+    "de": "billig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "expensive",
+    "de": "teuer",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "discount",
+    "de": "Rabatt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "receipt",
+    "de": "Quittung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "change",
+    "de": "Wechselgeld",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wallet",
+    "de": "Geldbörse",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "purse",
+    "de": "Handtasche",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shop assistant",
+    "de": "Verkäufer",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "customer",
+    "de": "Kunde",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "try on",
+    "de": "anprobieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "size",
+    "de": "Größe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "color",
+    "de": "Farbe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sport",
+    "de": "Sport",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "team",
+    "de": "Mannschaft",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "player",
+    "de": "Spieler",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "coach",
+    "de": "Trainer",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "match",
+    "de": "Spiel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "score",
+    "de": "Punktestand",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "win",
+    "de": "gewinnen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "lose",
+    "de": "verlieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "draw",
+    "de": "unentschieden spielen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "practice",
+    "de": "üben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "train",
+    "de": "trainieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exercise",
+    "de": "Sport treiben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hobby",
+    "de": "Hobby",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "collect",
+    "de": "sammeln",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "paint",
+    "de": "malen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "draw",
+    "de": "zeichnen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "photography",
+    "de": "Fotografie",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "camera",
+    "de": "Kamera",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "computer",
+    "de": "Computer",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "laptop",
+    "de": "Laptop",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tablet",
+    "de": "Tablet",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "smartphone",
+    "de": "Smartphone",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "internet",
+    "de": "Internet",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "website",
+    "de": "Webseite",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "email",
+    "de": "E-Mail",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "message",
+    "de": "Nachricht",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "call",
+    "de": "anrufen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "text",
+    "de": "SMS schreiben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "download",
+    "de": "herunterladen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "upload",
+    "de": "hochladen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "password",
+    "de": "Passwort",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "account",
+    "de": "Konto",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "log in",
+    "de": "anmelden",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "log out",
+    "de": "abmelden",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "turn on",
+    "de": "einschalten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "turn off",
+    "de": "ausschalten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "plug in",
+    "de": "einstecken",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "charge",
+    "de": "aufladen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "battery",
+    "de": "Batterie",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "screen",
+    "de": "Bildschirm",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "keyboard",
+    "de": "Tastatur",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mouse",
+    "de": "Maus",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "printer",
+    "de": "Drucker",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "weather",
+    "de": "Wetter",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sunny",
+    "de": "sonnig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cloudy",
+    "de": "bewölkt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "rainy",
+    "de": "regnerisch",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "windy",
+    "de": "windig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "snowy",
+    "de": "verschneit",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "storm",
+    "de": "Sturm",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "temperature",
+    "de": "Temperatur",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "degree",
+    "de": "Grad",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "forecast",
+    "de": "Wettervorhersage",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "umbrella",
+    "de": "Regenschirm",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "daily routine",
+    "de": "Tagesablauf",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wake up",
+    "de": "aufwachen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "get up",
+    "de": "aufstehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "brush teeth",
+    "de": "Zähne putzen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "take a shower",
+    "de": "duschen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "get dressed",
+    "de": "sich anziehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "have breakfast",
+    "de": "frühstücken",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "go to work",
+    "de": "zur Arbeit gehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "go to school",
+    "de": "zur Schule gehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "come home",
+    "de": "nach Hause kommen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "have dinner",
+    "de": "zu Abend essen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "watch TV",
+    "de": "fernsehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "go to bed",
+    "de": "ins Bett gehen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fall asleep",
+    "de": "einschlafen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
   }
 ]
