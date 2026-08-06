@@ -3946,5 +3946,305 @@
     "de": "einschlafen",
     "cefr_level": "A2",
     "part_of_speech": "verb"
+  },
+  {
+    "en": "education",
+    "de": "Bildung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "subject",
+    "de": "Fach",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lesson",
+    "de": "Unterricht",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "homework",
+    "de": "Hausaufgaben",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "exam",
+    "de": "Prüfung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "grade",
+    "de": "Note",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "university",
+    "de": "Universität",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "degree",
+    "de": "Abschluss",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "research",
+    "de": "Forschung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "knowledge",
+    "de": "Wissen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "skill",
+    "de": "Fähigkeit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "learn",
+    "de": "lernen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "study",
+    "de": "studieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "teach",
+    "de": "unterrichten",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "understand",
+    "de": "verstehen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "explain",
+    "de": "erklären",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "remember",
+    "de": "sich erinnern",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "forget",
+    "de": "vergessen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "improve",
+    "de": "verbessern",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "develop",
+    "de": "entwickeln",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "achieve",
+    "de": "erreichen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "succeed",
+    "de": "gelingen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fail",
+    "de": "scheitern",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "prepare",
+    "de": "vorbereiten",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "organize",
+    "de": "organisieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "plan",
+    "de": "planen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "decide",
+    "de": "entscheiden",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "choose",
+    "de": "wählen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "compare",
+    "de": "vergleichen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "discuss",
+    "de": "diskutieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "argue",
+    "de": "argumentieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "agree",
+    "de": "zustimmen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disagree",
+    "de": "nicht zustimmen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "opinion",
+    "de": "Meinung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "view",
+    "de": "Ansicht",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "point of view",
+    "de": "Standpunkt",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "reason",
+    "de": "Grund",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "result",
+    "de": "Ergebnis",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "solution",
+    "de": "Lösung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "problem",
+    "de": "Problem",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "technology",
+    "de": "Technologie",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "device",
+    "de": "Gerät",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "software",
+    "de": "Software",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hardware",
+    "de": "Hardware",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "network",
+    "de": "Netzwerk",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "data",
+    "de": "Daten",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "information",
+    "de": "Information",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "digital",
+    "de": "digital",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "online",
+    "de": "online",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "wireless",
+    "de": "drahtlos",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
   }
 ]
