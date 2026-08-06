@@ -288,6 +288,18 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /// Returns to the recent-documents/library view. Doesn't need to touch
+  /// the recent-documents list itself - the document being closed was
+  /// already recorded there (moved to the front) when it was opened.
+  void _closeDocument() {
+    setState(() {
+      _document = null;
+      _tokens = [];
+      _replacements = {};
+      _error = null;
+    });
+  }
+
   IconData get _themeIcon => switch (widget.themeMode) {
         ThemeMode.light => Icons.light_mode,
         ThemeMode.dark => Icons.dark_mode,
@@ -298,6 +310,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: _document != null
+            ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                tooltip: 'Back to library',
+                onPressed: _isLoading ? null : _closeDocument,
+              )
+            : null,
         title: Text(_document?.title ?? 'Immersive Reader'),
         actions: [
           PopupMenuButton<String>(

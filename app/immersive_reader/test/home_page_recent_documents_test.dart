@@ -76,6 +76,57 @@ void main() {
     });
   });
 
+  testWidgets('shows a back button once a document is open, and it returns to the recent list',
+      (tester) async {
+    late Directory dir;
+    late File file;
+    await tester.runAsync(() async {
+      dir = Directory.systemTemp.createTempSync('ir_back_button_test');
+      file = File(p.join(dir.path, 'my_book.txt'));
+      await file.writeAsString('This paragraph contains the marker ZzyxBackButtonMarker.');
+    });
+
+    SharedPreferences.setMockInitialValues({
+      'recent_documents': jsonEncode([
+        RecentDocument(
+          documentId: 'my_book',
+          title: 'my_book',
+          filePath: file.path,
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+        ).toJson(),
+      ]),
+    });
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pump();
+
+    // No back button before anything is open.
+    expect(find.byIcon(Icons.arrow_back), findsNothing);
+
+    await tester.runAsync(() async {
+      await tester.tap(find.text('my_book'));
+      await _pumpUntilNotLoading(tester);
+    });
+
+    expect(find.textContaining('ZzyxBackButtonMarker'), findsOneWidget);
+    expect(find.byIcon(Icons.arrow_back), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.arrow_back));
+    await tester.pump();
+
+    // Back on the recent-documents list - the just-closed document is still
+    // there (it was recorded when opened), and the back button is gone
+    // again since nothing is open.
+    expect(find.text('my_book'), findsOneWidget);
+    expect(find.byIcon(Icons.arrow_back), findsNothing);
+    expect(find.textContaining('ZzyxBackButtonMarker'), findsNothing);
+
+    await tester.runAsync(() async {
+      dir.deleteSync(recursive: true);
+    });
+  });
+
   testWidgets('removes a recent entry whose file no longer exists, without crashing',
       (tester) async {
     final missingPath =
