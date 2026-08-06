@@ -199,7 +199,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _openFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['txt', 'docx', 'epub', 'pdf'],
+      allowedExtensions: ['txt', 'docx', 'epub', 'pdf', 'html', 'htm'],
     );
     final path = result?.files.single.path;
     if (path == null) return;
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
           : _document == null
               ? Center(
                   child: Text(
-                    _error ?? 'Open a .txt, .docx, .epub, or .pdf file to start reading.',
+                    _error ?? 'Open a .txt, .docx, .epub, .pdf, or .html file to start reading.',
                   ),
                 )
               : ReaderView(

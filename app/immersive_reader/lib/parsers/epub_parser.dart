@@ -5,11 +5,14 @@ import 'package:archive/archive.dart';
 import 'package:path/path.dart' as p;
 
 import '../models/document_model.dart';
+import 'html_text_utils.dart';
 import 'parser_interface.dart';
 
 /// EPUB is a zip of XHTML files. We parse it manually (rather than via the
 /// `epubx` package) because epubx pins an `xml` version that conflicts with
 /// `syncfusion_flutter_pdf`'s `xml` requirement - see SPEC.md section 5.
+/// Tag-stripping/block-splitting is shared with HtmlParser via
+/// html_text_utils.dart, since EPUB chapters are themselves just XHTML.
 class EpubParser extends DocumentParser {
   @override
   Future<DocumentModel> parse(File file) async {
@@ -22,7 +25,7 @@ class EpubParser extends DocumentParser {
     var position = 0;
 
     for (final rawChapter in rawChapters) {
-      final blocks = _splitIntoBlocks(rawChapter);
+      final blocks = splitHtmlIntoBlocks(rawChapter);
       if (blocks.isEmpty) continue;
 
       chapterMarkers.add(ChapterMarker(
@@ -55,25 +58,8 @@ class EpubParser extends DocumentParser {
     final match = RegExp(r'<h[12]\b[^>]*>(.*?)</h[12]>', dotAll: true, caseSensitive: false)
         .firstMatch(html);
     if (match == null) return null;
-    final title = _stripHtml(match.group(1)!).trim();
+    final title = stripHtml(match.group(1)!).trim();
     return title.isEmpty ? null : title;
-  }
-
-  /// Splits chapter HTML into paragraph-sized text blocks using <p>/<br>
-  /// boundaries (falling back to blank-line breaks) before stripping tags,
-  /// so a whole chapter doesn't become one oversized paragraph.
-  List<String> _splitIntoBlocks(String html) {
-    final byParagraphTag = html.split(RegExp(r'</p\s*>', caseSensitive: false));
-    final rawBlocks = byParagraphTag.length > 1
-        ? byParagraphTag
-        : html.split(RegExp(r'<br\s*/?>', caseSensitive: false));
-
-    return rawBlocks
-        .map(_stripHtml)
-        .expand((text) => text.split(RegExp(r'\r?\n\s*\r?\n')))
-        .map((text) => text.trim())
-        .where((text) => text.isNotEmpty)
-        .toList();
   }
 
   /// Resolves the EPUB's chapter files in spine order via
@@ -130,13 +116,4 @@ class EpubParser extends DocumentParser {
   }
 
   String _decode(ArchiveFile file) => utf8.decode(file.content as List<int>);
-
-  String _stripHtml(String html) {
-    final withoutTags = html.replaceAll(RegExp(r'<[^>]*>'), ' ');
-    return withoutTags
-        .replaceAll('&nbsp;', ' ')
-        .replaceAll('&amp;', '&')
-        .replaceAll('&lt;', '<')
-        .replaceAll('&gt;', '>');
-  }
 }

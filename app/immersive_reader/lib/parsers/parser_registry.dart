@@ -2,6 +2,7 @@ import 'package:path/path.dart' as p;
 
 import 'docx_parser.dart';
 import 'epub_parser.dart';
+import 'html_parser.dart';
 import 'parser_interface.dart';
 import 'pdf_parser.dart';
 import 'txt_parser.dart';
@@ -17,6 +18,9 @@ class ParserRegistry {
         return EpubParser();
       case '.txt':
         return TxtParser();
+      case '.html':
+      case '.htm':
+        return HtmlParser();
       default:
         throw Exception('Unsupported file type: $fileName');
     }
