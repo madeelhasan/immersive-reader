@@ -9622,5 +9622,695 @@
     "de": "Schwamm",
     "cefr_level": "B1",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "charger",
+    "de": "Ladegerät",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "file",
+    "de": "Datei",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "folder",
+    "de": "Ordner",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "attachment",
+    "de": "Anhang",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "teamwork",
+    "de": "Teamarbeit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "resume",
+    "de": "Lebenslauf",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "itinerary",
+    "de": "Reiseroute",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "accommodation",
+    "de": "Unterkunft",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "portion",
+    "de": "Portion",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leftovers",
+    "de": "Reste",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "organic",
+    "de": "biologisch",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "tournament",
+    "de": "Turnier",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "workout",
+    "de": "Training",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jog",
+    "de": "joggen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "teammate",
+    "de": "Mitspieler",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "energy",
+    "de": "Energie",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "solar",
+    "de": "solar",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "waste",
+    "de": "Abfall",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "endangered",
+    "de": "gefährdet",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "assignment",
+    "de": "Aufgabe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "semester",
+    "de": "Semester",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "graduate",
+    "de": "absolvieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tuition",
+    "de": "Studiengebühren",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tutor",
+    "de": "Nachhilfelehrer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "essay",
+    "de": "Aufsatz",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "court",
+    "de": "Gericht",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "judge",
+    "de": "Richter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "crime",
+    "de": "Verbrechen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "theft",
+    "de": "Diebstahl",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fine",
+    "de": "Geldstrafe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "guilty",
+    "de": "schuldig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "innocent",
+    "de": "unschuldig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "lawyer",
+    "de": "Anwalt",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jury",
+    "de": "Jury",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "acquaintance",
+    "de": "Bekannter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "trust",
+    "de": "vertrauen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "loyalty",
+    "de": "Loyalität",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "celebration",
+    "de": "Feier",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "punctual",
+    "de": "pünktlich",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "flexible",
+    "de": "flexibel",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "motivated",
+    "de": "motiviert",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "definitely",
+    "de": "definitiv",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "probably",
+    "de": "wahrscheinlich",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "suddenly",
+    "de": "plötzlich",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "immediately",
+    "de": "sofort",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "eventually",
+    "de": "schließlich",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "rarely",
+    "de": "selten",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "frequently",
+    "de": "häufig",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "screwdriver",
+    "de": "Schraubenzieher",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ladder",
+    "de": "Leiter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "flashlight",
+    "de": "Taschenlampe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "toolbox",
+    "de": "Werkzeugkasten",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wrench",
+    "de": "Schraubenschlüssel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pliers",
+    "de": "Zange",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sandpaper",
+    "de": "Schleifpapier",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "paintbrush",
+    "de": "Pinsel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "zipper",
+    "de": "Reißverschluss",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "button",
+    "de": "Knopf",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pocket",
+    "de": "Tasche",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sleeve",
+    "de": "Ärmel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "collar",
+    "de": "Kragen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hem",
+    "de": "Saum",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fabric",
+    "de": "Stoff",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wool",
+    "de": "Wolle",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cotton",
+    "de": "Baumwolle",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leather",
+    "de": "Leder",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stripe",
+    "de": "Streifen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pattern",
+    "de": "Muster",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "grater",
+    "de": "Reibe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "colander",
+    "de": "Sieb",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cutting board",
+    "de": "Schneidebrett",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "oven mitt",
+    "de": "Ofenhandschuh",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "apron",
+    "de": "Schürze",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ladle",
+    "de": "Schöpfkelle",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "blender",
+    "de": "Mixer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "toaster",
+    "de": "Toaster",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "saucepan",
+    "de": "Kochtopf",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hail",
+    "de": "Hagel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "breeze",
+    "de": "Brise",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "gust",
+    "de": "Windstoß",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sprain",
+    "de": "Verstauchung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "swelling",
+    "de": "Schwellung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "blister",
+    "de": "Blase",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "scar",
+    "de": "Narbe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rash",
+    "de": "Ausschlag",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cramp",
+    "de": "Krampf",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "numb",
+    "de": "taub",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "itch",
+    "de": "jucken",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "relief",
+    "de": "Erleichterung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sorrow",
+    "de": "Kummer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dread",
+    "de": "Grauen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "envy",
+    "de": "Neid",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "awe",
+    "de": "Ehrfurcht",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "resentment",
+    "de": "Groll",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "contentment",
+    "de": "Zufriedenheit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "frustration",
+    "de": "Frustration",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boredom",
+    "de": "Langeweile",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "anticipation",
+    "de": "Vorfreude",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mumble",
+    "de": "murmeln",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exaggerate",
+    "de": "übertreiben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "confess",
+    "de": "gestehen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "postpone",
+    "de": "verschieben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "reschedule",
+    "de": "umplanen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "overdue",
+    "de": "überfällig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "procrastinate",
+    "de": "aufschieben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "multitask",
+    "de": "multitasken",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "bargain",
+    "de": "Schnäppchen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "checkout",
+    "de": "Kasse",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cashier",
+    "de": "Kassierer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "browse",
+    "de": "stöbern",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "coupon",
+    "de": "Gutschein",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "volunteer",
+    "de": "freiwillig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "donate",
+    "de": "spenden",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "charity",
+    "de": "Wohltätigkeit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "petition",
+    "de": "Petition",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
   }
 ]
