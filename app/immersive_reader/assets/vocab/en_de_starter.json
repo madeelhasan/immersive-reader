@@ -3990,12 +3990,6 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "degree",
-    "de": "Abschluss",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "research",
     "de": "Forschung",
     "cefr_level": "B1",
@@ -4014,48 +4008,6 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "learn",
-    "de": "lernen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "study",
-    "de": "studieren",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "teach",
-    "de": "unterrichten",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "understand",
-    "de": "verstehen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "explain",
-    "de": "erklären",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "remember",
-    "de": "sich erinnern",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "forget",
-    "de": "vergessen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
     "en": "improve",
     "de": "verbessern",
     "cefr_level": "B1",
@@ -4064,84 +4016,6 @@
   {
     "en": "develop",
     "de": "entwickeln",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "achieve",
-    "de": "erreichen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "succeed",
-    "de": "gelingen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "fail",
-    "de": "scheitern",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "prepare",
-    "de": "vorbereiten",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "organize",
-    "de": "organisieren",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "plan",
-    "de": "planen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "decide",
-    "de": "entscheiden",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "choose",
-    "de": "wählen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "compare",
-    "de": "vergleichen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "discuss",
-    "de": "diskutieren",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "argue",
-    "de": "argumentieren",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "agree",
-    "de": "zustimmen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "disagree",
-    "de": "nicht zustimmen",
     "cefr_level": "B1",
     "part_of_speech": "verb"
   },
@@ -4245,6 +4119,3198 @@
     "en": "wireless",
     "de": "drahtlos",
     "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "husband",
+    "de": "der Ehemann",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wife",
+    "de": "die Ehefrau",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "parent",
+    "de": "das Elternteil",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "relative",
+    "de": "der Verwandte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "neighbor",
+    "de": "der Nachbar",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "colleague",
+    "de": "der Kollege",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "partner",
+    "de": "der Partner",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "marriage",
+    "de": "die Ehe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wedding",
+    "de": "die Hochzeit",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cousin",
+    "de": "der Cousin",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nephew",
+    "de": "der Neffe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "niece",
+    "de": "die Nichte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "uncle",
+    "de": "der Onkel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "aunt",
+    "de": "die Tante",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "excited",
+    "de": "aufgeregt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "nervous",
+    "de": "nervös",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "worried",
+    "de": "besorgt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bored",
+    "de": "gelangweilt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "proud",
+    "de": "stolz",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "jealous",
+    "de": "eifersüchtig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "embarrassed",
+    "de": "peinlich berührt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "confused",
+    "de": "verwirrt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "surprised",
+    "de": "überrascht",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "disappointed",
+    "de": "enttäuscht",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "confident",
+    "de": "selbstbewusst",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "calm",
+    "de": "ruhig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "angry",
+    "de": "wütend",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "lonely",
+    "de": "einsam",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "relieved",
+    "de": "erleichtert",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "grateful",
+    "de": "dankbar",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "curious",
+    "de": "neugierig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ashamed",
+    "de": "beschämt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "anxious",
+    "de": "ängstlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cheerful",
+    "de": "fröhlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "vegetable",
+    "de": "das Gemüse",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fruit",
+    "de": "die Frucht",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "meal",
+    "de": "die Mahlzeit",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "snack",
+    "de": "der Snack",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dessert",
+    "de": "der Nachtisch",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "recipe",
+    "de": "das Rezept",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ingredient",
+    "de": "die Zutat",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "flavor",
+    "de": "der Geschmack",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "delicious",
+    "de": "köstlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sour",
+    "de": "sauer",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "spicy",
+    "de": "scharf",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bitter",
+    "de": "bitter",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "fresh",
+    "de": "frisch",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "frozen",
+    "de": "gefroren",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "roast",
+    "de": "braten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "boil",
+    "de": "kochen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fry",
+    "de": "braten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "grill",
+    "de": "grillen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "leftover",
+    "de": "die Reste",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "vegetarian",
+    "de": "vegetarisch",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "seafood",
+    "de": "die Meeresfrüchte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dairy",
+    "de": "die Milchprodukte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "grocery",
+    "de": "das Lebensmittel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "apartment",
+    "de": "die Wohnung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "roommate",
+    "de": "der Mitbewohner",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "landlord",
+    "de": "der Vermieter",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rent",
+    "de": "die Miete",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "furniture",
+    "de": "die Möbel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "balcony",
+    "de": "der Balkon",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "garage",
+    "de": "die Garage",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "basement",
+    "de": "der Keller",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "attic",
+    "de": "der Dachboden",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "staircase",
+    "de": "die Treppe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hallway",
+    "de": "der Flur",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "closet",
+    "de": "der Schrank",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wardrobe",
+    "de": "der Kleiderschrank",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "blanket",
+    "de": "die Decke",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pillow",
+    "de": "das Kissen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "towel",
+    "de": "das Handtuch",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bathtub",
+    "de": "die Badewanne",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "doorbell",
+    "de": "die Türklingel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fence",
+    "de": "der Zaun",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "roof",
+    "de": "das Dach",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "chimney",
+    "de": "der Schornstein",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "elevator",
+    "de": "der Aufzug",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "headache",
+    "de": "die Kopfschmerzen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stomachache",
+    "de": "die Bauchschmerzen",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fever",
+    "de": "das Fieber",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cough",
+    "de": "der Husten",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "flu",
+    "de": "die Grippe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pain",
+    "de": "der Schmerz",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hurt",
+    "de": "wehtun",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sick",
+    "de": "krank",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ill",
+    "de": "krank",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "injury",
+    "de": "die Verletzung",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bandage",
+    "de": "der Verband",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "medicine",
+    "de": "die Medizin",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pharmacy",
+    "de": "die Apotheke",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "symptom",
+    "de": "das Symptom",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dentist",
+    "de": "der Zahnarzt",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jacket",
+    "de": "die Jacke",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sweater",
+    "de": "der Pullover",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "scarf",
+    "de": "der Schal",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "glove",
+    "de": "der Handschuh",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sock",
+    "de": "die Socke",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dress",
+    "de": "das Kleid",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "skirt",
+    "de": "der Rock",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jeans",
+    "de": "die Jeans",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boots",
+    "de": "die Stiefel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "belt",
+    "de": "der Gürtel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tie",
+    "de": "die Krawatte",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "suit",
+    "de": "der Anzug",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "underwear",
+    "de": "die Unterwäsche",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pajamas",
+    "de": "der Schlafanzug",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "uniform",
+    "de": "die Uniform",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "elephant",
+    "de": "der Elefant",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lion",
+    "de": "der Löwe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tiger",
+    "de": "der Tiger",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "monkey",
+    "de": "der Affe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wolf",
+    "de": "der Wolf",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fox",
+    "de": "der Fuchs",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "deer",
+    "de": "der Hirsch",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "duck",
+    "de": "die Ente",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "goat",
+    "de": "die Ziege",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "frog",
+    "de": "der Frosch",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "snake",
+    "de": "die Schlange",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "spider",
+    "de": "die Spinne",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "butterfly",
+    "de": "der Schmetterling",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ant",
+    "de": "die Ameise",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bee",
+    "de": "die Biene",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mountain",
+    "de": "der Berg",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "river",
+    "de": "der Fluss",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lake",
+    "de": "der See",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "forest",
+    "de": "der Wald",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ocean",
+    "de": "der Ozean",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "desert",
+    "de": "die Wüste",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "island",
+    "de": "die Insel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "valley",
+    "de": "das Tal",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hill",
+    "de": "der Hügel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "coast",
+    "de": "die Küste",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cave",
+    "de": "die Höhle",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "waterfall",
+    "de": "der Wasserfall",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cliff",
+    "de": "die Klippe",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jungle",
+    "de": "der Dschungel",
+    "cefr_level": "A2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "friendly",
+    "de": "freundlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "honest",
+    "de": "ehrlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "polite",
+    "de": "höflich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "rude",
+    "de": "unhöflich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "generous",
+    "de": "großzügig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "selfish",
+    "de": "egoistisch",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "careful",
+    "de": "vorsichtig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "careless",
+    "de": "unvorsichtig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "reliable",
+    "de": "zuverlässig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "strict",
+    "de": "streng",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "gentle",
+    "de": "sanft",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "creative",
+    "de": "kreativ",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "clever",
+    "de": "klug",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "wise",
+    "de": "weise",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "brilliant",
+    "de": "brillant",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "boring",
+    "de": "langweilig",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "interesting",
+    "de": "interessant",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "comfortable",
+    "de": "bequem",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "uncomfortable",
+    "de": "unbequem",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "convenient",
+    "de": "praktisch",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "useful",
+    "de": "nützlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "useless",
+    "de": "nutzlos",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "dangerous",
+    "de": "gefährlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "safe",
+    "de": "sicher",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "healthy",
+    "de": "gesund",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "unhealthy",
+    "de": "ungesund",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "wealthy",
+    "de": "wohlhabend",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "poor",
+    "de": "arm",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "famous",
+    "de": "berühmt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "popular",
+    "de": "beliebt",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "modern",
+    "de": "modern",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "traditional",
+    "de": "traditionell",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "similar",
+    "de": "ähnlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "different",
+    "de": "unterschiedlich",
+    "cefr_level": "A2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "suggest",
+    "de": "vorschlagen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "recommend",
+    "de": "empfehlen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "complain",
+    "de": "sich beschweren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "apologize",
+    "de": "sich entschuldigen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "promise",
+    "de": "versprechen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "warn",
+    "de": "warnen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "admit",
+    "de": "zugeben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "regret",
+    "de": "bereuen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "blame",
+    "de": "beschuldigen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "forgive",
+    "de": "vergeben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "celebrate",
+    "de": "feiern",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "congratulate",
+    "de": "gratulieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "encourage",
+    "de": "ermutigen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disappoint",
+    "de": "enttäuschen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "impress",
+    "de": "beeindrucken",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "annoy",
+    "de": "ärgern",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "relax",
+    "de": "entspannen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "worry",
+    "de": "sich sorgen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "imagine",
+    "de": "sich vorstellen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "guess",
+    "de": "raten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "expect",
+    "de": "erwarten",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "realize",
+    "de": "erkennen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "notice",
+    "de": "bemerken",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "recognize",
+    "de": "erkennen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "remind",
+    "de": "erinnern",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "mention",
+    "de": "erwähnen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "continue",
+    "de": "fortsetzen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "prevent",
+    "de": "verhindern",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "protect",
+    "de": "schützen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "provide",
+    "de": "bereitstellen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "increase",
+    "de": "erhöhen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "decrease",
+    "de": "verringern",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "reduce",
+    "de": "reduzieren",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "struggle",
+    "de": "kämpfen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "manage",
+    "de": "bewältigen",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "handle",
+    "de": "handhaben",
+    "cefr_level": "A2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "government",
+    "de": "die Regierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "election",
+    "de": "die Wahl",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "democracy",
+    "de": "die Demokratie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "citizen",
+    "de": "der Bürger",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "policy",
+    "de": "die Politik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "parliament",
+    "de": "das Parlament",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "candidate",
+    "de": "der Kandidat",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "vote",
+    "de": "abstimmen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "campaign",
+    "de": "die Kampagne",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "legislation",
+    "de": "die Gesetzgebung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "reform",
+    "de": "die Reform",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "authority",
+    "de": "die Behörde",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "regulation",
+    "de": "die Vorschrift",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "diplomat",
+    "de": "der Diplomat",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "negotiate",
+    "de": "verhandeln",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "compromise",
+    "de": "der Kompromiss",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "controversial",
+    "de": "umstritten",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "corruption",
+    "de": "die Korruption",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "economy",
+    "de": "die Wirtschaft",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "investment",
+    "de": "die Investition",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "entrepreneur",
+    "de": "der Unternehmer",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "revenue",
+    "de": "der Umsatz",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "profit",
+    "de": "der Gewinn",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "loss",
+    "de": "der Verlust",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "inflation",
+    "de": "die Inflation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "recession",
+    "de": "die Rezession",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "negotiation",
+    "de": "die Verhandlung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shareholder",
+    "de": "der Aktionär",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "merger",
+    "de": "die Fusion",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "startup",
+    "de": "das Startup",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "strategy",
+    "de": "die Strategie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "competitor",
+    "de": "der Konkurrent",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "consumer",
+    "de": "der Verbraucher",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "supply",
+    "de": "das Angebot",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "demand",
+    "de": "die Nachfrage",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "budget",
+    "de": "das Budget",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hypothesis",
+    "de": "die Hypothese",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "experiment",
+    "de": "das Experiment",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "evidence",
+    "de": "der Beweis",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "theory",
+    "de": "die Theorie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "analysis",
+    "de": "die Analyse",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "correlation",
+    "de": "die Korrelation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "algorithm",
+    "de": "der Algorithmus",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "artificial",
+    "de": "künstlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "innovation",
+    "de": "die Innovation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "breakthrough",
+    "de": "der Durchbruch",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "laboratory",
+    "de": "das Labor",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "genetic",
+    "de": "genetisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "molecule",
+    "de": "das Molekül",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "simulate",
+    "de": "simulieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "automation",
+    "de": "die Automatisierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "justice",
+    "de": "die Gerechtigkeit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "testimony",
+    "de": "die Zeugenaussage",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "witness",
+    "de": "der Zeuge",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "verdict",
+    "de": "das Urteil",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lawsuit",
+    "de": "die Klage",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "contract",
+    "de": "der Vertrag",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "violation",
+    "de": "der Verstoß",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "defendant",
+    "de": "der Angeklagte",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "prosecute",
+    "de": "strafrechtlich verfolgen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "testify",
+    "de": "aussagen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "legitimate",
+    "de": "legitim",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "prohibit",
+    "de": "verbieten",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "assumption",
+    "de": "die Annahme",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "perspective",
+    "de": "die Perspektive",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "argument",
+    "de": "das Argument",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "logic",
+    "de": "die Logik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ethics",
+    "de": "die Ethik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bias",
+    "de": "die Voreingenommenheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "paradox",
+    "de": "das Paradox",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "contradiction",
+    "de": "der Widerspruch",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "consequence",
+    "de": "die Konsequenz",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "justify",
+    "de": "rechtfertigen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "assume",
+    "de": "annehmen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "interpret",
+    "de": "interpretieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "perceive",
+    "de": "wahrnehmen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "conscious",
+    "de": "bewusst",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "rational",
+    "de": "rational",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "subjective",
+    "de": "subjektiv",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "objective",
+    "de": "objektiv",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "abstract",
+    "de": "abstrakt",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "climate",
+    "de": "das Klima",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "emission",
+    "de": "die Emission",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "renewable",
+    "de": "erneuerbar",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "resource",
+    "de": "die Ressource",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pollution",
+    "de": "die Verschmutzung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ecosystem",
+    "de": "das Ökosystem",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "consumption",
+    "de": "der Verbrauch",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "shortage",
+    "de": "der Mangel",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "crisis",
+    "de": "die Krise",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "globalization",
+    "de": "die Globalisierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "inequality",
+    "de": "die Ungleichheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "poverty",
+    "de": "die Armut",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "curriculum",
+    "de": "der Lehrplan",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "thesis",
+    "de": "die These",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lecture",
+    "de": "die Vorlesung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "scholarship",
+    "de": "das Stipendium",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "qualification",
+    "de": "die Qualifikation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "assessment",
+    "de": "die Bewertung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "literacy",
+    "de": "die Alphabetisierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "discipline",
+    "de": "die Disziplin",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "supervise",
+    "de": "beaufsichtigen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "enroll",
+    "de": "sich einschreiben",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "motivation",
+    "de": "die Motivation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "behavior",
+    "de": "das Verhalten",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "personality",
+    "de": "die Persönlichkeit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "instinct",
+    "de": "der Instinkt",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "perception",
+    "de": "die Wahrnehmung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tendency",
+    "de": "die Tendenz",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stereotype",
+    "de": "das Stereotyp",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "self-esteem",
+    "de": "das Selbstwertgefühl",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "resilience",
+    "de": "die Widerstandsfähigkeit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "empathy",
+    "de": "die Empathie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "emphasize",
+    "de": "betonen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "acknowledge",
+    "de": "anerkennen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "undermine",
+    "de": "untergraben",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "facilitate",
+    "de": "erleichtern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "implement",
+    "de": "umsetzen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "eliminate",
+    "de": "eliminieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "compensate",
+    "de": "entschädigen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exceed",
+    "de": "übertreffen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "obtain",
+    "de": "erhalten",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "derive",
+    "de": "ableiten",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "consequently",
+    "de": "folglich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "nevertheless",
+    "de": "dennoch",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "furthermore",
+    "de": "außerdem",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "presumably",
+    "de": "vermutlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "inevitably",
+    "de": "unvermeidlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "arguably",
+    "de": "wohl",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "ambiguous",
+    "de": "mehrdeutig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "thorough",
+    "de": "gründlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "versatile",
+    "de": "vielseitig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "credible",
+    "de": "glaubwürdig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "plausible",
+    "de": "plausibel",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "substantial",
+    "de": "erheblich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "comprehensive",
+    "de": "umfassend",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "consistent",
+    "de": "konsistent",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "inevitable",
+    "de": "unvermeidlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "profound",
+    "de": "tiefgreifend",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "rigid",
+    "de": "starr",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "subtle",
+    "de": "subtil",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "vague",
+    "de": "vage",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "viable",
+    "de": "durchführbar",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "widespread",
+    "de": "weit verbreitet",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "skeptical",
+    "de": "skeptisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bandwidth",
+    "de": "die Bandbreite",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "encryption",
+    "de": "die Verschlüsselung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "interface",
+    "de": "die Schnittstelle",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "database",
+    "de": "die Datenbank",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cybersecurity",
+    "de": "die Cybersicherheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "streaming",
+    "de": "das Streaming",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "subscription",
+    "de": "das Abonnement",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "censorship",
+    "de": "die Zensur",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "propaganda",
+    "de": "die Propaganda",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "headline",
+    "de": "die Schlagzeile",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "broadcast",
+    "de": "senden",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "journalist",
+    "de": "der Journalist",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "editor",
+    "de": "der Redakteur",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "publish",
+    "de": "veröffentlichen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "circulate",
+    "de": "verbreiten",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "heritage",
+    "de": "das Erbe",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "civilization",
+    "de": "die Zivilisation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "monument",
+    "de": "das Denkmal",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "artifact",
+    "de": "das Artefakt",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tradition",
+    "de": "die Tradition",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ritual",
+    "de": "das Ritual",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "migration",
+    "de": "die Migration",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "colonization",
+    "de": "die Kolonisierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "revolution",
+    "de": "die Revolution",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "monarchy",
+    "de": "die Monarchie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "empire",
+    "de": "das Reich",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dynasty",
+    "de": "die Dynastie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ancestor",
+    "de": "der Vorfahre",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "legacy",
+    "de": "das Vermächtnis",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "diagnosis",
+    "de": "die Diagnose",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "treatment",
+    "de": "die Behandlung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "surgery",
+    "de": "die Operation",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "vaccine",
+    "de": "der Impfstoff",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "immune",
+    "de": "immun",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "chronic",
+    "de": "chronisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "epidemic",
+    "de": "die Epidemie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "therapy",
+    "de": "die Therapie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "prescription",
+    "de": "das Rezept",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "recovery",
+    "de": "die Genesung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "disorder",
+    "de": "die Störung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "addiction",
+    "de": "die Sucht",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mental",
+    "de": "psychisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "novelist",
+    "de": "der Romanautor",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "playwright",
+    "de": "der Dramatiker",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "narrative",
+    "de": "die Erzählung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "metaphor",
+    "de": "die Metapher",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "genre",
+    "de": "das Genre",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "critique",
+    "de": "die Kritik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "aesthetic",
+    "de": "ästhetisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "exhibit",
+    "de": "ausstellen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sculpture",
+    "de": "die Skulptur",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "composition",
+    "de": "die Komposition",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "manuscript",
+    "de": "das Manuskript",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "publication",
+    "de": "die Veröffentlichung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "discrimination",
+    "de": "die Diskriminierung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "diversity",
+    "de": "die Vielfalt",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "equality",
+    "de": "die Gleichheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "minority",
+    "de": "die Minderheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "activist",
+    "de": "der Aktivist",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "protest",
+    "de": "der Protest",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "advocate",
+    "de": "sich einsetzen für",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "awareness",
+    "de": "das Bewusstsein",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "injustice",
+    "de": "die Ungerechtigkeit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "marginalized",
+    "de": "an den Rand gedrängt",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "welfare",
+    "de": "das Wohlergehen",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "promotion",
+    "de": "die Beförderung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "resign",
+    "de": "kündigen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dismiss",
+    "de": "entlassen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "recruit",
+    "de": "rekrutieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "workforce",
+    "de": "die Arbeitskräfte",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "productivity",
+    "de": "die Produktivität",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "deadline",
+    "de": "die Frist",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "workload",
+    "de": "die Arbeitsbelastung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nonetheless",
+    "de": "trotzdem",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "whereas",
+    "de": "während",
+    "cefr_level": "B2",
+    "part_of_speech": "conjunction"
+  },
+  {
+    "en": "meanwhile",
+    "de": "inzwischen",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "likewise",
+    "de": "ebenso",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "notably",
+    "de": "insbesondere",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "essentially",
+    "de": "im Wesentlichen",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "ultimately",
+    "de": "letztendlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "gradually",
+    "de": "allmählich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "drastically",
+    "de": "drastisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "remarkably",
+    "de": "bemerkenswert",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "considerably",
+    "de": "erheblich",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "relatively",
+    "de": "relativ",
+    "cefr_level": "B2",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "reinforce",
+    "de": "verstärken",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hinder",
+    "de": "behindern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "foster",
+    "de": "fördern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cultivate",
+    "de": "kultivieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "alleviate",
+    "de": "lindern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "exacerbate",
+    "de": "verschlimmern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "mitigate",
+    "de": "mildern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "integrate",
+    "de": "integrieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "distinguish",
+    "de": "unterscheiden",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "prioritize",
+    "de": "priorisieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "streamline",
+    "de": "straffen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hesitant",
+    "de": "zögerlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "meticulous",
+    "de": "akribisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "resourceful",
+    "de": "einfallsreich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "tenacious",
+    "de": "hartnäckig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "pragmatic",
+    "de": "pragmatisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "redundant",
+    "de": "überflüssig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "obsolete",
+    "de": "veraltet",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "feasible",
+    "de": "machbar",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "mandatory",
+    "de": "obligatorisch",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "optional",
+    "de": "optional",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "arbitrary",
+    "de": "willkürlich",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "warranty",
+    "de": "die Garantie",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "refund",
+    "de": "die Rückerstattung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "installment",
+    "de": "die Ratenzahlung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "retailer",
+    "de": "der Einzelhändler",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wholesale",
+    "de": "der Großhandel",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "brand",
+    "de": "die Marke",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "packaging",
+    "de": "die Verpackung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "counterfeit",
+    "de": "gefälscht",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "infrastructure",
+    "de": "die Infrastruktur",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "congestion",
+    "de": "der Stau",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "commute",
+    "de": "pendeln",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "pedestrian",
+    "de": "der Fußgänger",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "intersection",
+    "de": "die Kreuzung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "terminal",
+    "de": "das Terminal",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "freight",
+    "de": "die Fracht",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "logistics",
+    "de": "die Logistik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "drought",
+    "de": "die Dürre",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "flood",
+    "de": "die Überschwemmung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "humidity",
+    "de": "die Luftfeuchtigkeit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wildlife",
+    "de": "die Tierwelt",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "habitat",
+    "de": "der Lebensraum",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "biodiversity",
+    "de": "die Biodiversität",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "erosion",
+    "de": "die Erosion",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "deforestation",
+    "de": "die Abholzung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "championship",
+    "de": "die Meisterschaft",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "opponent",
+    "de": "der Gegner",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "referee",
+    "de": "der Schiedsrichter",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stamina",
+    "de": "die Ausdauer",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tactic",
+    "de": "die Taktik",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "penalty",
+    "de": "die Strafe",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "qualify",
+    "de": "sich qualifizieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "disqualify",
+    "de": "disqualifizieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "intimacy",
+    "de": "die Intimität",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "commitment",
+    "de": "das Engagement",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "reconcile",
+    "de": "sich versöhnen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "estranged",
+    "de": "entfremdet",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "custody",
+    "de": "das Sorgerecht",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "guardian",
+    "de": "der Vormund",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "upbringing",
+    "de": "die Erziehung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "household",
+    "de": "der Haushalt",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "opportunity",
+    "de": "die Gelegenheit",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "responsibility",
+    "de": "die Verantwortung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "achievement",
+    "de": "die Errungenschaft",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "privilege",
+    "de": "das Privileg",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "obligation",
+    "de": "die Verpflichtung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "circumstance",
+    "de": "der Umstand",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "priority",
+    "de": "die Priorität",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "initiative",
+    "de": "die Initiative",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "potential",
+    "de": "das Potenzial",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "outcome",
+    "de": "das Ergebnis",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "agenda",
+    "de": "die Tagesordnung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "proposal",
+    "de": "der Vorschlag",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "client",
+    "de": "der Kunde",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stakeholder",
+    "de": "der Interessenvertreter",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "overtime",
+    "de": "die Überstunden",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "appraisal",
+    "de": "die Beurteilung",
+    "cefr_level": "B2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "delegate",
+    "de": "delegieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "adapt",
+    "de": "sich anpassen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cope",
+    "de": "zurechtkommen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "withstand",
+    "de": "standhalten",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "tolerate",
+    "de": "tolerieren",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "resolve",
+    "de": "lösen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "clarify",
+    "de": "klären",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "verify",
+    "de": "überprüfen",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "assure",
+    "de": "versichern",
+    "cefr_level": "B2",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "cautious",
+    "de": "vorsichtig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "humble",
+    "de": "bescheiden",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "stubborn",
+    "de": "stur",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ambitious",
+    "de": "ehrgeizig",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "efficient",
+    "de": "effizient",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "spontaneous",
+    "de": "spontan",
+    "cefr_level": "B2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cynical",
+    "de": "zynisch",
+    "cefr_level": "B2",
     "part_of_speech": "adjective"
   }
 ]
