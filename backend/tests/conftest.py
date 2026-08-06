@@ -17,6 +17,16 @@ import pytest  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 
 from app.main import app  # noqa: E402
+from app.rate_limit import reset_all_rate_limiters  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _reset_rate_limiters():
+    # Without this, rate-limiter state (module-level, in-memory) would
+    # accumulate across the whole test session and cause unrelated later
+    # tests to unexpectedly get 429s once enough auth calls have been made.
+    reset_all_rate_limiters()
+    yield
 
 
 @pytest.fixture()
