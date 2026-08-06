@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:path/path.dart' as p;
+
 import '../models/document_model.dart';
 import 'html_text_utils.dart';
 import 'parser_interface.dart';
@@ -11,6 +13,13 @@ import 'parser_interface.dart';
 class HtmlParser extends DocumentParser {
   @override
   Future<DocumentModel> parse(File file) async {
-    throw UnimplementedError();
+    final raw = await file.readAsString();
+    final blocks = splitHtmlIntoBlocks(raw);
+
+    return DocumentModel(
+      document_id: p.basenameWithoutExtension(file.path),
+      title: p.basenameWithoutExtension(file.path),
+      paragraphs: buildParagraphs(blocks),
+    );
   }
 }
