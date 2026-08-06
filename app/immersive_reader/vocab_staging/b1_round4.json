@@ -90,30 +90,6 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "breakfast",
-    "de": "Frühstück",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "lunch",
-    "de": "Mittagessen",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "dinner",
-    "de": "Abendessen",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "snack",
-    "de": "Snack",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "pay",
     "de": "bezahlen",
     "cefr_level": "B1",
@@ -202,30 +178,6 @@
     "de": "verkaufen",
     "cefr_level": "B1",
     "part_of_speech": "verb"
-  },
-  {
-    "en": "return",
-    "de": "zurückgeben",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "exchange",
-    "de": "umtauschen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "compare",
-    "de": "vergleichen",
-    "cefr_level": "B1",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "budget",
-    "de": "Budget",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
   },
   {
     "en": "headache",
@@ -318,30 +270,6 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "medicine",
-    "de": "Medikament",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "doctor",
-    "de": "Arzt",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "nurse",
-    "de": "Krankenschwester",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "appointment",
-    "de": "Termin",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "vote",
     "de": "wählen",
     "cefr_level": "B1",
@@ -426,26 +354,8 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "post office",
-    "de": "Postamt",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "public transport",
-    "de": "öffentlicher Verkehr",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "community",
     "de": "Gemeinschaft",
-    "cefr_level": "B1",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "service",
-    "de": "Dienst",
     "cefr_level": "B1",
     "part_of_speech": "noun"
   }
