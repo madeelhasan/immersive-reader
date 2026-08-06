@@ -7822,5 +7822,305 @@
     "de": "gültig",
     "cefr_level": "B2",
     "part_of_speech": "adjective"
+  },
+  {
+    "en": "hiking",
+    "de": "das Wandern",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "cycling",
+    "de": "das Radfahren",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "swimming",
+    "de": "das Schwimmen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "jogging",
+    "de": "das Joggen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "yoga",
+    "de": "das Yoga",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "gym",
+    "de": "das Fitnessstudio",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "team sport",
+    "de": "der Mannschaftssport",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leisure activity",
+    "de": "die Freizeitaktivität",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hobby",
+    "de": "das Hobby",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "recipe",
+    "de": "das Rezept",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ingredient",
+    "de": "die Zutat",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "flavor",
+    "de": "der Geschmack",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "seasoning",
+    "de": "die Würze",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "bake",
+    "de": "backen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "stir",
+    "de": "rühren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "chop",
+    "de": "hacken",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "grill",
+    "de": "grillen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fry",
+    "de": "braten",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "boil",
+    "de": "kochen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "budget",
+    "de": "das Budget",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "expense",
+    "de": "die Ausgabe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "income",
+    "de": "das Einkommen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "savings",
+    "de": "die Ersparnisse",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "loan",
+    "de": "der Kredit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "interest",
+    "de": "die Zinsen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mortgage",
+    "de": "die Hypothek",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rent",
+    "de": "die Miete",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "deposit",
+    "de": "die Anzahlung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "withdraw",
+    "de": "abheben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "transfer",
+    "de": "überweisen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "apartment",
+    "de": "die Wohnung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "landlord",
+    "de": "der Vermieter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tenant",
+    "de": "der Mieter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "move in",
+    "de": "einziehen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "move out",
+    "de": "ausziehen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "furniture",
+    "de": "die Möbel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "neighborhood",
+    "de": "die Nachbarschaft",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "broadcast",
+    "de": "die Sendung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "headline",
+    "de": "die Schlagzeile",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "article",
+    "de": "der Artikel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "interview",
+    "de": "das Interview",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "advertisement",
+    "de": "die Werbung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "social media",
+    "de": "die sozialen Medien",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "website",
+    "de": "die Webseite",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "law",
+    "de": "das Gesetz",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "right",
+    "de": "das Recht",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rule",
+    "de": "die Regel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "regulation",
+    "de": "die Vorschrift",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "citizen",
+    "de": "der Bürger",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "justice",
+    "de": "die Gerechtigkeit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
   }
 ]
