@@ -3342,12 +3342,6 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "airport",
-    "de": "Flughafen",
-    "cefr_level": "A2",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "ticket",
     "de": "Fahrkarte",
     "cefr_level": "A2",
@@ -3498,12 +3492,6 @@
     "part_of_speech": "verb"
   },
   {
-    "en": "book",
-    "de": "buchen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
     "en": "reserve",
     "de": "reservieren",
     "cefr_level": "A2",
@@ -3556,12 +3544,6 @@
     "de": "Preis",
     "cefr_level": "A2",
     "part_of_speech": "noun"
-  },
-  {
-    "en": "cost",
-    "de": "kosten",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
   },
   {
     "en": "cheap",
@@ -3660,52 +3642,10 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "match",
-    "de": "Spiel",
-    "cefr_level": "A2",
-    "part_of_speech": "noun"
-  },
-  {
     "en": "score",
     "de": "Punktestand",
     "cefr_level": "A2",
     "part_of_speech": "noun"
-  },
-  {
-    "en": "win",
-    "de": "gewinnen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "lose",
-    "de": "verlieren",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "draw",
-    "de": "unentschieden spielen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "practice",
-    "de": "üben",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "train",
-    "de": "trainieren",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "exercise",
-    "de": "Sport treiben",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
   },
   {
     "en": "hobby",
@@ -3714,32 +3654,8 @@
     "part_of_speech": "noun"
   },
   {
-    "en": "collect",
-    "de": "sammeln",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "paint",
-    "de": "malen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
-    "en": "draw",
-    "de": "zeichnen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
-  },
-  {
     "en": "photography",
     "de": "Fotografie",
-    "cefr_level": "A2",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "camera",
-    "de": "Kamera",
     "cefr_level": "A2",
     "part_of_speech": "noun"
   },
@@ -3790,12 +3706,6 @@
     "de": "Nachricht",
     "cefr_level": "A2",
     "part_of_speech": "noun"
-  },
-  {
-    "en": "call",
-    "de": "anrufen",
-    "cefr_level": "A2",
-    "part_of_speech": "verb"
   },
   {
     "en": "text",
@@ -3878,12 +3788,6 @@
   {
     "en": "keyboard",
     "de": "Tastatur",
-    "cefr_level": "A2",
-    "part_of_speech": "noun"
-  },
-  {
-    "en": "mouse",
-    "de": "Maus",
     "cefr_level": "A2",
     "part_of_speech": "noun"
   },
