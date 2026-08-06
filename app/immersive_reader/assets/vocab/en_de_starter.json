@@ -9112,5 +9112,125 @@
     "de": "Bericht",
     "cefr_level": "B1",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "task",
+    "de": "Aufgabe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "schedule",
+    "de": "Zeitplan",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "office",
+    "de": "Büro",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "phone call",
+    "de": "Telefonat",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boss",
+    "de": "Chef",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "workplace",
+    "de": "Arbeitsplatz",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "check-in",
+    "de": "Check-in",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "boarding pass",
+    "de": "Bordkarte",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "suitcase",
+    "de": "Koffer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "reservation",
+    "de": "Reservierung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "customs",
+    "de": "Zoll",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hotel room",
+    "de": "Hotelzimmer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "reception",
+    "de": "Rezeption",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "music",
+    "de": "Musik",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "film",
+    "de": "Film",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "song",
+    "de": "Lied",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "guitar",
+    "de": "Gitarre",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "piano",
+    "de": "Klavier",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "training",
+    "de": "Training",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "breathe",
+    "de": "atmen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
   }
 ]
