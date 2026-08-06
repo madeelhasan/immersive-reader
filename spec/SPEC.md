@@ -99,6 +99,7 @@ CREATE TABLE word_progress (
 - `times_toggled_back` (user reverts to English) signals difficulty → lowers ease_factor.
 - `times_toggled_forward` (user re-triggers German, if that's exposed) signals confidence.
 - `status` graduates via a simplified SM-2 schedule based on `ease_factor` and `exposures`.
+- `user_id` is a UUID string, backed by a `users` table (`id`, `email`, `hashed_password`) on the Phase 3 backend — see `backend/app/models.py`. Not yet in this section since it's an auth implementation detail, not part of the vocabulary-progress domain model; documented here as a pointer so `word_progress.user_id`'s origin is traceable.
 
 ### 3.4 User Level Setting
 
@@ -180,7 +181,7 @@ abstract class DocumentParser {
 ## 6. Later Phases (reference only — don't build yet)
 
 - **Phase 2:** Wire in the vocabulary dataset + tap-to-toggle UI + flat-rate random replacement, gated by a reader-declared CEFR level (section 4.1) — no depth/word-status adaptivity yet.
-- **Phase 3:** FastAPI backend — auth, vocabulary served from API, progress sync endpoint.
+- **Phase 3:** FastAPI backend — auth, vocabulary served from API, progress sync endpoint. Backend-side, all three exist (`backend/`); client-side, only vocabulary-fetching is wired up (`VocabularyRepository`, with bundled-JSON fallback) — the client doesn't register/login or sync progress yet, since that's tied to Phase 4's client-side progress tracking rather than Phase 3's server-side plumbing.
 - **Phase 4:** Depth/word-status replacement multipliers from section 4.2, SM-2 progress tracking wired to real usage.
 - **Phase 5:** Android/iOS builds, touch-target and mobile-layout polish.
 
