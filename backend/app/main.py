@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from .database import Base, SessionLocal, engine
-from .routers import progress, vocabulary
+from .routers import auth, progress, vocabulary
 from .seed import seed_vocabulary_if_empty
 
 
@@ -19,6 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Immersive Reader API", lifespan=lifespan)
+app.include_router(auth.router)
 app.include_router(vocabulary.router)
 app.include_router(progress.router)
 

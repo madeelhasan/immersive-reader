@@ -15,6 +15,18 @@ class VocabularyEntry(Base):
     part_of_speech: Mapped[str] = mapped_column(String, nullable=False)
 
 
+class User(Base):
+    """Registered user, backing JWT auth for the /progress endpoints below.
+    id is a UUID string, not the email, so it's safe to use as the primary
+    key everywhere else (word_progress.user_id) even if email ever changes."""
+
+    __tablename__ = "users"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    email: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
+    hashed_password: Mapped[str] = mapped_column(String, nullable=False)
+
+
 class WordProgress(Base):
     """SPEC.md section 3.3 - per-user, per-word SM-2-style progress."""
 

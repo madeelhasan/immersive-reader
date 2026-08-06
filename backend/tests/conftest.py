@@ -23,3 +23,18 @@ from app.main import app  # noqa: E402
 def client():
     with TestClient(app) as test_client:
         yield test_client
+
+
+@pytest.fixture()
+def auth_headers(client):
+    """Returns a factory: auth_headers(email) -> registers + logs in that
+    email and returns an Authorization header dict ready to pass to
+    client.get/post. Each call uses a fresh email to get an isolated user."""
+
+    def _make(email: str, password: str = "password123") -> dict:
+        client.post("/auth/register", json={"email": email, "password": password})
+        response = client.post("/auth/login", json={"email": email, "password": password})
+        token = response.json()["access_token"]
+        return {"Authorization": f"Bearer {token}"}
+
+    return _make
