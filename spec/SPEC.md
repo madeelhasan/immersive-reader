@@ -9,6 +9,7 @@
 
 A book-reader app that:
 - Opens TXT, DOCX, EPUB, and PDF files and displays them in a clean, reflowed reading view (not a visual facsimile of the original file).
+- Lets the reader declare their current German proficiency (CEFR level A1–B2), which gates which vocabulary is eligible for replacement and how dense that replacement is (see section 4).
 - Randomly replaces certain English words with their German equivalents as the user reads.
 - Lets the user tap any translated word to toggle it back to English.
 - Tracks per-word exposure and increases replacement frequency for words the user has "learned," and increases overall replacement density as the user progresses deeper into a document.
@@ -99,16 +100,30 @@ CREATE TABLE word_progress (
 - `times_toggled_forward` (user re-triggers German, if that's exposed) signals confidence.
 - `status` graduates via a simplified SM-2 schedule based on `ease_factor` and `exposures`.
 
+### 3.4 User Level Setting
+
+The reader declares their current German level — one of `A1`, `A2`, `B1`, `B2` — via a UI control (Phase 2: a simple selector; not tied to any account system until Phase 3's backend exists). Stored as a single local preference (`SharedPreferences`, key `german_level`), not in the `word_progress` table above — it's a coarse, manually-set starting point, distinct from the per-word `status` progress `word_progress` tracks once Phase 4's adaptive engine exists. Defaults to `A1` for a new install. See section 4 for how it affects replacement.
+
 ---
 
 ## 4. Replacement Algorithm (Phase 2/4 logic — spec now, build later)
 
-Two multipliers combine to decide the probability a given eligible word is shown in German at token `position_index`:
+### 4.1 Level eligibility filter (Phase 2, built)
+
+The reader's declared level (section 3.4) determines which vocabulary entries are even eligible for replacement, and the flat base rate applied to them:
+
+- **Eligibility is cumulative**: a reader at level `N` sees replacements from every CEFR level at or below `N` — e.g. a `B1` reader gets `A1` + `A2` + `B1` words, never `B2`. This matches CEFR's own cumulative-curriculum design and keeps a beginner from being shown vocabulary far above them, while a `B2` reader still draws from the full dataset.
+- **Base rate scales with level**: `A1: 10%`, `A2: 15%`, `B1: 20%`, `B2: 25%` (per-occurrence, independent rolls — same flat-rate mechanic as before, just level-parameterized instead of a single constant). Rationale: a more advanced reader is both drawing from a larger eligible pool and ready for denser replacement.
+- Implemented in `ReplacementEngine.selectReplacements(tokens, vocabulary, germanLevel: ...)` — still a pure function, still fully isolated from the renderer, still no depth/word-status logic. `levelOrder`/`levelRates` live as constants on `ReplacementEngine`.
+
+### 4.2 Depth and word-status multipliers (Phase 4, not built)
+
+Two further multipliers combine with the level-eligible pool above to decide the probability a given eligible word is shown in German at token `position_index`, once Phase 4's SM-2 progress tracking exists:
 
 1. **Depth multiplier** — increases linearly (or logarithmically) from a low base rate (~5%) at document start toward a ceiling (~40%) by document end. Configurable curve.
 2. **Word-status multiplier** — `new`/`introduced` words use the depth multiplier as-is; `learned` words get a flat high probability (~80–90%) regardless of depth, so they show up consistently once mastered.
 
-`final_probability = base_rate_from_depth * status_weight[word.status]`
+`final_probability = base_rate_from_depth * status_weight[word.status]` — this replaces the flat level-based rate from 4.1 as the per-word probability once Phase 4 lands; the level filter itself (which words are eligible at all) stays in place unchanged.
 
 This logic lives in one isolated module (`replacement_engine`) so it's independently testable and tunable without touching the renderer.
 
@@ -164,9 +179,9 @@ abstract class DocumentParser {
 
 ## 6. Later Phases (reference only — don't build yet)
 
-- **Phase 2:** Wire in the vocabulary dataset + tap-to-toggle UI + flat-rate random replacement (no adaptivity yet).
+- **Phase 2:** Wire in the vocabulary dataset + tap-to-toggle UI + flat-rate random replacement, gated by a reader-declared CEFR level (section 4.1) — no depth/word-status adaptivity yet.
 - **Phase 3:** FastAPI backend — auth, vocabulary served from API, progress sync endpoint.
-- **Phase 4:** Replacement engine from Section 4, SM-2 progress tracking wired to real usage.
+- **Phase 4:** Depth/word-status replacement multipliers from section 4.2, SM-2 progress tracking wired to real usage.
 - **Phase 5:** Android/iOS builds, touch-target and mobile-layout polish.
 
 ---

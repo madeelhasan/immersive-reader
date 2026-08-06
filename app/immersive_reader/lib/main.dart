@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/document_model.dart';
+import 'models/token.dart';
 import 'parsers/parser_registry.dart';
 import 'reader/reader_controller.dart';
 import 'reader/reader_view.dart';
@@ -57,11 +59,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const _germanLevelPrefsKey = 'german_level';
+
   final ReaderController _controller = ReaderController();
   final VocabularyRepository _vocabularyRepository = VocabularyRepository();
   DocumentModel? _document;
+  List<Token> _tokens = [];
   Map<String, String> _replacements = {};
   String? _error;
+  String _germanLevel = 'A1';
+
+  @override
+  void initState() {
+    super.initState();
+    _restoreGermanLevel();
+  }
+
+  Future<void> _restoreGermanLevel() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getString(_germanLevelPrefsKey);
+    if (saved == null || !ReplacementEngine.levelOrder.contains(saved)) return;
+    setState(() => _germanLevel = saved);
+    _recomputeReplacements();
+  }
+
+  Future<void> _setGermanLevel(String level) async {
+    setState(() => _germanLevel = level);
+    _recomputeReplacements();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_germanLevelPrefsKey, level);
+  }
+
+  /// Re-rolls replacements for the currently open document against the
+  /// current _germanLevel. A no-op if no document is open yet - _openFile
+  /// picks up _germanLevel directly once one is.
+  Future<void> _recomputeReplacements() async {
+    if (_document == null || _tokens.isEmpty) return;
+    final vocabulary = await _vocabularyRepository.load();
+    final replacements = ReplacementEngine().selectReplacements(
+      _tokens,
+      vocabulary,
+      germanLevel: _germanLevel,
+    );
+    if (!mounted) return;
+    setState(() => _replacements = replacements);
+  }
 
   Future<void> _openFile() async {
     final result = await FilePicker.platform.pickFiles(
@@ -83,6 +125,7 @@ class _HomePageState extends State<HomePage> {
       if (!hasText) {
         setState(() {
           _document = null;
+          _tokens = [];
           _replacements = {};
           _error = 'No text could be extracted from this file. '
               'If it\'s a PDF, it may be a scanned/image-based document '
@@ -92,16 +135,22 @@ class _HomePageState extends State<HomePage> {
       }
 
       final vocabulary = await _vocabularyRepository.load();
-      final replacements = ReplacementEngine().selectReplacements(tokens, vocabulary);
+      final replacements = ReplacementEngine().selectReplacements(
+        tokens,
+        vocabulary,
+        germanLevel: _germanLevel,
+      );
 
       setState(() {
         _document = document;
+        _tokens = tokens;
         _replacements = replacements;
         _error = null;
       });
     } catch (e) {
       setState(() {
         _document = null;
+        _tokens = [];
         _replacements = {};
         _error = 'Could not open file: $e';
       });
@@ -120,6 +169,20 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(_document?.title ?? 'Immersive Reader'),
         actions: [
+          PopupMenuButton<String>(
+            tooltip: 'German level (currently $_germanLevel)',
+            initialValue: _germanLevel,
+            onSelected: _setGermanLevel,
+            itemBuilder: (context) => ReplacementEngine.levelOrder
+                .map((level) => PopupMenuItem(value: level, child: Text(level)))
+                .toList(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Center(
+                child: Text(_germanLevel, style: const TextStyle(fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ),
           IconButton(
             icon: Icon(_themeIcon),
             tooltip: 'Toggle light/dark theme (currently ${widget.themeMode.name})',
