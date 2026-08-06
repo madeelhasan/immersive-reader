@@ -176,7 +176,7 @@ This logic lives in one isolated module (`replacement_engine`) so it's independe
     docx_parser.dart
     epub_parser.dart
     pdf_parser.dart
-    html_parser.dart           // added post-Phase-1 (see acceptance criteria below) - not yet built
+    html_parser.dart           // added post-Phase-1 (see acceptance criteria below) - built
     parser_interface.dart      // common interface all 5 implement
   /models
     document_model.dart        // matches section 3.1 JSON shape
@@ -204,13 +204,13 @@ abstract class DocumentParser {
 - [ ] Open a `.pdf` file — text extracted and reflowed (accept some loss of original layout/images — this is expected and desired per the "clean reader" goal)
 - [ ] Reader UI: adjustable font size, light/dark theme, remembers last scroll position per document
 - [ ] No translation logic yet — pure reading experience
-- [ ] **Added after Phase 1 originally shipped, not yet built:** Open a `.html`/`.htm` file — text extracted and reflowed the same as the other formats, tags/scripts/styles stripped, routed through the shared `DocumentParser.buildParagraphs()` 300-word cap like every other parser (see the Architecture section of `CLAUDE.md` for why that cap is load-bearing)
+- [x] **Added after Phase 1 originally shipped, now built:** Open a `.html`/`.htm` file — text extracted and reflowed the same as the other formats, tags/scripts/styles/head stripped, routed through the shared `DocumentParser.buildParagraphs()` 300-word cap like every other parser (see the Architecture section of `CLAUDE.md` for why that cap is load-bearing). Implemented in `lib/parsers/html_parser.dart`, sharing its tag-stripping/block-splitting with `EpubParser` via `lib/parsers/html_text_utils.dart` — EPUB chapters are themselves just XHTML, so no separate implementation was needed there.
 
 ### Suggested libraries (verify current versions/maintenance status before committing)
 - PDF text extraction: `syncfusion_flutter_pdf` or `pdf_text`
 - DOCX parsing: `docx_to_text` or manual XML parsing (DOCX is a zip of XML — `archive` + `xml` packages can do it directly if no maintained package fits)
 - EPUB parsing: `epubx` or manual zip/XHTML parsing (EPUB is also just zipped XHTML)
-- HTML parsing: `package:html` (Dart's own html5 parser) is the obvious fit and, unlike `docx_to_text`/`epubx`, doesn't pin a conflicting `xml` version (see the DOCX/EPUB note in `CLAUDE.md`'s Architecture section) - verify that still holds before committing to it; manual regex/tag-stripping is the fallback if it doesn't
+- HTML parsing: this originally suggested `package:html` (Dart's own html5 parser) as "the obvious fit," reasoning it wouldn't pin a conflicting `xml` version the way `docx_to_text`/`epubx` do. **Turned out not to need a new dependency at all**: `EpubParser` already had manual regex-based tag-stripping/block-splitting for its XHTML chapters (see 3.1's note that EPUB is also just zipped XHTML), and that logic works identically on a standalone HTML file — extracted into a shared `lib/parsers/html_text_utils.dart` both parsers now use, rather than adding `package:html` for something regex already handled.
 
 ---
 
