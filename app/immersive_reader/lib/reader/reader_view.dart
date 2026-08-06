@@ -71,6 +71,10 @@ class _ReaderViewState extends State<ReaderView> {
   /// toggle it back to English").
   final Set<String> _toggledToEnglish = {};
 
+  /// tokenIds already recorded as an SM-2 exposure this session (guards
+  /// against double-counting on lazy-list rebuilds).
+  final Set<String> _exposedTokenIds = {};
+
   /// tokenIds already recorded as an SM-2 exposure this session. _buildToken
   /// runs on every rebuild of a lazily-built ListView item (font size
   /// change, scroll-triggered rebuild, etc.), so without this guard the same
