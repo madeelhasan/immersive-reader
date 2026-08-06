@@ -129,14 +129,22 @@ class _HomePageState extends State<HomePage> {
   /// LocalDb.init() is async, so the repository isn't available on the
   /// very first frame - ReaderView treats a null wordProgressRepository as
   /// "don't track events yet", which is fine for the brief window before
-  /// this completes.
+  /// this completes. Also swallows failures (e.g. no sqflite platform
+  /// channel in a plain widget test) the same way VocabularyRepository
+  /// falls back rather than crashing app startup over progress tracking.
   Future<void> _initWordProgressRepository() async {
-    final db = LocalDb();
-    await db.init();
-    final userId = await getOrCreateLocalUserId();
+    final WordProgressRepository repository;
+    try {
+      final db = LocalDb();
+      await db.init();
+      final userId = await getOrCreateLocalUserId();
+      repository = WordProgressRepository(db, userId);
+    } catch (_) {
+      return;
+    }
     if (!mounted) return;
     setState(() {
-      _wordProgressRepository = WordProgressRepository(db, userId);
+      _wordProgressRepository = repository;
     });
   }
 
