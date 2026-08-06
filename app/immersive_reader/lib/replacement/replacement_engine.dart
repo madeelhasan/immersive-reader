@@ -55,7 +55,7 @@ class ReplacementEngine {
   }
 
   double depthMultiplier(double progress) {
-    final clamped = progress.clamp(0.0, 1.0);
+    final clamped = progress.clamp(0.0, 1.0).toDouble();
     return depthBaseRate + (depthCeilingRate - depthBaseRate) * clamped;
   }
 
@@ -105,7 +105,7 @@ class ReplacementEngine {
         progress = 0.0;
       } else {
         progress = token.positionIndex / (totalTokens - 1);
-        progress = progress.clamp(0.0, 1.0);
+        progress = progress.clamp(0.0, 1.0).toDouble();
       }
 
       final status = wordProgress[lower]?.status ?? 'new';
