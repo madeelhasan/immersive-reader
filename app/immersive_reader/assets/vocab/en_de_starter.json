@@ -9232,5 +9232,341 @@
     "de": "atmen",
     "cefr_level": "B1",
     "part_of_speech": "verb"
+  },
+  {
+    "en": "stepfather",
+    "de": "Stiefvater",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "stepmother",
+    "de": "Stiefmutter",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "half-sibling",
+    "de": "Halbgeschwister",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "in-laws",
+    "de": "Schwiegereltern",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "godparent",
+    "de": "Pate",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "get engaged",
+    "de": "sich verloben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "separate",
+    "de": "sich trennen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "single parent",
+    "de": "alleinerziehend",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "reunion",
+    "de": "Wiedersehen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "close-knit",
+    "de": "eng verbunden",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "save up",
+    "de": "ansparen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "afford",
+    "de": "sich leisten",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "invest",
+    "de": "investieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "debt",
+    "de": "Schulden",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "in debt",
+    "de": "verschuldet",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "financial aid",
+    "de": "finanzielle Unterstützung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "overdraft",
+    "de": "Überziehung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "monthly bill",
+    "de": "monatliche Rechnung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "insurance",
+    "de": "Versicherung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leak",
+    "de": "undichte Stelle",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "leaky",
+    "de": "undicht",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "power outage",
+    "de": "Stromausfall",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "renovate",
+    "de": "renovieren",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "plumber",
+    "de": "Klempner",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "electrician",
+    "de": "Elektriker",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "landlord's agent",
+    "de": "Hausverwaltung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "heating",
+    "de": "Heizung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mold",
+    "de": "Schimmel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "draft",
+    "de": "Zugluft",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "form",
+    "de": "Formular",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fill out",
+    "de": "ausfüllen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "sign",
+    "de": "unterschreiben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "signature",
+    "de": "Unterschrift",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "deadline extension",
+    "de": "Fristverlängerung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "certificate",
+    "de": "Bescheinigung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "identity card",
+    "de": "Personalausweis",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "registration office",
+    "de": "Meldeamt",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "appointment slip",
+    "de": "Termin",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "queue number",
+    "de": "Wartenummer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "overwhelmed by work",
+    "de": "überarbeitet",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "resentful",
+    "de": "verbittert",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "hopeful",
+    "de": "hoffnungsvoll",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "indifferent",
+    "de": "gleichgültig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "content with life",
+    "de": "lebenszufrieden",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "torn",
+    "de": "hin- und hergerissen",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "in a good mood",
+    "de": "gut gelaunt",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "in a bad mood",
+    "de": "schlecht gelaunt",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "drizzle",
+    "de": "Nieselregen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "heatwave",
+    "de": "Hitzewelle",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "gust of wind",
+    "de": "Windböe",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "overcast",
+    "de": "bewölkt",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "in my opinion",
+    "de": "meiner Meinung nach",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "on the other hand",
+    "de": "andererseits",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "as far as I know",
+    "de": "soweit ich weiß",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "to be honest",
+    "de": "ehrlich gesagt",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "it depends",
+    "de": "es kommt darauf an",
+    "cefr_level": "B1",
+    "part_of_speech": "adverb"
   }
 ]
