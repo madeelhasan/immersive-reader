@@ -1,12 +1,19 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/bookmark.dart';
 import '../models/document_model.dart';
 import '../models/token.dart';
 import 'reader_controller.dart';
+
+// Wide desktop windows would otherwise stretch text edge-to-edge, which
+// hurts readability - constrains the reading column to a comfortable
+// measure regardless of window width.
+const double _readableColumnMaxWidth = 720.0;
 
 class ReaderView extends StatefulWidget {
   final DocumentModel document;
@@ -32,10 +39,13 @@ class _ReaderViewState extends State<ReaderView> {
   static const _debounceDuration = Duration(milliseconds: 400);
   static const _minFontSize = 10.0;
   static const _maxFontSize = 32.0;
+  static const _autoReplaceBookmarkPrefsKey = 'auto_replace_bookmark';
 
   late ScrollController _scrollController;
   Timer? _saveDebounce;
   double _fontSize = 16.0;
+  List<Bookmark> _bookmarks = [];
+  bool _autoReplaceBookmark = false;
 
   /// tokenIds the user has manually tapped back to English. Replaced tokens
   /// show German by default; toggling flips a single occurrence, not every
@@ -44,6 +54,7 @@ class _ReaderViewState extends State<ReaderView> {
   final Set<String> _toggledToEnglish = {};
 
   String get _prefsKey => 'scroll_position_${widget.document.document_id}';
+  String get _bookmarksPrefsKey => 'bookmarks_${widget.document.document_id}';
 
   @override
   void initState() {
@@ -55,6 +66,8 @@ class _ReaderViewState extends State<ReaderView> {
       });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _restoreScrollPosition());
+    _loadBookmarks();
+    _loadAutoReplaceSetting();
   }
 
   @override
@@ -79,6 +92,147 @@ class _ReaderViewState extends State<ReaderView> {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setDouble(_prefsKey, position);
     });
+  }
+
+  Future<void> _loadBookmarks() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_bookmarksPrefsKey);
+    if (raw == null || !mounted) return;
+    final List<dynamic> decoded = jsonDecode(raw) as List<dynamic>;
+    setState(() {
+      _bookmarks = decoded.map((e) => Bookmark.fromJson(e as Map<String, dynamic>)).toList();
+    });
+  }
+
+  Future<void> _saveBookmarks() async {
+    final prefs = await SharedPreferences.getInstance();
+    final encoded = jsonEncode(_bookmarks.map((b) => b.toJson()).toList());
+    await prefs.setString(_bookmarksPrefsKey, encoded);
+  }
+
+  Future<void> _loadAutoReplaceSetting() async {
+    final prefs = await SharedPreferences.getInstance();
+    final value = prefs.getBool(_autoReplaceBookmarkPrefsKey);
+    if (value == null || !mounted) return;
+    setState(() => _autoReplaceBookmark = value);
+  }
+
+  Future<void> _saveAutoReplaceSetting(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_autoReplaceBookmarkPrefsKey, value);
+  }
+
+  String _newBookmarkId() => DateTime.now().microsecondsSinceEpoch.toString();
+
+  /// Adds a bookmark at the current scroll position. If auto-replace is on
+  /// and a "current position" bookmark already exists, it's replaced in
+  /// place (rather than adding a second one) and an Undo snackbar appears
+  /// to restore it. Manually-placed bookmarks (added while auto-replace is
+  /// off) are never touched by this - see Bookmark's doc comment.
+  void _addBookmark() {
+    final fraction = _currentFraction;
+
+    if (_autoReplaceBookmark) {
+      final existingIndex = _bookmarks.indexWhere((b) => b.isCurrentPosition);
+      if (existingIndex != -1) {
+        final old = _bookmarks[existingIndex];
+        setState(() {
+          _bookmarks[existingIndex] = Bookmark(id: _newBookmarkId(), fraction: fraction, isCurrentPosition: true);
+        });
+        _saveBookmarks();
+        _showBookmarkMovedSnackBar(old);
+        return;
+      }
+    }
+
+    setState(() {
+      _bookmarks.add(Bookmark(id: _newBookmarkId(), fraction: fraction, isCurrentPosition: _autoReplaceBookmark));
+    });
+    _saveBookmarks();
+  }
+
+  void _showBookmarkMovedSnackBar(Bookmark old) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Bookmark moved to ${(_currentFraction * 100).round()}%'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            final currentIndex = _bookmarks.indexWhere((b) => b.isCurrentPosition);
+            if (currentIndex == -1) return;
+            setState(() => _bookmarks[currentIndex] = old);
+            _saveBookmarks();
+          },
+        ),
+      ),
+    );
+  }
+
+  void _removeBookmark(Bookmark bookmark) {
+    setState(() => _bookmarks.removeWhere((b) => b.id == bookmark.id));
+    _saveBookmarks();
+  }
+
+  void _showBookmarksList() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (sheetContext, setSheetState) {
+          final sorted = [..._bookmarks]..sort((a, b) => a.fraction.compareTo(b.fraction));
+          return SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SwitchListTile(
+                  title: const Text('Auto-replace forward bookmarks'),
+                  subtitle: const Text(
+                    'Bookmarking further ahead moves your current-position bookmark '
+                    'instead of adding a new one',
+                  ),
+                  value: _autoReplaceBookmark,
+                  onChanged: (value) {
+                    setState(() => _autoReplaceBookmark = value);
+                    setSheetState(() {});
+                    _saveAutoReplaceSetting(value);
+                  },
+                ),
+                const Divider(height: 1),
+                if (sorted.isEmpty)
+                  const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Text('No bookmarks yet'),
+                  )
+                else
+                  Flexible(
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: sorted.map((bookmark) {
+                        return ListTile(
+                          leading: Icon(bookmark.isCurrentPosition ? Icons.star : Icons.bookmark_border),
+                          title: Text('${(bookmark.fraction * 100).round()}% through'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete_outline),
+                            tooltip: 'Remove bookmark',
+                            onPressed: () {
+                              _removeBookmark(bookmark);
+                              setSheetState(() {});
+                            },
+                          ),
+                          onTap: () {
+                            Navigator.pop(sheetContext);
+                            _jumpToFraction(bookmark.fraction);
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 
   void _adjustFontSize(double delta) {
@@ -228,6 +382,16 @@ class _ReaderViewState extends State<ReaderView> {
                     tooltip: 'Chapters',
                     onPressed: _showChapterList,
                   ),
+                IconButton(
+                  icon: const Icon(Icons.bookmark_add_outlined),
+                  tooltip: 'Bookmark this page',
+                  onPressed: _addBookmark,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.bookmarks_outlined),
+                  tooltip: 'Bookmarks',
+                  onPressed: _showBookmarksList,
+                ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -260,19 +424,28 @@ class _ReaderViewState extends State<ReaderView> {
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                controller: _scrollController,
-                itemCount: widget.document.paragraphs.length,
-                itemBuilder: (context, index) {
-                  final paragraph = widget.document.paragraphs[index];
-                  return Column(
-                    children: paragraph.sentences.map((sentence) {
-                      return Wrap(
-                        children: sentence.tokens.map(_buildToken).toList(),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: _readableColumnMaxWidth),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    itemCount: widget.document.paragraphs.length,
+                    itemBuilder: (context, index) {
+                      final paragraph = widget.document.paragraphs[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Column(
+                          children: paragraph.sentences.map((sentence) {
+                            return Wrap(
+                              children: sentence.tokens.map(_buildToken).toList(),
+                            );
+                          }).toList(),
+                        ),
                       );
-                    }).toList(),
-                  );
-                },
+                    },
+                  ),
+                ),
               ),
             ),
           ],

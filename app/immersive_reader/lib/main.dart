@@ -27,6 +27,19 @@ class ImmersiveReaderApp extends StatefulWidget {
 class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
+  // A warm, book-like palette instead of stock Material blue/white - cream
+  // "paper" in light mode, soft warm charcoal (not pure black) in dark
+  // mode, both easier on the eyes for long-form reading than high-contrast
+  // pure white/black. Georgia ships with Windows, so this needs no new
+  // font asset or runtime download, matching the app's offline-first bent.
+  static const _readingFontFamily = 'Georgia';
+  static const _lightBackground = Color(0xFFFBF6EC);
+  static const _lightText = Color(0xFF2B2620);
+  static const _lightAccent = Color(0xFF8B5E34);
+  static const _darkBackground = Color(0xFF1E1B16);
+  static const _darkText = Color(0xFFEDE6D9);
+  static const _darkAccent = Color(0xFFD9A566);
+
   void _cycleThemeMode() {
     setState(() {
       _themeMode = switch (_themeMode) {
@@ -37,12 +50,41 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
     });
   }
 
+  static ThemeData _buildTheme({
+    required Brightness brightness,
+    required Color background,
+    required Color text,
+    required Color accent,
+  }) {
+    final base = ThemeData(
+      brightness: brightness,
+      scaffoldBackgroundColor: background,
+      colorScheme: ColorScheme.fromSeed(seedColor: accent, brightness: brightness).copyWith(surface: background),
+      appBarTheme: AppBarTheme(backgroundColor: background, foregroundColor: text, elevation: 0),
+    );
+    return base.copyWith(
+      textTheme: base.textTheme.apply(fontFamily: _readingFontFamily, bodyColor: text, displayColor: text),
+      primaryTextTheme:
+          base.primaryTextTheme.apply(fontFamily: _readingFontFamily, bodyColor: text, displayColor: text),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Immersive Reader',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      darkTheme: ThemeData.dark(),
+      theme: _buildTheme(
+        brightness: Brightness.light,
+        background: _lightBackground,
+        text: _lightText,
+        accent: _lightAccent,
+      ),
+      darkTheme: _buildTheme(
+        brightness: Brightness.dark,
+        background: _darkBackground,
+        text: _darkText,
+        accent: _darkAccent,
+      ),
       themeMode: _themeMode,
       home: HomePage(themeMode: _themeMode, onToggleTheme: _cycleThemeMode),
     );
