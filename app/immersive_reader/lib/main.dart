@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'library/recent_documents_repository.dart';
 import 'models/document_model.dart';
+import 'models/recent_document.dart';
 import 'models/token.dart';
 import 'parsers/parser_registry.dart';
 import 'progress/local_user_id.dart';
@@ -109,6 +111,7 @@ class _HomePageState extends State<HomePage> {
 
   final ReaderController _controller = ReaderController();
   final VocabularyRepository _vocabularyRepository = VocabularyRepository();
+  final RecentDocumentsRepository _recentDocumentsRepository = RecentDocumentsRepository();
   DocumentModel? _document;
   List<Token> _tokens = [];
   Map<String, String> _replacements = {};
@@ -116,6 +119,7 @@ class _HomePageState extends State<HomePage> {
   String _germanLevel = 'A1';
   String? _loadingFileName;
   WordProgressRepository? _wordProgressRepository;
+  List<RecentDocument> _recentDocuments = [];
 
   bool get _isLoading => _loadingFileName != null;
 
@@ -124,6 +128,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _restoreGermanLevel();
     _initWordProgressRepository();
+    _loadRecentDocuments();
+  }
+
+  Future<void> _loadRecentDocuments() async {
+    final recent = await _recentDocumentsRepository.getRecent();
+    if (!mounted) return;
+    setState(() => _recentDocuments = recent);
   }
 
   /// LocalDb.init() is async, so the repository isn't available on the
@@ -203,6 +214,25 @@ class _HomePageState extends State<HomePage> {
     );
     final path = result?.files.single.path;
     if (path == null) return;
+    await _openPath(path);
+  }
+
+  /// Parses and opens the file at [path], updating replacements and (on
+  /// success) the recent-documents list. [fromRecent] marks a tap on an
+  /// already-recorded recent-documents entry - if that file has since been
+  /// moved or deleted, the stale entry is removed instead of surfacing a
+  /// generic parse error (SPEC.md section 7).
+  Future<void> _openPath(String path, {bool fromRecent = false}) async {
+    if (fromRecent && !File(path).existsSync()) {
+      final documentId = p.basenameWithoutExtension(path);
+      await _recentDocumentsRepository.remove(documentId);
+      if (!mounted) return;
+      setState(() {
+        _recentDocuments.removeWhere((d) => d.documentId == documentId);
+        _error = 'That file could not be found - it may have been moved or deleted.';
+      });
+      return;
+    }
 
     setState(() => _loadingFileName = p.basename(path));
 
@@ -229,11 +259,22 @@ class _HomePageState extends State<HomePage> {
 
       final replacements = await _computeReplacements(tokens);
 
+      await _recentDocumentsRepository.recordOpened(RecentDocument(
+        documentId: document.document_id,
+        title: document.title,
+        filePath: path,
+        format: p.extension(path).replaceFirst('.', '').toLowerCase(),
+        lastOpenedAt: DateTime.now(),
+      ));
+      final recent = await _recentDocumentsRepository.getRecent();
+
+      if (!mounted) return;
       setState(() {
         _document = document;
         _tokens = tokens;
         _replacements = replacements;
         _error = null;
+        _recentDocuments = recent;
       });
     } catch (e) {
       setState(() {
@@ -297,11 +338,7 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           : _document == null
-              ? Center(
-                  child: Text(
-                    _error ?? 'Open a .txt, .docx, .epub, .pdf, or .html file to start reading.',
-                  ),
-                )
+              ? _buildEmptyState()
               : ReaderView(
                   document: _document!,
                   controller: _controller,
@@ -309,5 +346,48 @@ class _HomePageState extends State<HomePage> {
                   wordProgressRepository: _wordProgressRepository,
                 ),
     );
+  }
+
+  /// No document open yet. Shows the recent-documents list (SPEC.md section
+  /// 7) when there is one, alongside the existing "open a file" action
+  /// (AppBar folder icon, unaffected by this); falls back to the original
+  /// plain instructional text when there's nothing recent yet.
+  Widget _buildEmptyState() {
+    if (_recentDocuments.isEmpty) {
+      return Center(
+        child: Text(
+          _error ?? 'Open a .txt, .docx, .epub, .pdf, or .html file to start reading.',
+        ),
+      );
+    }
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        if (_error != null) ...[
+          Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
+          const SizedBox(height: 16),
+        ],
+        Text('Recent', style: Theme.of(context).textTheme.titleMedium),
+        const SizedBox(height: 8),
+        for (final doc in _recentDocuments)
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.description_outlined),
+              title: Text(doc.title),
+              subtitle: Text(_formatLastOpened(doc.lastOpenedAt)),
+              onTap: _isLoading ? null : () => _openPath(doc.filePath, fromRecent: true),
+            ),
+          ),
+      ],
+    );
+  }
+
+  String _formatLastOpened(DateTime dateTime) {
+    final diff = DateTime.now().difference(dateTime);
+    if (diff.inMinutes < 1) return 'just now';
+    if (diff.inHours < 1) return '${diff.inMinutes}m ago';
+    if (diff.inDays < 1) return '${diff.inHours}h ago';
+    if (diff.inDays < 7) return '${diff.inDays}d ago';
+    return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}';
   }
 }
