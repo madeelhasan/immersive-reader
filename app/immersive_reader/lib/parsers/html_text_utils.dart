@@ -10,7 +10,25 @@
 /// `<title>` text into the reader), and decodes the handful of HTML
 /// entities that show up in real-world documents.
 String stripHtml(String html) {
-  throw UnimplementedError();
+  final withoutHead = html.replaceAll(
+    RegExp(r'<head\b[^>]*>.*?</head>', dotAll: true, caseSensitive: false),
+    ' ',
+  );
+  final withoutScriptsAndStyles = withoutHead
+      .replaceAll(
+        RegExp(r'<script\b[^>]*>.*?</script>', dotAll: true, caseSensitive: false),
+        ' ',
+      )
+      .replaceAll(
+        RegExp(r'<style\b[^>]*>.*?</style>', dotAll: true, caseSensitive: false),
+        ' ',
+      );
+  final withoutTags = withoutScriptsAndStyles.replaceAll(RegExp(r'<[^>]*>'), ' ');
+  return withoutTags
+      .replaceAll('&nbsp;', ' ')
+      .replaceAll('&amp;', '&')
+      .replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>');
 }
 
 /// Splits raw HTML into paragraph-sized text blocks using `</p>` boundaries,
@@ -18,5 +36,15 @@ String stripHtml(String html) {
 /// splitting on blank lines and dropping anything that strips down to
 /// nothing (e.g. a `<p>` that only ever contained whitespace).
 List<String> splitHtmlIntoBlocks(String html) {
-  throw UnimplementedError();
+  final byParagraphTag = html.split(RegExp(r'</p\s*>', caseSensitive: false));
+  final rawBlocks = byParagraphTag.length > 1
+      ? byParagraphTag
+      : html.split(RegExp(r'<br\s*/?>', caseSensitive: false));
+
+  return rawBlocks
+      .map(stripHtml)
+      .expand((text) => text.split(RegExp(r'\r?\n\s*\r?\n')))
+      .map((text) => text.trim())
+      .where((text) => text.isNotEmpty)
+      .toList();
 }
