@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/document_model.dart';
@@ -68,6 +69,9 @@ class _HomePageState extends State<HomePage> {
   Map<String, String> _replacements = {};
   String? _error;
   String _germanLevel = 'A1';
+  String? _loadingFileName;
+
+  bool get _isLoading => _loadingFileName != null;
 
   @override
   void initState() {
@@ -113,6 +117,8 @@ class _HomePageState extends State<HomePage> {
     final path = result?.files.single.path;
     if (path == null) return;
 
+    setState(() => _loadingFileName = p.basename(path));
+
     try {
       final parser = ParserRegistry.forFileName(path);
       final document = await parser.parse(File(path));
@@ -154,6 +160,8 @@ class _HomePageState extends State<HomePage> {
         _replacements = {};
         _error = 'Could not open file: $e';
       });
+    } finally {
+      setState(() => _loadingFileName = null);
     }
   }
 
@@ -191,21 +199,32 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.folder_open),
             tooltip: 'Open file',
-            onPressed: _openFile,
+            onPressed: _isLoading ? null : _openFile,
           ),
         ],
       ),
-      body: _document == null
+      body: _isLoading
           ? Center(
-              child: Text(
-                _error ?? 'Open a .txt, .docx, .epub, or .pdf file to start reading.',
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircularProgressIndicator(),
+                  const SizedBox(height: 16),
+                  Text('Parsing $_loadingFileName…'),
+                ],
               ),
             )
-          : ReaderView(
-              document: _document!,
-              controller: _controller,
-              replacements: _replacements,
-            ),
+          : _document == null
+              ? Center(
+                  child: Text(
+                    _error ?? 'Open a .txt, .docx, .epub, or .pdf file to start reading.',
+                  ),
+                )
+              : ReaderView(
+                  document: _document!,
+                  controller: _controller,
+                  replacements: _replacements,
+                ),
     );
   }
 }
