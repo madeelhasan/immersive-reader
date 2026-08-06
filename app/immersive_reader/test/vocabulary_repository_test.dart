@@ -2,7 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:immersive_reader/vocabulary/vocabulary_repository.dart';
+
+/// Fake http.Client for testing the API/fallback split without a real
+/// server. handler decides the response (or throws, to simulate an
+/// unreachable backend) for every request sent through the client.
+class _FakeHttpClient extends http.BaseClient {
+  final Future<http.StreamedResponse> Function(http.BaseRequest request) handler;
+  _FakeHttpClient(this.handler);
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) => handler(request);
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -48,5 +60,41 @@ void main() {
       expect((map['de'] as String).trim(), isNotEmpty);
       expect((map['part_of_speech'] as String).trim(), isNotEmpty);
     }
+  });
+
+  test('loads from the backend API when it responds successfully', () async {
+    final fakeClient = _FakeHttpClient((request) async {
+      expect(request.url.toString(), 'http://127.0.0.1:8000/vocabulary');
+      final body = jsonEncode([
+        {'en': 'test', 'de': 'Test', 'cefr_level': 'A1', 'part_of_speech': 'noun'},
+      ]);
+      return http.StreamedResponse(Stream.value(utf8.encode(body)), 200);
+    });
+
+    final vocabulary = await VocabularyRepository(client: fakeClient).load();
+
+    expect(vocabulary.length, 1);
+    expect(vocabulary['test']?.de, 'Test');
+  });
+
+  test('falls back to the bundled dataset when the backend is unreachable', () async {
+    final fakeClient = _FakeHttpClient((request) async => throw Exception('connection refused'));
+
+    final vocabulary = await VocabularyRepository(client: fakeClient).load();
+
+    // Same assertions as the bundled-dataset test above - confirms the
+    // fallback path, not just that *some* data came back.
+    expect(vocabulary.length, greaterThanOrEqualTo(100));
+    expect(vocabulary['house']?.de, 'Haus');
+  });
+
+  test('falls back to the bundled dataset when the backend returns a non-200 status', () async {
+    final fakeClient = _FakeHttpClient((request) async {
+      return http.StreamedResponse(Stream.value(utf8.encode('Internal Server Error')), 500);
+    });
+
+    final vocabulary = await VocabularyRepository(client: fakeClient).load();
+
+    expect(vocabulary['house']?.de, 'Haus');
   });
 }
