@@ -168,14 +168,32 @@ class _HomePageState extends State<HomePage> {
   /// picks up _germanLevel directly once one is.
   Future<void> _recomputeReplacements() async {
     if (_document == null || _tokens.isEmpty) return;
-    final vocabulary = await _vocabularyRepository.load();
-    final replacements = ReplacementEngine().selectReplacements(
-      _tokens,
-      vocabulary,
-      germanLevel: _germanLevel,
-    );
+    final replacements = await _computeReplacements(_tokens);
     if (!mounted) return;
     setState(() => _replacements = replacements);
+  }
+
+  /// Uses SPEC.md 4.2's depth/word-status probabilities
+  /// (ReplacementEngine.selectReplacementsWithProgress) once the local
+  /// progress repository is ready; falls back to the flat per-level rate
+  /// (selectReplacements) before that async init completes or if it failed.
+  Future<Map<String, String>> _computeReplacements(List<Token> tokens) async {
+    final vocabulary = await _vocabularyRepository.load();
+    final repository = _wordProgressRepository;
+    if (repository == null) {
+      return ReplacementEngine().selectReplacements(
+        tokens,
+        vocabulary,
+        germanLevel: _germanLevel,
+      );
+    }
+    final progress = await repository.getAllProgress();
+    return ReplacementEngine().selectReplacementsWithProgress(
+      tokens,
+      vocabulary,
+      progress,
+      germanLevel: _germanLevel,
+    );
   }
 
   Future<void> _openFile() async {
@@ -209,12 +227,7 @@ class _HomePageState extends State<HomePage> {
         return;
       }
 
-      final vocabulary = await _vocabularyRepository.load();
-      final replacements = ReplacementEngine().selectReplacements(
-        tokens,
-        vocabulary,
-        germanLevel: _germanLevel,
-      );
+      final replacements = await _computeReplacements(tokens);
 
       setState(() {
         _document = document;
