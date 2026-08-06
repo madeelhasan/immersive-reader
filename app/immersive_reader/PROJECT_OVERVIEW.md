@@ -4,7 +4,7 @@ Flutter desktop app (Windows/macOS first) that will eventually teach German thro
 
 ## Where things stand
 
-Phase 1 (SPEC.md section 5) is functionally complete: opens TXT/DOCX/EPUB/PDF, adjustable font size, light/dark/system theme, persisted per-document scroll position, and EPUB chapter navigation. The parser pipeline and reader view work end-to-end and are tested against real files. `QWEN_TASK_BRIEF.md` documents the design/dependency pitfalls hit while building the last four items.
+Phase 1 (SPEC.md section 5) is functionally complete: opens TXT/DOCX/EPUB/PDF, adjustable font size, light/dark/system theme, persisted per-document scroll position, and EPUB chapter navigation. The parser pipeline and reader view work end-to-end and are tested against real files. `../CLAUDE.md`'s "Delegating to other coding agents" section documents the design/dependency pitfalls hit while building the last four items.
 
 Phase 2 (SPEC.md section 6: vocabulary dataset + tap-to-toggle UI + flat-rate random replacement, no adaptivity) is also functionally complete - see the "Vocabulary and replacement" section below. The vocabulary dataset itself is a 100-entry A1-only placeholder, not the full ~1,500-2,000 entries across A1-B2 that SPEC.md 3.2 calls for; expanding it is genuine remaining work.
 

@@ -1,5 +1,3 @@
-// ... existing code ...
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -44,5 +42,3 @@ CREATE TABLE $_wordProgressTableName (
     );
   }
 }
-
-// ... existing code ...
