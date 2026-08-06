@@ -8458,5 +8458,305 @@
     "de": "ausführen",
     "cefr_level": "B2",
     "part_of_speech": "verb"
+  },
+  {
+    "en": "adventurous",
+    "de": "abenteuerlustig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "determined",
+    "de": "entschlossen",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "optimistic",
+    "de": "optimistisch",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "relaxed",
+    "de": "entspannt",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "shy",
+    "de": "schüchtern",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "persuade",
+    "de": "überzeugen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "conversation",
+    "de": "Gespräch",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "viewpoint",
+    "de": "Standpunkt",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "movie",
+    "de": "Film",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "concert",
+    "de": "Konzert",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "theater",
+    "de": "Theater",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "exhibition",
+    "de": "Ausstellung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "painting",
+    "de": "Gemälde",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "television",
+    "de": "Fernsehen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "entertainment",
+    "de": "Unterhaltung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "actor",
+    "de": "Schauspieler",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "vacuum",
+    "de": "staubsaugen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dust",
+    "de": "abstauben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "mop",
+    "de": "wischen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "laundry",
+    "de": "Wäsche",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tidy up",
+    "de": "aufräumen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "take out the trash",
+    "de": "den Müll rausbringen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "iron clothes",
+    "de": "Wäsche bügeln",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "make the bed",
+    "de": "das Bett machen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "chore",
+    "de": "Hausarbeit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "broom",
+    "de": "Besen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "detergent",
+    "de": "Waschmittel",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "trash can",
+    "de": "Mülleimer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mess",
+    "de": "Unordnung",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "clean up",
+    "de": "sauber machen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "routine",
+    "de": "Routine",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "habit",
+    "de": "Gewohnheit",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "moody",
+    "de": "launisch",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "homesick",
+    "de": "heimwehkrank",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "overwhelmed",
+    "de": "überfordert",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "insecure",
+    "de": "unsicher",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "convince",
+    "de": "überzeugen von",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "interrupt",
+    "de": "unterbrechen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "gossip",
+    "de": "tratschen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "point out",
+    "de": "hinweisen auf",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "novel",
+    "de": "Roman",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "lyrics",
+    "de": "Liedtext",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "instrument",
+    "de": "Instrument",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "channel",
+    "de": "Kanal",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wipe",
+    "de": "abwischen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "scrub",
+    "de": "schrubben",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "fold laundry",
+    "de": "Wäsche zusammenlegen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "put away",
+    "de": "wegräumen",
+    "cefr_level": "B1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dishwasher",
+    "de": "Geschirrspüler",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "self-confident",
+    "de": "selbstsicher",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
   }
 ]
