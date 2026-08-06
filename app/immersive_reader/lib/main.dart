@@ -8,9 +8,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'models/document_model.dart';
 import 'models/token.dart';
 import 'parsers/parser_registry.dart';
+import 'progress/local_user_id.dart';
+import 'progress/word_progress_repository.dart';
 import 'reader/reader_controller.dart';
 import 'reader/reader_view.dart';
 import 'replacement/replacement_engine.dart';
+import 'storage/local_db.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
 void main() {
@@ -112,6 +115,7 @@ class _HomePageState extends State<HomePage> {
   String? _error;
   String _germanLevel = 'A1';
   String? _loadingFileName;
+  WordProgressRepository? _wordProgressRepository;
 
   bool get _isLoading => _loadingFileName != null;
 
@@ -119,6 +123,21 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _restoreGermanLevel();
+    _initWordProgressRepository();
+  }
+
+  /// LocalDb.init() is async, so the repository isn't available on the
+  /// very first frame - ReaderView treats a null wordProgressRepository as
+  /// "don't track events yet", which is fine for the brief window before
+  /// this completes.
+  Future<void> _initWordProgressRepository() async {
+    final db = LocalDb();
+    await db.init();
+    final userId = await getOrCreateLocalUserId();
+    if (!mounted) return;
+    setState(() {
+      _wordProgressRepository = WordProgressRepository(db, userId);
+    });
   }
 
   Future<void> _restoreGermanLevel() async {
@@ -266,6 +285,7 @@ class _HomePageState extends State<HomePage> {
                   document: _document!,
                   controller: _controller,
                   replacements: _replacements,
+                  wordProgressRepository: _wordProgressRepository,
                 ),
     );
   }

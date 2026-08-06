@@ -8,6 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/bookmark.dart';
 import '../models/document_model.dart';
 import '../models/token.dart';
+import '../progress/sm2_scheduler.dart';
+import '../progress/word_progress_repository.dart';
 import '../tts/tts_service.dart';
 import 'reader_controller.dart';
 
@@ -30,12 +32,20 @@ class ReaderView extends StatefulWidget {
   /// tests) - defaults to a real one otherwise.
   final TtsService? ttsService;
 
+  /// Injectable; null means progress events simply aren't recorded (used
+  /// in tests, and before the caller has finished setting up the local
+  /// database). Unlike ttsService, there is no default real instance
+  /// created here - constructing one needs an async LocalDb.init() call,
+  /// which the caller (HomePage) does once and passes down.
+  final WordProgressRepository? wordProgressRepository;
+
   const ReaderView({
     super.key,
     required this.document,
     required this.controller,
     this.replacements = const {},
     this.ttsService,
+    this.wordProgressRepository,
   });
 
   @override
@@ -60,6 +70,12 @@ class _ReaderViewState extends State<ReaderView> {
   /// occurrence of that word (SPEC.md section 1: "tap any translated word to
   /// toggle it back to English").
   final Set<String> _toggledToEnglish = {};
+
+  /// tokenIds already recorded as an SM-2 exposure this session. _buildToken
+  /// runs on every rebuild of a lazily-built ListView item (font size
+  /// change, scroll-triggered rebuild, etc.), so without this guard the same
+  /// token would be counted as a fresh exposure repeatedly.
+  final Set<String> _exposedTokenIds = {};
 
   String get _prefsKey => 'scroll_position_${widget.document.document_id}';
   String get _bookmarksPrefsKey => 'bookmarks_${widget.document.document_id}';
@@ -251,12 +267,23 @@ class _ReaderViewState extends State<ReaderView> {
     });
   }
 
-  void _toggleToken(String tokenId) {
+  void _toggleToken(Token token) {
+    final tokenId = token.tokenId;
+    final wasShowingGerman = !_toggledToEnglish.contains(tokenId);
     setState(() {
       if (!_toggledToEnglish.add(tokenId)) {
         _toggledToEnglish.remove(tokenId);
       }
     });
+    final outcome = wasShowingGerman
+        ? ExposureOutcome.toggledBack
+        : ExposureOutcome.toggledForward;
+    unawaited(
+      widget.wordProgressRepository?.recordExposure(
+        token.text.toLowerCase(),
+        outcome,
+      ),
+    );
   }
 
   Widget _buildToken(Token token) {
@@ -266,8 +293,16 @@ class _ReaderViewState extends State<ReaderView> {
     }
 
     final showingGerman = !_toggledToEnglish.contains(token.tokenId);
+    if (showingGerman && _exposedTokenIds.add(token.tokenId)) {
+      unawaited(
+        widget.wordProgressRepository?.recordExposure(
+          token.text.toLowerCase(),
+          ExposureOutcome.neutral,
+        ),
+      );
+    }
     return GestureDetector(
-      onTap: () => _toggleToken(token.tokenId),
+      onTap: () => _toggleToken(token),
       onLongPress: () => _ttsService.speak(germanText),
       child: Tooltip(
         message: 'Tap to toggle English/German · Long-press to hear pronunciation',
