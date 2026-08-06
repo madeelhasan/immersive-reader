@@ -8758,5 +8758,101 @@
     "de": "selbstsicher",
     "cefr_level": "B1",
     "part_of_speech": "adjective"
+  },
+  {
+    "en": "lunch",
+    "de": "Mittagessen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dinner",
+    "de": "Abendessen",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "sale",
+    "de": "Sonderangebot",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "card",
+    "de": "Karte",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dizzy",
+    "de": "schwindelig",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sore",
+    "de": "wund",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "swollen",
+    "de": "geschwollen",
+    "cefr_level": "B1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "bruise",
+    "de": "Bluterguss",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "wound",
+    "de": "Wunde",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mayor",
+    "de": "Bürgermeister",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "council",
+    "de": "Rat",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tax",
+    "de": "Steuer",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "fire department",
+    "de": "Feuerwehr",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "post office",
+    "de": "Postamt",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "public transport",
+    "de": "öffentlicher Verkehr",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "service",
+    "de": "Dienst",
+    "cefr_level": "B1",
+    "part_of_speech": "noun"
   }
 ]
