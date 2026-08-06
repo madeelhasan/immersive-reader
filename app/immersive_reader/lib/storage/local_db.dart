@@ -6,13 +6,18 @@ class LocalDb {
   static const _wordProgressTableName = 'word_progress';
   late Database _db;
 
-  Future<void> init() async {
-    final documentsDirectory = await getDatabasesPath();
-    final path = join(documentsDirectory, _databaseName);
+  /// [path] is injectable for tests (e.g. sqflite_common_ffi's
+  /// inMemoryDatabasePath) - defaults to the real on-disk database.
+  Future<void> init({String? path}) async {
+    final resolvedPath =
+        path ?? join(await getDatabasesPath(), _databaseName);
     _db = await openDatabase(
-      path,
+      resolvedPath,
       version: 1,
       onCreate: _createDb,
+      // false so tests opening inMemoryDatabasePath repeatedly each get an
+      // isolated database instead of sqflite's cached single instance per path.
+      singleInstance: false,
     );
   }
 
@@ -39,6 +44,24 @@ CREATE TABLE $_wordProgressTableName (
       _wordProgressTableName,
       wordProgress,
       conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<Map<String, dynamic>?> getWordProgress(
+      String userId, String enWord) async {
+    final rows = await _db.query(
+      _wordProgressTableName,
+      where: 'user_id = ? AND en_word = ?',
+      whereArgs: [userId, enWord],
+    );
+    return rows.isEmpty ? null : rows.first;
+  }
+
+  Future<List<Map<String, dynamic>>> getAllWordProgress(String userId) async {
+    return _db.query(
+      _wordProgressTableName,
+      where: 'user_id = ?',
+      whereArgs: [userId],
     );
   }
 }
