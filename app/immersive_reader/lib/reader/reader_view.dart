@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/bookmark.dart';
 import '../models/document_model.dart';
 import '../models/token.dart';
+import '../tts/tts_service.dart';
 import 'reader_controller.dart';
 
 // Wide desktop windows would otherwise stretch text edge-to-edge, which
@@ -24,11 +25,17 @@ class ReaderView extends StatefulWidget {
   /// ReplacementEngine.selectReplacements (SPEC.md section 4/6).
   final Map<String, String> replacements;
 
+  /// Injectable for testing (a real TtsService talks to the OS's TTS
+  /// engine via platform channels, which isn't available in widget
+  /// tests) - defaults to a real one otherwise.
+  final TtsService? ttsService;
+
   const ReaderView({
     super.key,
     required this.document,
     required this.controller,
     this.replacements = const {},
+    this.ttsService,
   });
 
   @override
@@ -46,6 +53,7 @@ class _ReaderViewState extends State<ReaderView> {
   double _fontSize = 16.0;
   List<Bookmark> _bookmarks = [];
   bool _autoReplaceBookmark = false;
+  late final TtsService _ttsService;
 
   /// tokenIds the user has manually tapped back to English. Replaced tokens
   /// show German by default; toggling flips a single occurrence, not every
@@ -59,6 +67,7 @@ class _ReaderViewState extends State<ReaderView> {
   @override
   void initState() {
     super.initState();
+    _ttsService = widget.ttsService ?? TtsService();
     _scrollController = ScrollController()
       ..addListener(() {
         widget.controller.updateScrollPosition(_scrollController.position.pixels);
@@ -74,6 +83,7 @@ class _ReaderViewState extends State<ReaderView> {
   void dispose() {
     _saveDebounce?.cancel();
     _scrollController.dispose();
+    _ttsService.dispose();
     super.dispose();
   }
 
@@ -258,12 +268,17 @@ class _ReaderViewState extends State<ReaderView> {
     final showingGerman = !_toggledToEnglish.contains(token.tokenId);
     return GestureDetector(
       onTap: () => _toggleToken(token.tokenId),
-      child: Text(
-        '${showingGerman ? germanText : token.text} ',
-        style: TextStyle(
-          fontSize: _fontSize,
-          color: showingGerman ? Colors.blue : null,
-          decoration: showingGerman ? TextDecoration.underline : null,
+      onLongPress: () => _ttsService.speak(germanText),
+      child: Tooltip(
+        message: 'Tap to toggle English/German · Long-press to hear pronunciation',
+        triggerMode: TooltipTriggerMode.manual,
+        child: Text(
+          '${showingGerman ? germanText : token.text} ',
+          style: TextStyle(
+            fontSize: _fontSize,
+            color: showingGerman ? Colors.blue : null,
+            decoration: showingGerman ? TextDecoration.underline : null,
+          ),
         ),
       ),
     );
