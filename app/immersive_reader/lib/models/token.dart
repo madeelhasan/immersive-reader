@@ -12,4 +12,18 @@ class Token {
     required this.isWord,
     required this.positionIndex,
   });
+
+  Map<String, dynamic> toJson() => {
+        'tokenId': tokenId,
+        'text': text,
+        'isWord': isWord,
+        'positionIndex': positionIndex,
+      };
+
+  factory Token.fromJson(Map<String, dynamic> json) => Token(
+        tokenId: json['tokenId'] as String,
+        text: json['text'] as String,
+        isWord: json['isWord'] as bool,
+        positionIndex: json['positionIndex'] as int,
+      );
 }

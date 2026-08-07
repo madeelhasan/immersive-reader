@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
@@ -15,6 +16,7 @@ import 'progress/word_progress_repository.dart';
 import 'reader/reader_controller.dart';
 import 'reader/reader_view.dart';
 import 'replacement/replacement_engine.dart';
+import 'storage/document_cache_repository.dart';
 import 'storage/local_db.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
@@ -120,6 +122,7 @@ class _HomePageState extends State<HomePage> {
   String _germanLevel = 'A1';
   String? _loadingFileName;
   WordProgressRepository? _wordProgressRepository;
+  DocumentCacheRepository? _documentCacheRepository;
   List<RecentDocument> _recentDocuments = [];
 
   bool get _isLoading => _loadingFileName != null;
@@ -128,7 +131,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _restoreGermanLevel();
-    _initWordProgressRepository();
+    _initLocalDb();
     _loadRecentDocuments();
   }
 
@@ -138,25 +141,32 @@ class _HomePageState extends State<HomePage> {
     setState(() => _recentDocuments = recent);
   }
 
-  /// LocalDb.init() is async, so the repository isn't available on the
+  /// LocalDb.init() is async, so neither repository is available on the
   /// very first frame - ReaderView treats a null wordProgressRepository as
-  /// "don't track events yet", which is fine for the brief window before
-  /// this completes. Also swallows failures (e.g. no sqflite platform
-  /// channel in a plain widget test) the same way VocabularyRepository
-  /// falls back rather than crashing app startup over progress tracking.
-  Future<void> _initWordProgressRepository() async {
-    final WordProgressRepository repository;
+  /// "don't track events yet", and _openPath treats a null
+  /// documentCacheRepository as "always parse fresh," both fine for the
+  /// brief window before this completes. Also swallows failures (e.g. no
+  /// sqflite platform channel in a plain widget test) the same way
+  /// VocabularyRepository falls back rather than crashing app startup.
+  /// One shared LocalDb/Database instance for both repositories - two
+  /// separate connections to the same on-disk sqlite file would risk
+  /// locking contention between them.
+  Future<void> _initLocalDb() async {
+    final WordProgressRepository wordProgressRepository;
+    final DocumentCacheRepository documentCacheRepository;
     try {
       final db = LocalDb();
       await db.init();
       final userId = await getOrCreateLocalUserId();
-      repository = WordProgressRepository(db, userId);
+      wordProgressRepository = WordProgressRepository(db, userId);
+      documentCacheRepository = DocumentCacheRepository(db);
     } catch (_) {
       return;
     }
     if (!mounted) return;
     setState(() {
-      _wordProgressRepository = repository;
+      _wordProgressRepository = wordProgressRepository;
+      _documentCacheRepository = documentCacheRepository;
     });
   }
 
@@ -209,11 +219,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _openFile() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['txt', 'docx', 'epub', 'pdf', 'html', 'htm'],
-    );
-    final path = result?.files.single.path;
+    String? path;
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['txt', 'docx', 'epub', 'pdf', 'html', 'htm'],
+      );
+      path = result?.files.single.path;
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _error = 'Could not open the file picker: $e');
+      return;
+    }
     if (path == null) return;
     await _openPath(path);
   }
@@ -248,8 +265,18 @@ class _HomePageState extends State<HomePage> {
     await WidgetsBinding.instance.endOfFrame;
 
     try {
-      final parser = ParserRegistry.forFileName(path);
-      final document = await parser.parse(File(path));
+      final cached = await _documentCacheRepository?.get(path);
+      final DocumentModel document;
+      if (cached != null) {
+        document = cached;
+      } else {
+        final parser = ParserRegistry.forFileName(path);
+        // A pathologically slow or stuck parse (a hostile or corrupted
+        // file) should fail with a message the user can act on, not leave
+        // the loading spinner stuck forever with no way out.
+        document = await parser.parse(File(path)).timeout(const Duration(seconds: 60));
+        unawaited(_documentCacheRepository?.put(path, document));
+      }
       final tokens = document.paragraphs
           .expand((para) => para.sentences)
           .expand((sentence) => sentence.tokens)
@@ -292,7 +319,9 @@ class _HomePageState extends State<HomePage> {
         _document = null;
         _tokens = [];
         _replacements = {};
-        _error = 'Could not open file: $e';
+        _error = e is TimeoutException
+            ? 'This file is taking too long to open - it may be unusually large or complex.'
+            : 'Could not open file: $e';
       });
     } finally {
       setState(() => _loadingFileName = null);

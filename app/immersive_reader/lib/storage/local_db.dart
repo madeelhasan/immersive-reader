@@ -4,6 +4,7 @@ import 'package:path/path.dart';
 class LocalDb {
   static const _databaseName = 'immersive_reader.db';
   static const _wordProgressTableName = 'word_progress';
+  static const _documentCacheTableName = 'document_cache';
   late Database _db;
 
   /// [path] is injectable for tests (e.g. sqflite_common_ffi's
@@ -36,6 +37,14 @@ CREATE TABLE $_wordProgressTableName (
   PRIMARY KEY (user_id, en_word)
 )
 ''');
+    await db.execute('''
+CREATE TABLE $_documentCacheTableName (
+  file_path TEXT PRIMARY KEY,
+  mtime INTEGER NOT NULL,
+  size INTEGER NOT NULL,
+  document_json TEXT NOT NULL
+)
+''');
   }
 
   Future<void> insertOrUpdateWordProgress(
@@ -63,5 +72,32 @@ CREATE TABLE $_wordProgressTableName (
       where: 'user_id = ?',
       whereArgs: [userId],
     );
+  }
+
+  Future<void> putCachedDocument({
+    required String filePath,
+    required int mtime,
+    required int size,
+    required String documentJson,
+  }) async {
+    await _db.insert(
+      _documentCacheTableName,
+      {
+        'file_path': filePath,
+        'mtime': mtime,
+        'size': size,
+        'document_json': documentJson,
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<Map<String, dynamic>?> getCachedDocument(String filePath) async {
+    final rows = await _db.query(
+      _documentCacheTableName,
+      where: 'file_path = ?',
+      whereArgs: [filePath],
+    );
+    return rows.isEmpty ? null : rows.first;
   }
 }
