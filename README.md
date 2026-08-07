@@ -69,3 +69,22 @@ flutter run -d windows
 ```
 
 `flutter` needs to be on your PATH, or invoked by full path — see `app/CLAUDE.md` for details specific to this setup.
+
+## Credits & third-party resources
+
+**Flutter/Dart packages** (`app/immersive_reader/pubspec.yaml`):
+
+- [syncfusion_flutter_pdf](https://pub.dev/packages/syncfusion_flutter_pdf) — PDF text extraction. Not a standard open-source license: Syncfusion's [Community License](https://www.syncfusion.com/content/downloads/syncfusion_license.pdf) is free only for organizations under $1M annual revenue and fewer than 5 developers; above that it requires a commercial license.
+- [scrollable_positioned_list](https://pub.dev/packages/scrollable_positioned_list) (BSD-3-Clause) — the reader's main scrolling list; see the "Building this with AI agents" section above for why a plain `ListView.builder` couldn't stay.
+- [archive](https://pub.dev/packages/archive) (MIT) — manual DOCX/EPUB zip decoding.
+- [msix](https://pub.dev/packages/msix) (MIT) — Windows installer packaging. Vendored locally with a one-line patch (`app/immersive_reader/vendor/`) to fix a plugin-misclassification bug in current Flutter tooling; see `vendor/README.md`.
+- [sqflite](https://pub.dev/packages/sqflite) / [sqflite_common_ffi](https://pub.dev/packages/sqflite_common_ffi) (MIT) — local SQLite storage (word progress, document cache) and its in-memory test backend.
+- [file_picker](https://pub.dev/packages/file_picker) (MIT), [shared_preferences](https://pub.dev/packages/shared_preferences) (BSD-3-Clause), [path](https://pub.dev/packages/path) (BSD-3-Clause), [http](https://pub.dev/packages/http) (BSD-3-Clause), [flutter_tts](https://pub.dev/packages/flutter_tts) (BSD-3-Clause), [flutter_lints](https://pub.dev/packages/flutter_lints) (BSD-3-Clause).
+
+**Backend** (`backend/requirements.txt`): [FastAPI](https://fastapi.tiangolo.com/) (MIT), [SQLAlchemy](https://www.sqlalchemy.org/) (MIT), [Pydantic](https://docs.pydantic.dev/) (MIT), [Uvicorn](https://www.uvicorn.org/) (BSD-3-Clause), [PyJWT](https://pyjwt.readthedocs.io/) (MIT), [bcrypt](https://github.com/pyca/bcrypt) (Apache-2.0), [pytest](https://pytest.org/) (MIT), [httpx](https://www.python-httpx.org/) (BSD-3-Clause).
+
+**Fonts:** Georgia (the reader's serif typeface) ships with Windows — not bundled or redistributed by this project.
+
+**AI tools and models** used to build this project — see "Building this with AI agents" above for the full story: [Claude Code](https://claude.com/claude-code) (Anthropic), [Aider](https://aider.chat/), [DeepSeek](https://www.deepseek.com/) (`deepseek-chat`, the model behind Aider for most of this project), [Qwen Code CLI](https://github.com/QwenLM/qwen-code) and local [Ollama](https://ollama.com/) models (`qwen2.5-coder`, `qwen3.6` — tried early on, not reliable enough on this hardware, see above).
+
+The vocabulary dataset (`app/immersive_reader/assets/vocab/en_de_starter.json`) is original content generated via the DeepSeek API and hand-reviewed, not sourced from an existing third-party wordlist or dictionary.
