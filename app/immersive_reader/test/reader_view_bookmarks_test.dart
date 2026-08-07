@@ -112,7 +112,8 @@ void main() {
     expect(find.text('0% through'), findsOneWidget);
   });
 
-  testWidgets('jumping to a bookmark flashes its paragraph, which fades out on its own', (tester) async {
+  testWidgets('jumping to a bookmark flashes its paragraph, which stays until the reader scrolls away',
+      (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(body: ReaderView(document: _buildDocument(), controller: ReaderController())),
     ));
@@ -135,8 +136,13 @@ void main() {
 
     expect(anyFlashing(), isTrue);
 
-    await tester.pump(const Duration(milliseconds: 1600));
-    await tester.pumpAndSettle();
+    // Waiting alone (no timer anymore) doesn't dismiss it - only actually
+    // scrolling away from the flashed paragraph does.
+    await tester.pump(const Duration(seconds: 5));
+    expect(anyFlashing(), isTrue);
+
+    await tester.drag(find.byType(ScrollablePositionedList), const Offset(0, -5000));
+    await tester.pump();
 
     expect(anyFlashing(), isFalse);
   });

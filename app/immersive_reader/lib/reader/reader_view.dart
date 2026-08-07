@@ -101,9 +101,7 @@ class _ReaderViewState extends State<ReaderView> {
   late final ItemScrollController _itemScrollController;
   late final ItemPositionsListener _itemPositionsListener;
   Timer? _saveDebounce;
-  static const _flashHighlightDuration = Duration(milliseconds: 1500);
   int? _flashParagraphIndex;
-  Timer? _flashTimer;
   double _fontSize = 16.0;
   List<Bookmark> _bookmarks = [];
   bool _autoReplaceBookmark = false;
@@ -160,7 +158,6 @@ class _ReaderViewState extends State<ReaderView> {
   void dispose() {
     _saveDebounce?.cancel();
     _searchDebounce?.cancel();
-    _flashTimer?.cancel();
     _itemPositionsListener.itemPositions.removeListener(_onPositionsChanged);
     _ttsService.dispose();
     _searchController.dispose();
@@ -173,6 +170,14 @@ class _ReaderViewState extends State<ReaderView> {
     if (topIndex == null) return;
     widget.controller.updatePositionIndex(topIndex);
     _scheduleSave(topIndex);
+    // Dismiss a bookmark-jump flash once the reader actually scrolls away
+    // from it, rather than on a timer - a fixed auto-fade risked
+    // disappearing before it was even noticed (the jump itself also fires
+    // this listener, landing exactly on the flashed index, so that initial
+    // call doesn't clear it).
+    if (_flashParagraphIndex != null && topIndex != _flashParagraphIndex) {
+      setState(() => _flashParagraphIndex = null);
+    }
   }
 
   /// The lowest paragraph index among items currently at least partially
@@ -427,19 +432,15 @@ class _ReaderViewState extends State<ReaderView> {
     _jumpToIndex(_indexForFraction(fraction));
   }
 
-  /// Briefly highlights [index]'s paragraph so a bookmark jump - which can
-  /// land the reader anywhere in a huge, uniformly-styled document with no
-  /// other visual cue - is obviously "you are here", not just a scroll that
-  /// might've undershot or overshot. Fades back out on its own; a second
-  /// flash while one is already fading just restarts the clock rather than
-  /// stacking.
+  /// Highlights [index]'s paragraph so a bookmark jump - which can land the
+  /// reader anywhere in a huge, uniformly-styled document with no other
+  /// visual cue - is obviously "you are here", not just a scroll that
+  /// might've undershot or overshot. Stays highlighted until the reader
+  /// actually scrolls away from it (see _onPositionsChanged) rather than
+  /// fading on a fixed timer, which risked disappearing before it was even
+  /// noticed.
   void _flashParagraph(int index) {
-    _flashTimer?.cancel();
     setState(() => _flashParagraphIndex = index);
-    _flashTimer = Timer(_flashHighlightDuration, () {
-      if (!mounted) return;
-      setState(() => _flashParagraphIndex = null);
-    });
   }
 
   void _jumpToChapter(ChapterMarker chapter) {
