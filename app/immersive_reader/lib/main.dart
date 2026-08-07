@@ -78,6 +78,7 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Immersive Reader',
+      debugShowCheckedModeBanner: false,
       theme: _buildTheme(
         brightness: Brightness.light,
         background: _lightBackground,
@@ -395,10 +396,21 @@ class _HomePageState extends State<HomePage> {
               title: Text(doc.title),
               subtitle: Text(_formatLastOpened(doc.lastOpenedAt)),
               onTap: _isLoading ? null : () => _openPath(doc.filePath, fromRecent: true),
+              trailing: IconButton(
+                icon: const Icon(Icons.delete_outline),
+                tooltip: 'Remove from recent',
+                onPressed: _isLoading ? null : () => _removeRecentDocument(doc.documentId),
+              ),
             ),
           ),
       ],
     );
+  }
+
+  Future<void> _removeRecentDocument(String documentId) async {
+    await _recentDocumentsRepository.remove(documentId);
+    final recent = await _recentDocumentsRepository.getRecent();
+    setState(() => _recentDocuments = recent);
   }
 
   String _formatLastOpened(DateTime dateTime) {

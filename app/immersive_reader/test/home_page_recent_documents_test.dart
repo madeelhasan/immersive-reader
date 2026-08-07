@@ -127,6 +127,47 @@ void main() {
     });
   });
 
+  testWidgets('deletes a recent document via its trailing delete button', (tester) async {
+    late Directory dir;
+    late File file;
+    await tester.runAsync(() async {
+      dir = Directory.systemTemp.createTempSync('ir_delete_recent_test');
+      file = File(p.join(dir.path, 'my_book.txt'));
+      await file.writeAsString('This paragraph contains the marker ZzyxDeleteMarker.');
+    });
+
+    SharedPreferences.setMockInitialValues({
+      'recent_documents': jsonEncode([
+        RecentDocument(
+          documentId: 'my_book',
+          title: 'my_book',
+          filePath: file.path,
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+        ).toJson(),
+      ]),
+    });
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pump();
+
+    expect(find.text('my_book'), findsOneWidget);
+
+    await tester.runAsync(() async {
+      await tester.tap(find.byIcon(Icons.delete_outline));
+      await tester.pump();
+    });
+
+    expect(find.text('my_book'), findsNothing);
+    expect(find.textContaining('Open a .txt'), findsOneWidget);
+
+    // The underlying file is untouched, only the recent-list entry is gone.
+    await tester.runAsync(() async {
+      expect(file.existsSync(), isTrue);
+      dir.deleteSync(recursive: true);
+    });
+  });
+
   testWidgets('removes a recent entry whose file no longer exists, without crashing',
       (tester) async {
     final missingPath =
