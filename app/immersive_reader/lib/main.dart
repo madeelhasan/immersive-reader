@@ -111,6 +111,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const _germanLevelPrefsKey = 'german_level';
+  static const _hasSeenOnboardingPrefsKey = 'has_seen_onboarding';
 
   final ReaderController _controller = ReaderController();
   final VocabularyRepository _vocabularyRepository = VocabularyRepository();
@@ -125,6 +126,11 @@ class _HomePageState extends State<HomePage> {
   DocumentCacheRepository? _documentCacheRepository;
   List<RecentDocument> _recentDocuments = [];
   Timer? _levelAdvanceDebounce;
+  // Starts true (not false) so onboarding doesn't flash on screen for one
+  // frame on every launch while _restoreOnboardingSeen's async read is still
+  // in flight - a returning reader would see it, dismiss it, and it'd still
+  // have cost them a visible flicker.
+  bool _hasSeenOnboarding = true;
 
   bool get _isLoading => _loadingFileName != null;
 
@@ -132,6 +138,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _restoreGermanLevel();
+    _restoreOnboardingSeen();
     _initLocalDb();
     _loadRecentDocuments();
   }
@@ -183,6 +190,19 @@ class _HomePageState extends State<HomePage> {
     if (saved == null || !ReplacementEngine.levelOrder.contains(saved)) return;
     setState(() => _germanLevel = saved);
     _recomputeReplacements();
+  }
+
+  Future<void> _restoreOnboardingSeen() async {
+    final prefs = await SharedPreferences.getInstance();
+    final seen = prefs.getBool(_hasSeenOnboardingPrefsKey) ?? false;
+    if (!mounted || seen == _hasSeenOnboarding) return;
+    setState(() => _hasSeenOnboarding = seen);
+  }
+
+  Future<void> _dismissOnboarding() async {
+    setState(() => _hasSeenOnboarding = true);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_hasSeenOnboardingPrefsKey, true);
   }
 
   Future<void> _setGermanLevel(String level) async {
@@ -385,6 +405,83 @@ class _HomePageState extends State<HomePage> {
         ThemeMode.system => Icons.brightness_auto,
       };
 
+  String get _themeLabel => switch (widget.themeMode) {
+        ThemeMode.light => 'Light',
+        ThemeMode.dark => 'Dark',
+        ThemeMode.system => 'Match system',
+      };
+
+  /// One sheet, two clearly separate sections: settings that affect the app
+  /// itself (currently just theme) versus settings about the reader/learner
+  /// (currently just CEFR level) - previously both sat as flat, equal-weight
+  /// AppBar icons with no indication they're different kinds of setting.
+  void _showSettingsSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (sheetContext, setSheetState) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('Settings', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  ),
+                  const SizedBox(height: 8),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('APP', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
+                  ),
+                  ListTile(
+                    leading: Icon(_themeIcon),
+                    title: const Text('Theme'),
+                    subtitle: Text(_themeLabel),
+                    onTap: () {
+                      widget.onToggleTheme();
+                      setSheetState(() {});
+                    },
+                  ),
+                  const Divider(height: 24),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('READING & VOCABULARY', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
+                  ),
+                  RadioGroup<String>(
+                    groupValue: _germanLevel,
+                    onChanged: (selected) {
+                      if (selected == null) return;
+                      _setGermanLevel(selected);
+                      setSheetState(() {});
+                    },
+                    child: Column(
+                      children: [
+                        for (final level in ReplacementEngine.levelOrder)
+                          RadioListTile<String>(value: level, title: Text(level)),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'Replacements are drawn from your level and everything below it, and get denser at higher levels. '
+                      'Level up automatically once every word at your current level is learned.',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -398,24 +495,10 @@ class _HomePageState extends State<HomePage> {
             : null,
         title: Text(_document?.title ?? 'Immersive Reader'),
         actions: [
-          PopupMenuButton<String>(
-            tooltip: 'German level (currently $_germanLevel)',
-            initialValue: _germanLevel,
-            onSelected: _setGermanLevel,
-            itemBuilder: (context) => ReplacementEngine.levelOrder
-                .map((level) => PopupMenuItem(value: level, child: Text(level)))
-                .toList(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Center(
-                child: Text(_germanLevel, style: const TextStyle(fontWeight: FontWeight.bold)),
-              ),
-            ),
-          ),
           IconButton(
-            icon: Icon(_themeIcon),
-            tooltip: 'Toggle light/dark theme (currently ${widget.themeMode.name})',
-            onPressed: widget.onToggleTheme,
+            icon: const Icon(Icons.settings_outlined),
+            tooltip: 'Settings (currently $_germanLevel, ${widget.themeMode.name} theme)',
+            onPressed: _showSettingsSheet,
           ),
           IconButton(
             icon: const Icon(Icons.folder_open),
@@ -436,7 +519,7 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           : _document == null
-              ? _buildEmptyState()
+              ? (_hasSeenOnboarding ? _buildEmptyState() : _buildOnboarding())
               : ReaderView(
                   document: _document!,
                   controller: _controller,
@@ -444,6 +527,103 @@ class _HomePageState extends State<HomePage> {
                   wordProgressRepository: _wordProgressRepository,
                   onWordLearned: _onWordLearned,
                 ),
+    );
+  }
+
+  /// Shown once, the very first time the app is opened (before there's
+  /// anything in "recent documents" to show instead) - one short row per
+  /// feature rather than a single wall of text, per how this was asked for.
+  Widget _buildOnboarding() {
+    final features = <(IconData, String, String)>[
+      (
+        Icons.folder_open,
+        'Open a book',
+        "Tap the folder icon up top to bring in a .txt, .docx, .epub, .pdf, or .html file - "
+            "we'll turn it into a clean, comfy reading view.",
+      ),
+      (
+        Icons.settings_outlined,
+        'Pick your level',
+        'Head into Settings and tell us your German level, A1 through C2 - '
+            "we'll sprinkle in just the right amount of German as you read.",
+      ),
+      (
+        Icons.touch_app_outlined,
+        'Tap to toggle',
+        "Spot a blue underlined word? That's German! Tap it to peek at the English, "
+            'tap again to bring the German back.',
+      ),
+      (
+        Icons.volume_up_outlined,
+        'Hear it spoken',
+        'Long-press any German word to hear it read aloud - handy for nailing the pronunciation.',
+      ),
+      (
+        Icons.search,
+        'Find anything',
+        'Press Ctrl+F or tap the search icon to jump straight to any word or phrase.',
+      ),
+      (
+        Icons.bookmarks_outlined,
+        'Save your spot',
+        'Drop as many bookmarks as you like, so you never lose your place.',
+      ),
+      (
+        Icons.linear_scale,
+        'Jump around',
+        'Tap or drag the progress bar up top to zip to any part of the book instantly.',
+      ),
+      (
+        Icons.celebration_outlined,
+        'Level up!',
+        "Learn every word at your level and we'll bump you up automatically - "
+            'keep reading and watch your German grow.',
+      ),
+    ];
+
+    return SafeArea(
+      child: ListView(
+        padding: const EdgeInsets.all(24),
+        children: [
+          Text('Willkommen! 🎉', style: Theme.of(context).textTheme.headlineMedium),
+          const SizedBox(height: 8),
+          Text(
+            "Here's the whirlwind tour - open a book and pick up a bit of German along the way.",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 24),
+          for (final (icon, title, description) in features)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(icon, color: Theme.of(context).colorScheme.primary),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 4),
+                        Text(description),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SizedBox(height: 8),
+          FilledButton.icon(
+            onPressed: () {
+              _dismissOnboarding();
+              _openFile();
+            },
+            icon: const Icon(Icons.folder_open),
+            label: const Text("Let's open your first book!"),
+          ),
+        ],
+      ),
     );
   }
 

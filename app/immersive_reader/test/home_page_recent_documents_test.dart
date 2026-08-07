@@ -29,7 +29,7 @@ Future<void> _pumpUntilNotLoading(WidgetTester tester) async {
 void main() {
   testWidgets('shows the plain empty-state message when there are no recent documents',
       (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
 
     await tester.pumpWidget(const ImmersiveReaderApp());
     await tester.pump();
@@ -47,6 +47,7 @@ void main() {
     });
 
     SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
       'recent_documents': jsonEncode([
         RecentDocument(
           documentId: 'my_book',
@@ -87,6 +88,7 @@ void main() {
     });
 
     SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
       'recent_documents': jsonEncode([
         RecentDocument(
           documentId: 'my_book',
@@ -137,6 +139,7 @@ void main() {
     });
 
     SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
       'recent_documents': jsonEncode([
         RecentDocument(
           documentId: 'my_book',
@@ -173,6 +176,7 @@ void main() {
     final missingPath =
         p.join(Directory.systemTemp.path, 'ir_recent_ui_test_missing', 'gone.txt');
     SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
       'recent_documents': jsonEncode([
         RecentDocument(
           documentId: 'gone',
