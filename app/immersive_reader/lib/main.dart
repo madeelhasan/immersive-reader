@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
+import 'package:flutter/foundation.dart' show compute, debugPrint, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +13,7 @@ import 'library/recent_documents_repository.dart';
 import 'models/document_model.dart';
 import 'models/recent_document.dart';
 import 'models/token.dart';
-import 'parsers/parser_registry.dart';
+import 'parsers/background_parse.dart';
 import 'progress/local_user_id.dart';
 import 'progress/word_progress_repository.dart';
 import 'reader/reader_controller.dart';
@@ -346,15 +346,9 @@ class _HomePageState extends State<HomePage> {
     }
 
     setState(() => _loadingFileName = p.basename(path));
-    // Without this, the spinner frame setState() just scheduled doesn't
-    // actually get painted before parser.parse() runs: awaiting
-    // file.readAsBytes() below resumes as a microtask, and everything
-    // after it (decompression, regex extraction, tokenization) is
-    // synchronous with no further yield point - so the whole parse runs to
-    // completion in that one continuation before the engine ever gets a
-    // chance to paint the frame the setState scheduled. Explicitly waiting
-    // for a real frame here first is what makes the spinner actually
-    // appear before the heavy synchronous work below blocks the UI thread.
+    // Ensures the spinner's first frame actually paints before anything
+    // else runs - cheap insurance for the moment between compute()'s own
+    // isolate-spawn overhead and its first real yield.
     await WidgetsBinding.instance.endOfFrame;
 
     try {
@@ -363,11 +357,17 @@ class _HomePageState extends State<HomePage> {
       if (cached != null) {
         document = cached;
       } else {
-        final parser = ParserRegistry.forFileName(path);
-        // A pathologically slow or stuck parse (a hostile or corrupted
-        // file) should fail with a message the user can act on, not leave
-        // the loading spinner stuck forever with no way out.
-        document = await parser.parse(File(path)).timeout(const Duration(seconds: 60));
+        // Parsing (file I/O, decompression, PDF text extraction,
+        // tokenization) runs on a background isolate via compute() - a
+        // real PDF can take several seconds of genuinely synchronous CPU
+        // work (measured: ~8s for a 638-page fixture) that would otherwise
+        // freeze the entire UI, including the loading spinner's own
+        // animation, since Dart isolates don't share a run loop with the
+        // main one. A pathologically slow or stuck parse (a hostile or
+        // corrupted file) should still fail with a message the user can
+        // act on, not leave the loading spinner stuck forever with no way
+        // out - hence the timeout.
+        document = await compute(parseDocumentInBackground, path).timeout(const Duration(seconds: 60));
         unawaited(_documentCacheRepository?.put(path, document));
       }
       final tokens = document.paragraphs

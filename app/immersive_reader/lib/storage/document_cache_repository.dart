@@ -1,8 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart' show compute;
+
 import '../models/document_model.dart';
 import 'local_db.dart';
+
+/// Off the main isolate via compute() (see parsers/background_parse.dart for
+/// why this matters) - encode/decode of a large document's JSON is plain
+/// synchronous CPU work otherwise, same class of freeze as an uncached parse.
+DocumentModel _decodeDocument(String json) {
+  final decoded = jsonDecode(json) as Map<String, dynamic>;
+  return DocumentModel.fromJson(decoded);
+}
+
+String _encodeDocument(DocumentModel document) => jsonEncode(document.toJson());
 
 /// Caches a parsed DocumentModel keyed by source file path, so reopening an
 /// already-parsed file can skip re-parsing entirely. Invalidated
@@ -30,8 +42,7 @@ class DocumentCacheRepository {
     }
 
     try {
-      final decoded = jsonDecode(row['document_json'] as String) as Map<String, dynamic>;
-      return DocumentModel.fromJson(decoded);
+      return await compute(_decodeDocument, row['document_json'] as String);
     } catch (_) {
       return null;
     }
@@ -41,11 +52,12 @@ class DocumentCacheRepository {
     final file = File(filePath);
     if (!await file.exists()) return;
     final stat = await file.stat();
+    final documentJson = await compute(_encodeDocument, document);
     await _db.putCachedDocument(
       filePath: filePath,
       mtime: stat.modified.millisecondsSinceEpoch,
       size: stat.size,
-      documentJson: jsonEncode(document.toJson()),
+      documentJson: documentJson,
     );
   }
 }
