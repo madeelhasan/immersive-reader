@@ -88,4 +88,29 @@ void main() {
     final recent = await repo.getRecent();
     expect(recent.map((d) => d.documentId).toList(), ['a']);
   });
+
+  test('paragraphCount round-trips through toJson/fromJson', () {
+    final doc = RecentDocument(
+      documentId: 'house',
+      title: 'house',
+      filePath: '/path/to/house.txt',
+      format: 'txt',
+      lastOpenedAt: DateTime(2026, 1, 1),
+      paragraphCount: 250,
+    );
+    final decoded = RecentDocument.fromJson(doc.toJson());
+    expect(decoded.paragraphCount, 250);
+  });
+
+  test('fromJson decodes a legacy entry with no paragraph_count field as null', () {
+    final legacyJson = {
+      'document_id': 'house',
+      'title': 'house',
+      'file_path': '/path/to/house.txt',
+      'format': 'txt',
+      'last_opened_at': DateTime(2026, 1, 1).toIso8601String(),
+    };
+    final decoded = RecentDocument.fromJson(legacyJson);
+    expect(decoded.paragraphCount, isNull);
+  });
 }

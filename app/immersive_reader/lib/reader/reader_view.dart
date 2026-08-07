@@ -13,6 +13,7 @@ import '../progress/sm2_scheduler.dart';
 import '../progress/word_progress_repository.dart';
 import '../tts/tts_service.dart';
 import 'reader_controller.dart';
+import 'reader_prefs_keys.dart';
 
 // Wide desktop windows would otherwise stretch text edge-to-edge, which
 // hurts readability - constrains the reading column to a comfortable
@@ -139,8 +140,8 @@ class _ReaderViewState extends State<ReaderView> {
   // index (an int), not a pixel offset (a double). Reusing the old key
   // risks a type-mismatch read (getInt() on a value stored via setDouble())
   // throwing on some platforms rather than failing gracefully.
-  String get _prefsKey => 'scroll_index_${widget.document.document_id}';
-  String get _bookmarksPrefsKey => 'bookmarks_${widget.document.document_id}';
+  String get _prefsKey => scrollIndexPrefsKey(widget.document.document_id);
+  String get _bookmarksPrefsKey => bookmarksPrefsKey(widget.document.document_id);
 
   @override
   void initState() {
@@ -203,9 +204,8 @@ class _ReaderViewState extends State<ReaderView> {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString(_bookmarksPrefsKey);
     if (raw == null || !mounted) return;
-    final List<dynamic> decoded = jsonDecode(raw) as List<dynamic>;
     setState(() {
-      _bookmarks = decoded.map((e) => Bookmark.fromJson(e as Map<String, dynamic>)).toList();
+      _bookmarks = Bookmark.decodeList(raw);
     });
   }
 

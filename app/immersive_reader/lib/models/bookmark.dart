@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 /// A saved position within a document, expressed as a scroll fraction
 /// (0.0-1.0) consistent with the rest of ReaderView's navigation
 /// (_jumpToFraction, chapter markers). isCurrentPosition marks the single
@@ -26,4 +28,13 @@ class Bookmark {
         fraction: (json['fraction'] as num).toDouble(),
         isCurrentPosition: json['is_current_position'] as bool? ?? false,
       );
+
+  /// Decodes the JSON-encoded list stored under a document's
+  /// `bookmarksPrefsKey` (reader_prefs_keys.dart) - shared by ReaderView
+  /// and anything else (e.g. ReadingProgressLookup) that reads bookmarks
+  /// for a document without opening it.
+  static List<Bookmark> decodeList(String raw) {
+    final List<dynamic> decoded = jsonDecode(raw) as List<dynamic>;
+    return decoded.map((e) => Bookmark.fromJson(e as Map<String, dynamic>)).toList();
+  }
 }

@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:immersive_reader/main.dart';
+import 'package:immersive_reader/models/bookmark.dart';
 import 'package:immersive_reader/models/recent_document.dart';
 
 /// pumpAndSettle can never finish while the indeterminate
@@ -158,7 +159,7 @@ void main() {
 
     await tester.runAsync(() async {
       await tester.tap(find.byIcon(Icons.delete_outline));
-      await tester.pump();
+      await tester.pumpAndSettle();
     });
 
     expect(find.text('my_book'), findsNothing);
@@ -201,5 +202,86 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('gone'), findsNothing);
     expect(find.textContaining('could not be found'), findsOneWidget);
+  });
+
+  testWidgets('shows a Continue reading section for a bookmarked, unfinished document',
+      (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
+      'recent_documents': jsonEncode([
+        RecentDocument(
+          documentId: 'bookmarked_book',
+          title: 'bookmarked_book',
+          filePath: '/does/not/matter.txt',
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+          paragraphCount: 100,
+        ).toJson(),
+        RecentDocument(
+          documentId: 'plain_book',
+          title: 'plain_book',
+          filePath: '/does/not/matter2.txt',
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+        ).toJson(),
+      ]),
+      'bookmarks_bookmarked_book': jsonEncode([Bookmark(id: '1', fraction: 0.2).toJson()]),
+      'scroll_index_bookmarked_book': 20,
+    });
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pump();
+
+    expect(find.text('Continue reading'), findsOneWidget);
+    // Bookmarked-and-unfinished books appear in both sections (per design:
+    // Continue reading is a highlighted subset, not a partition).
+    expect(find.text('bookmarked_book'), findsNWidgets(2));
+    expect(find.text('plain_book'), findsOneWidget);
+  });
+
+  testWidgets('does not show a Continue reading section when nothing recent has bookmarks',
+      (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
+      'recent_documents': jsonEncode([
+        RecentDocument(
+          documentId: 'plain_book',
+          title: 'plain_book',
+          filePath: '/does/not/matter.txt',
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+        ).toJson(),
+      ]),
+    });
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pump();
+
+    expect(find.text('Continue reading'), findsNothing);
+  });
+
+  testWidgets('excludes a bookmarked document that is already finished from Continue reading',
+      (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'has_seen_onboarding': true,
+      'recent_documents': jsonEncode([
+        RecentDocument(
+          documentId: 'finished_book',
+          title: 'finished_book',
+          filePath: '/does/not/matter.txt',
+          format: 'txt',
+          lastOpenedAt: DateTime.now(),
+          paragraphCount: 100,
+        ).toJson(),
+      ]),
+      'bookmarks_finished_book': jsonEncode([Bookmark(id: '1', fraction: 0.99).toJson()]),
+      'scroll_index_finished_book': 98,
+    });
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pump();
+
+    expect(find.text('Continue reading'), findsNothing);
+    expect(find.text('finished_book'), findsOneWidget); // still shown in Recent
   });
 }

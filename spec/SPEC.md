@@ -240,6 +240,8 @@ This list is local-only (SharedPreferences, section 3.5), which now needs no spe
 
 Must handle a listed file having since been moved/deleted without crashing — skip it or surface an inline "file not found" state on tap, don't let a stale path take down the home screen.
 
+**7.1 "Continue reading" section (built).** The recent-documents list is split into two parts: a "Continue reading" section listing any recent document that still has a bookmark and isn't finished, shown above the full "Recent" list (which still lists every recently-opened document, bookmarked or not — a book with an active bookmark appears in both, not exclusively in one). "Finished" is derived, not stored: the last known scroll-position index (already persisted per-document, see above) is compared against the document's paragraph count — recorded on `RecentDocument` at open time specifically to make this cheap — and a document counts as finished once that reaches ≥95% through. A document with no bookmarks, or whose paragraph count wasn't recorded yet (entries persisted before this field existed), simply never qualifies for "Continue reading" rather than erroring. Nothing here is separately persisted — both lists are recomputed from existing per-document SharedPreferences state (`bookmarks_<id>`, `scroll_index_<id>`) every time the recent-documents list is loaded, so a book drops out on its own once its bookmarks are cleared or it's read to the end.
+
 ---
 
 ## 8. Instructions for the Coding Agent

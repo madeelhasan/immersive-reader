@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'library/reading_progress_lookup.dart';
 import 'library/recent_documents_repository.dart';
 import 'models/document_model.dart';
 import 'models/recent_document.dart';
@@ -125,6 +126,13 @@ class _HomePageState extends State<HomePage> {
   WordProgressRepository? _wordProgressRepository;
   DocumentCacheRepository? _documentCacheRepository;
   List<RecentDocument> _recentDocuments = [];
+  /// Recently-opened documents that still have a bookmark and aren't
+  /// finished yet (SPEC.md section 7 addendum) - a subset of
+  /// _recentDocuments, shown in an extra "Continue reading" section above
+  /// the full list. Recomputed on every _refreshRecentDocuments() call
+  /// rather than persisted, so a book drops out on its own once its
+  /// bookmarks are all removed or it's read to the end.
+  List<RecentDocument> _bookmarkedInProgress = [];
   Timer? _levelAdvanceDebounce;
   // Starts true (not false) so onboarding doesn't flash on screen for one
   // frame on every launch while _restoreOnboardingSeen's async read is still
@@ -140,7 +148,7 @@ class _HomePageState extends State<HomePage> {
     _restoreGermanLevel();
     _restoreOnboardingSeen();
     _initLocalDb();
-    _loadRecentDocuments();
+    _refreshRecentDocuments();
   }
 
   @override
@@ -149,10 +157,20 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  Future<void> _loadRecentDocuments() async {
+  /// Reloads the recent-documents list and recomputes which of them belong
+  /// in "Continue reading" (SPEC.md section 7 addendum). The single place
+  /// that touches both lists together, so every caller (initial load, after
+  /// opening a document, after removing one) stays in sync automatically.
+  Future<void> _refreshRecentDocuments() async {
     final recent = await _recentDocumentsRepository.getRecent();
+    final prefs = await SharedPreferences.getInstance();
+    final lookup = ReadingProgressLookup(prefs);
+    final inProgress = recent.where(lookup.isInProgress).toList();
     if (!mounted) return;
-    setState(() => _recentDocuments = recent);
+    setState(() {
+      _recentDocuments = recent;
+      _bookmarkedInProgress = inProgress;
+    });
   }
 
   /// LocalDb.init() is async, so neither repository is available on the
@@ -303,11 +321,9 @@ class _HomePageState extends State<HomePage> {
     if (fromRecent && !File(path).existsSync()) {
       final documentId = p.basenameWithoutExtension(path);
       await _recentDocumentsRepository.remove(documentId);
+      await _refreshRecentDocuments();
       if (!mounted) return;
-      setState(() {
-        _recentDocuments.removeWhere((d) => d.documentId == documentId);
-        _error = 'That file could not be found - it may have been moved or deleted.';
-      });
+      setState(() => _error = 'That file could not be found - it may have been moved or deleted.');
       return;
     }
 
@@ -362,8 +378,9 @@ class _HomePageState extends State<HomePage> {
         filePath: path,
         format: p.extension(path).replaceFirst('.', '').toLowerCase(),
         lastOpenedAt: DateTime.now(),
+        paragraphCount: document.paragraphs.length,
       ));
-      final recent = await _recentDocumentsRepository.getRecent();
+      await _refreshRecentDocuments();
 
       if (!mounted) return;
       setState(() {
@@ -371,7 +388,6 @@ class _HomePageState extends State<HomePage> {
         _tokens = tokens;
         _replacements = replacements;
         _error = null;
-        _recentDocuments = recent;
       });
     } catch (e) {
       setState(() {
@@ -646,30 +662,39 @@ class _HomePageState extends State<HomePage> {
           Text(_error!, style: TextStyle(color: Theme.of(context).colorScheme.error)),
           const SizedBox(height: 16),
         ],
+        if (_bookmarkedInProgress.isNotEmpty) ...[
+          Text('Continue reading', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          for (final doc in _bookmarkedInProgress)
+            _buildRecentDocumentCard(doc, leadingIcon: Icons.bookmark),
+          const SizedBox(height: 16),
+        ],
         Text('Recent', style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 8),
-        for (final doc in _recentDocuments)
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.description_outlined),
-              title: Text(doc.title),
-              subtitle: Text(_formatLastOpened(doc.lastOpenedAt)),
-              onTap: _isLoading ? null : () => _openPath(doc.filePath, fromRecent: true),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete_outline),
-                tooltip: 'Remove from recent',
-                onPressed: _isLoading ? null : () => _removeRecentDocument(doc.documentId),
-              ),
-            ),
-          ),
+        for (final doc in _recentDocuments) _buildRecentDocumentCard(doc, leadingIcon: Icons.description_outlined),
       ],
+    );
+  }
+
+  Widget _buildRecentDocumentCard(RecentDocument doc, {required IconData leadingIcon}) {
+    return Card(
+      child: ListTile(
+        leading: Icon(leadingIcon),
+        title: Text(doc.title),
+        subtitle: Text(_formatLastOpened(doc.lastOpenedAt)),
+        onTap: _isLoading ? null : () => _openPath(doc.filePath, fromRecent: true),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete_outline),
+          tooltip: 'Remove from recent',
+          onPressed: _isLoading ? null : () => _removeRecentDocument(doc.documentId),
+        ),
+      ),
     );
   }
 
   Future<void> _removeRecentDocument(String documentId) async {
     await _recentDocumentsRepository.remove(documentId);
-    final recent = await _recentDocumentsRepository.getRecent();
-    setState(() => _recentDocuments = recent);
+    await _refreshRecentDocuments();
   }
 
   String _formatLastOpened(DateTime dateTime) {
