@@ -16,8 +16,21 @@ import 'reader_controller.dart';
 
 // Wide desktop windows would otherwise stretch text edge-to-edge, which
 // hurts readability - constrains the reading column to a comfortable
-// measure regardless of window width.
-const double _readableColumnMaxWidth = 720.0;
+// measure. Not a single fixed value: a window right at this width would
+// have zero side margin (looks cramped/accidental, not deliberate), and a
+// much wider window left it pinned here too, wasting the extra space as two
+// large dead margins instead of a slightly wider, still-readable column.
+// Scales with window width between these two bounds - see _readableColumnWidth.
+const double _readableColumnMinWidth = 720.0;
+const double _readableColumnMaxWidthWide = 960.0;
+
+double _readableColumnWidth(double availableWidth) {
+  // 60% of the window is comfortably within typographic guidelines (~60-90
+  // characters per line at normal reading font sizes) across this range,
+  // and naturally lands at the historical fixed 720px around typical
+  // laptop-width windows, so existing behavior at common sizes is unchanged.
+  return (availableWidth * 0.6).clamp(_readableColumnMinWidth, _readableColumnMaxWidthWide);
+}
 
 class ReaderView extends StatefulWidget {
   final DocumentModel document;
@@ -758,26 +771,28 @@ class _ReaderViewState extends State<ReaderView> {
             if (_searchVisible) _buildSearchBar(),
             Expanded(
               child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: _readableColumnMaxWidth),
-                  child: ScrollablePositionedList.builder(
-                    itemScrollController: _itemScrollController,
-                    itemPositionsListener: _itemPositionsListener,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    itemCount: widget.document.paragraphs.length,
-                    itemBuilder: (context, index) {
-                      final paragraph = widget.document.paragraphs[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: Column(
-                          children: paragraph.sentences.map((sentence) {
-                            return Wrap(
-                              children: sentence.tokens.map(_buildToken).toList(),
-                            );
-                          }).toList(),
-                        ),
-                      );
-                    },
+                child: LayoutBuilder(
+                  builder: (context, constraints) => ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: _readableColumnWidth(constraints.maxWidth)),
+                    child: ScrollablePositionedList.builder(
+                      itemScrollController: _itemScrollController,
+                      itemPositionsListener: _itemPositionsListener,
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                      itemCount: widget.document.paragraphs.length,
+                      itemBuilder: (context, index) {
+                        final paragraph = widget.document.paragraphs[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: Column(
+                            children: paragraph.sentences.map((sentence) {
+                              return Wrap(
+                                children: sentence.tokens.map(_buildToken).toList(),
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
