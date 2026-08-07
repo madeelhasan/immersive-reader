@@ -4,6 +4,7 @@ import 'package:immersive_reader/models/document_model.dart';
 import 'package:immersive_reader/models/token.dart';
 import 'package:immersive_reader/reader/reader_controller.dart';
 import 'package:immersive_reader/reader/reader_view.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 DocumentModel _buildDocument({int paragraphCount = 200}) {
   return DocumentModel(
@@ -62,7 +63,7 @@ void main() {
     await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
     await tester.pump();
 
-    await tester.drag(find.byType(ListView), const Offset(0, -5000));
+    await tester.drag(find.byType(ScrollablePositionedList), const Offset(0, -5000));
     await tester.pump();
     await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
     await tester.pump();
@@ -89,7 +90,7 @@ void main() {
     await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
     await tester.pump();
 
-    await tester.drag(find.byType(ListView), const Offset(0, -5000));
+    await tester.drag(find.byType(ScrollablePositionedList), const Offset(0, -5000));
     await tester.pump();
     await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
     await tester.pump(); // let the SnackBar appear

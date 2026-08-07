@@ -15,6 +15,7 @@ dependencies:
   shared_preferences: ^2.3.2       # Per-document scroll position persistence
   http: ^1.2.0                     # Phase 3: fetch vocabulary from the backend API
   flutter_tts: ^4.2.0              # German pronunciation playback for replaced words
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show LogicalKeyboardKey;
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/bookmark.dart';
@@ -68,7 +69,15 @@ class _ReaderViewState extends State<ReaderView> {
   static const _maxFontSize = 32.0;
   static const _autoReplaceBookmarkPrefsKey = 'auto_replace_bookmark';
 
-  late ScrollController _scrollController;
+  // ItemScrollController/ItemPositionsListener (scrollable_positioned_list),
+  // not a plain ScrollController/ListView.builder: ListView.builder's
+  // SliverList has to synchronously build/measure a large span of
+  // off-screen content whenever asked to jump far from whatever's
+  // currently realized - measured directly, a single far jump cost low
+  // seconds on a 9000-paragraph document (a real, reported hang). This
+  // package's index-based jump doesn't have that cost.
+  late final ItemScrollController _itemScrollController;
+  late final ItemPositionsListener _itemPositionsListener;
   Timer? _saveDebounce;
   double _fontSize = 16.0;
   List<Bookmark> _bookmarks = [];
@@ -96,23 +105,26 @@ class _ReaderViewState extends State<ReaderView> {
   final Set<String> _toggledToEnglish = {};
 
   /// tokenIds already recorded as an SM-2 exposure this session. _buildToken
-  /// runs on every rebuild of a lazily-built ListView item (font size
-  /// change, scroll-triggered rebuild, etc.), so without this guard the same
-  /// token would be counted as a fresh exposure repeatedly.
+  /// runs on every rebuild of a lazily-built list item (font size change,
+  /// scroll-triggered rebuild, etc.), so without this guard the same token
+  /// would be counted as a fresh exposure repeatedly.
   final Set<String> _exposedTokenIds = {};
 
-  String get _prefsKey => 'scroll_position_${widget.document.document_id}';
+  // A different key than any earlier pixel-based scroll position storage
+  // this app may have used, deliberately - this now stores a paragraph
+  // index (an int), not a pixel offset (a double). Reusing the old key
+  // risks a type-mismatch read (getInt() on a value stored via setDouble())
+  // throwing on some platforms rather than failing gracefully.
+  String get _prefsKey => 'scroll_index_${widget.document.document_id}';
   String get _bookmarksPrefsKey => 'bookmarks_${widget.document.document_id}';
 
   @override
   void initState() {
     super.initState();
     _ttsService = widget.ttsService ?? TtsService();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        widget.controller.updateScrollPosition(_scrollController.position.pixels);
-        _scheduleSave(_scrollController.position.pixels);
-      });
+    _itemScrollController = ItemScrollController();
+    _itemPositionsListener = ItemPositionsListener.create()
+      ..itemPositions.addListener(_onPositionsChanged);
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _restoreScrollPosition());
     _loadBookmarks();
@@ -123,27 +135,42 @@ class _ReaderViewState extends State<ReaderView> {
   void dispose() {
     _saveDebounce?.cancel();
     _searchDebounce?.cancel();
-    _scrollController.dispose();
+    _itemPositionsListener.itemPositions.removeListener(_onPositionsChanged);
     _ttsService.dispose();
     _searchController.dispose();
     _searchFocusNode.dispose();
     super.dispose();
   }
 
-  Future<void> _restoreScrollPosition() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedPosition = prefs.getDouble(_prefsKey);
-    if (savedPosition == null || !_scrollController.hasClients) return;
-
-    final maxExtent = _scrollController.position.maxScrollExtent;
-    _scrollController.jumpTo(savedPosition.clamp(0.0, maxExtent));
+  void _onPositionsChanged() {
+    final topIndex = _topVisibleIndex;
+    if (topIndex == null) return;
+    widget.controller.updatePositionIndex(topIndex);
+    _scheduleSave(topIndex);
   }
 
-  void _scheduleSave(double position) {
+  /// The lowest paragraph index among items currently at least partially
+  /// visible in the viewport, or null before the first layout.
+  int? get _topVisibleIndex {
+    final positions = _itemPositionsListener.itemPositions.value;
+    if (positions.isEmpty) return null;
+    return positions.map((p) => p.index).reduce((a, b) => a < b ? a : b);
+  }
+
+  Future<void> _restoreScrollPosition() async {
+    if (widget.document.paragraphs.isEmpty) return;
+    final prefs = await SharedPreferences.getInstance();
+    final savedIndex = prefs.getInt(_prefsKey);
+    if (savedIndex == null || !_itemScrollController.isAttached) return;
+
+    _itemScrollController.jumpTo(index: savedIndex.clamp(0, widget.document.paragraphs.length - 1));
+  }
+
+  void _scheduleSave(int index) {
     _saveDebounce?.cancel();
     _saveDebounce = Timer(_debounceDuration, () async {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setDouble(_prefsKey, position);
+      await prefs.setInt(_prefsKey, index);
     });
   }
 
@@ -348,33 +375,26 @@ class _ReaderViewState extends State<ReaderView> {
     );
   }
 
-  // Paragraphs are capped at a fairly uniform size (see
-  // DocumentParser.buildParagraphs), so a fraction of the total paragraph
-  // count is a good approximation of a fraction of total scroll extent.
-  // Exact pixel-perfect jumps aren't worth the complexity of tracking
-  // per-item heights in a lazy ListView.builder for Phase 1. Shared by
-  // chapter jumps and the Ctrl+G go-to-page dialog below.
-  //
-  // A single jumpTo, not animateTo and not a refinement loop: ListView
-  // .builder's SliverList has to synchronously build/measure a large span
-  // of off-screen content whenever it's asked to land far from whatever's
-  // currently realized - measured directly, a single far jump already
-  // costs low seconds on a 9000-paragraph document, while a nearby jump is
-  // near-instant. animateTo sweeps through every intermediate scroll
-  // position (multiplying that cost across many frames), and a
-  // multi-iteration refinement loop that was tried here measured at 14+
-  // seconds for the same document - both are worse, not better. A single
-  // jumpTo trades some accuracy on documents with very uneven paragraph
-  // density for the app never freezing.
+  // Index-based, via ItemScrollController - not a pixel fraction of
+  // ScrollController.position.maxScrollExtent. Chapters, search matches,
+  // and go-to-page all already have a paragraph index directly; only
+  // bookmarks and the progress bar (a continuous drag/tap target) still
+  // deal in fractions, so _jumpToFraction converts once at that boundary.
+  void _jumpToIndex(int index) {
+    if (!_itemScrollController.isAttached) return;
+    final totalParagraphs = widget.document.paragraphs.length;
+    if (totalParagraphs == 0) return;
+    _itemScrollController.jumpTo(index: index.clamp(0, totalParagraphs - 1));
+  }
+
   void _jumpToFraction(double fraction) {
-    if (!_scrollController.hasClients) return;
-    final target = fraction.clamp(0.0, 1.0) * _scrollController.position.maxScrollExtent;
-    _scrollController.jumpTo(target.clamp(0.0, _scrollController.position.maxScrollExtent));
+    final totalParagraphs = widget.document.paragraphs.length;
+    if (totalParagraphs == 0) return;
+    _jumpToIndex((fraction.clamp(0.0, 1.0) * (totalParagraphs - 1)).round());
   }
 
   void _jumpToChapter(ChapterMarker chapter) {
-    if (widget.document.paragraphs.isEmpty) return;
-    _jumpToFraction(chapter.paragraphIndex / widget.document.paragraphs.length);
+    _jumpToIndex(chapter.paragraphIndex);
   }
 
   void _showChapterList() {
@@ -398,15 +418,15 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   double get _currentFraction {
-    if (!_scrollController.hasClients) return 0.0;
-    final maxExtent = _scrollController.position.maxScrollExtent;
-    if (maxExtent <= 0) return 0.0;
-    return (_scrollController.position.pixels / maxExtent).clamp(0.0, 1.0);
+    final totalParagraphs = widget.document.paragraphs.length;
+    if (totalParagraphs <= 1) return 0.0;
+    final topIndex = _topVisibleIndex;
+    if (topIndex == null) return 0.0;
+    return (topIndex / (totalParagraphs - 1)).clamp(0.0, 1.0);
   }
 
   // "Page" here means paragraph number (1-based) - the app doesn't paginate,
-  // so a paragraph index is the closest equivalent, consistent with the
-  // fraction-based navigation used everywhere else in this file.
+  // so a paragraph index is the closest equivalent.
   Future<void> _showGoToPageDialog() async {
     final totalPages = widget.document.paragraphs.length;
     if (totalPages == 0) return;
@@ -448,7 +468,7 @@ class _ReaderViewState extends State<ReaderView> {
       ),
     );
 
-    if (page != null) _jumpToFraction((page - 1) / totalPages);
+    if (page != null) _jumpToIndex(page - 1);
   }
 
   // Scans in small paragraph batches, yielding to the event loop between
@@ -532,10 +552,8 @@ class _ReaderViewState extends State<ReaderView> {
 
   void _jumpToMatch(int index) {
     if (index < 0 || index >= _searchMatches.length) return;
-    final totalParagraphs = widget.document.paragraphs.length;
-    if (totalParagraphs == 0) return;
     setState(() => _currentMatchIndex = index);
-    _jumpToFraction(_searchMatches[index].paragraphIndex / totalParagraphs);
+    _jumpToIndex(_searchMatches[index].paragraphIndex);
   }
 
   void _nextMatch() {
@@ -677,9 +695,9 @@ class _ReaderViewState extends State<ReaderView> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: AnimatedBuilder(
-                      animation: _scrollController,
-                      builder: (context, _) {
+                    child: ValueListenableBuilder<Iterable<ItemPosition>>(
+                      valueListenable: _itemPositionsListener.itemPositions,
+                      builder: (context, _, __) {
                         final fraction = _currentFraction;
                         return Row(
                           children: [
@@ -732,8 +750,9 @@ class _ReaderViewState extends State<ReaderView> {
               child: Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: _readableColumnMaxWidth),
-                  child: ListView.builder(
-                    controller: _scrollController,
+                  child: ScrollablePositionedList.builder(
+                    itemScrollController: _itemScrollController,
+                    itemPositionsListener: _itemPositionsListener,
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                     itemCount: widget.document.paragraphs.length,
                     itemBuilder: (context, index) {

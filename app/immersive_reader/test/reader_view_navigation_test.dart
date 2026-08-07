@@ -5,6 +5,7 @@ import 'package:immersive_reader/models/document_model.dart';
 import 'package:immersive_reader/models/token.dart';
 import 'package:immersive_reader/reader/reader_controller.dart';
 import 'package:immersive_reader/reader/reader_view.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 DocumentModel _buildDocument({List<ChapterMarker> chapters = const [], int paragraphCount = 10}) {
   return DocumentModel(
@@ -51,8 +52,12 @@ void main() {
 
     expect(find.text('0%'), findsOneWidget);
 
-    await tester.drag(find.byType(ListView), const Offset(0, -5000));
-    await tester.pump();
+    await tester.drag(find.byType(ScrollablePositionedList), const Offset(0, -5000));
+    // ScrollablePositionedList computes item positions on a post-frame
+    // callback (unlike a plain ScrollController, which updates pixels
+    // synchronously as part of the drag), so a single pump() isn't always
+    // enough to see the rebuilt percentage.
+    await tester.pumpAndSettle();
 
     expect(find.text('0%'), findsNothing);
   });
