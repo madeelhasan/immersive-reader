@@ -10312,5 +10312,455 @@
     "de": "Petition",
     "cefr_level": "B1",
     "part_of_speech": "noun"
+  },
+  {
+    "en": "nevertheless",
+    "de": "dennoch",
+    "cefr_level": "C1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "notwithstanding",
+    "de": "ungeachtet",
+    "cefr_level": "C1",
+    "part_of_speech": "preposition"
+  },
+  {
+    "en": "presumably",
+    "de": "vermutlich",
+    "cefr_level": "C1",
+    "part_of_speech": "adverb"
+  },
+  {
+    "en": "inference",
+    "de": "die Schlussfolgerung",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "underlying",
+    "de": "zugrunde liegend",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "plausible",
+    "de": "plausibel",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "discrepancy",
+    "de": "die Diskrepanz",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ambiguous",
+    "de": "mehrdeutig",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "conjecture",
+    "de": "die Vermutung",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "corroborate",
+    "de": "bestätigen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "refute",
+    "de": "widerlegen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "substantiate",
+    "de": "untermauern",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "postulate",
+    "de": "postulieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "premise",
+    "de": "die Prämisse",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "axiom",
+    "de": "das Axiom",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "corollary",
+    "de": "das Korollar",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dichotomy",
+    "de": "die Dichotomie",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "paradox",
+    "de": "das Paradox",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nuance",
+    "de": "die Nuance",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "subtle",
+    "de": "subtil",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "explicit",
+    "de": "explizit",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "implicit",
+    "de": "implizit",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "coherent",
+    "de": "kohärent",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cogent",
+    "de": "überzeugend",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "fallacious",
+    "de": "trügerisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "specious",
+    "de": "scheinbar",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "tenable",
+    "de": "haltbar",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "untenable",
+    "de": "unhaltbar",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "rigorous",
+    "de": "streng",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "meticulous",
+    "de": "akribisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "exhaustive",
+    "de": "erschöpfend",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "comprehensive",
+    "de": "umfassend",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "systematic",
+    "de": "systematisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "methodical",
+    "de": "methodisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "empirical",
+    "de": "empirisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "theoretical",
+    "de": "theoretisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "hypothetical",
+    "de": "hypothetisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "speculative",
+    "de": "spekulativ",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "inductive",
+    "de": "induktiv",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "deductive",
+    "de": "deduktiv",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "syllogism",
+    "de": "der Syllogismus",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dialectic",
+    "de": "die Dialektik",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rhetoric",
+    "de": "die Rhetorik",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "eloquence",
+    "de": "die Beredsamkeit",
+    "cefr_level": "C1",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "articulate",
+    "de": "artikulieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "elucidate",
+    "de": "erläutern",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "expound",
+    "de": "ausführen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "delineate",
+    "de": "umreißen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "scrutinize",
+    "de": "prüfen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "dissect",
+    "de": "sezieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "appraise",
+    "de": "bewerten",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "assess",
+    "de": "beurteilen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "evaluate",
+    "de": "evaluieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "juxtapose",
+    "de": "gegenüberstellen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "synthesize",
+    "de": "synthetisieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "integrate",
+    "de": "integrieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "reconcile",
+    "de": "versöhnen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "differentiate",
+    "de": "unterscheiden",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "distinguish",
+    "de": "unterscheiden",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "discern",
+    "de": "erkennen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "infer",
+    "de": "schließen",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "deduce",
+    "de": "ableiten",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "extrapolate",
+    "de": "extrapolieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "interpolate",
+    "de": "interpolieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "hypothesize",
+    "de": "hypothetisieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "theorize",
+    "de": "theoretisieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "conceptualize",
+    "de": "konzeptualisieren",
+    "cefr_level": "C1",
+    "part_of_speech": "verb"
+  },
+  {
+    "en": "abstract",
+    "de": "abstrakt",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "concrete",
+    "de": "konkret",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "general",
+    "de": "allgemein",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "specific",
+    "de": "spezifisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "universal",
+    "de": "universell",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "particular",
+    "de": "besondere",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "fundamental",
+    "de": "grundlegend",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "intrinsic",
+    "de": "intrinsisch",
+    "cefr_level": "C1",
+    "part_of_speech": "adjective"
   }
 ]
