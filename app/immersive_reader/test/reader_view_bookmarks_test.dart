@@ -112,6 +112,35 @@ void main() {
     expect(find.text('0% through'), findsOneWidget);
   });
 
+  testWidgets('jumping to a bookmark flashes its paragraph, which fades out on its own', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: ReaderView(document: _buildDocument(), controller: ReaderController())),
+    ));
+    await tester.pump();
+
+    await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
+    await tester.pump();
+    await tester.drag(find.byType(ScrollablePositionedList), const Offset(0, -5000));
+    await tester.pump();
+
+    bool anyFlashing() => tester
+        .widgetList<AnimatedContainer>(find.byType(AnimatedContainer))
+        .any((c) => (c.decoration as BoxDecoration?)?.color != Colors.transparent);
+
+    expect(anyFlashing(), isFalse);
+
+    await _openBookmarksList(tester);
+    await tester.tap(find.text('0% through'));
+    await tester.pump();
+
+    expect(anyFlashing(), isTrue);
+
+    await tester.pump(const Duration(milliseconds: 1600));
+    await tester.pumpAndSettle();
+
+    expect(anyFlashing(), isFalse);
+  });
+
   testWidgets('deleting a bookmark removes it from the list', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(body: ReaderView(document: _buildDocument(), controller: ReaderController())),

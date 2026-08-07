@@ -100,6 +100,9 @@ class _ReaderViewState extends State<ReaderView> {
   late final ItemScrollController _itemScrollController;
   late final ItemPositionsListener _itemPositionsListener;
   Timer? _saveDebounce;
+  static const _flashHighlightDuration = Duration(milliseconds: 1500);
+  int? _flashParagraphIndex;
+  Timer? _flashTimer;
   double _fontSize = 16.0;
   List<Bookmark> _bookmarks = [];
   bool _autoReplaceBookmark = false;
@@ -156,6 +159,7 @@ class _ReaderViewState extends State<ReaderView> {
   void dispose() {
     _saveDebounce?.cancel();
     _searchDebounce?.cancel();
+    _flashTimer?.cancel();
     _itemPositionsListener.itemPositions.removeListener(_onPositionsChanged);
     _ttsService.dispose();
     _searchController.dispose();
@@ -322,7 +326,9 @@ class _ReaderViewState extends State<ReaderView> {
                           ),
                           onTap: () {
                             Navigator.pop(sheetContext);
-                            _jumpToFraction(bookmark.fraction);
+                            final index = _indexForFraction(bookmark.fraction);
+                            _jumpToIndex(index);
+                            _flashParagraph(index);
                           },
                         );
                       }).toList(),
@@ -410,10 +416,30 @@ class _ReaderViewState extends State<ReaderView> {
     _itemScrollController.jumpTo(index: index.clamp(0, totalParagraphs - 1));
   }
 
-  void _jumpToFraction(double fraction) {
+  int _indexForFraction(double fraction) {
     final totalParagraphs = widget.document.paragraphs.length;
-    if (totalParagraphs == 0) return;
-    _jumpToIndex((fraction.clamp(0.0, 1.0) * (totalParagraphs - 1)).round());
+    if (totalParagraphs == 0) return 0;
+    return (fraction.clamp(0.0, 1.0) * (totalParagraphs - 1)).round();
+  }
+
+  void _jumpToFraction(double fraction) {
+    if (widget.document.paragraphs.isEmpty) return;
+    _jumpToIndex(_indexForFraction(fraction));
+  }
+
+  /// Briefly highlights [index]'s paragraph so a bookmark jump - which can
+  /// land the reader anywhere in a huge, uniformly-styled document with no
+  /// other visual cue - is obviously "you are here", not just a scroll that
+  /// might've undershot or overshot. Fades back out on its own; a second
+  /// flash while one is already fading just restarts the clock rather than
+  /// stacking.
+  void _flashParagraph(int index) {
+    _flashTimer?.cancel();
+    setState(() => _flashParagraphIndex = index);
+    _flashTimer = Timer(_flashHighlightDuration, () {
+      if (!mounted) return;
+      setState(() => _flashParagraphIndex = null);
+    });
   }
 
   void _jumpToChapter(ChapterMarker chapter) {
@@ -781,7 +807,13 @@ class _ReaderViewState extends State<ReaderView> {
                       itemCount: widget.document.paragraphs.length,
                       itemBuilder: (context, index) {
                         final paragraph = widget.document.paragraphs[index];
-                        return Padding(
+                        final isFlashing = index == _flashParagraphIndex;
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeOut,
+                          color: isFlashing
+                              ? Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.6)
+                              : Colors.transparent,
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Column(
                             children: paragraph.sentences.map((sentence) {
