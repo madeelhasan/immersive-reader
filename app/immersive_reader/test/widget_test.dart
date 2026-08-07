@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:immersive_reader/main.dart';
+import 'package:immersive_reader/theme/reader_theme_palette.dart';
 
 void main() {
   testWidgets('App starts on the empty-library home screen', (WidgetTester tester) async {
@@ -115,5 +116,51 @@ void main() {
     await tester.tap(find.byIcon(Icons.settings_outlined));
     await tester.pumpAndSettle();
     expect(find.text('Light'), findsOneWidget);
+  });
+
+  testWidgets('Settings sheet offers all four theme palettes, with high contrast noted',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    for (final label in ['Warm', 'Sage', 'Ocean', 'High Contrast']) {
+      expect(find.text(label), findsOneWidget);
+    }
+    expect(find.textContaining('larger minimum text'), findsOneWidget);
+  });
+
+  testWidgets('selecting a theme palette persists it, and a fresh launch restores it',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Ocean'));
+    await tester.pumpAndSettle();
+
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('theme_palette'), 'ocean');
+
+    await tester.tap(find.byType(ModalBarrier).last);
+    await tester.pumpAndSettle();
+
+    await tester.pumpWidget(ImmersiveReaderApp(key: UniqueKey()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    final radio =
+        tester.widget<RadioGroup<ReaderThemePalette>>(find.byType(RadioGroup<ReaderThemePalette>));
+    expect(radio.groupValue, ReaderThemePalette.ocean);
   });
 }

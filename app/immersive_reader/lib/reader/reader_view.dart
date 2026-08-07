@@ -12,6 +12,7 @@ import '../models/token.dart';
 import '../progress/sm2_scheduler.dart';
 import '../progress/word_progress_repository.dart';
 import '../tts/tts_service.dart';
+import '../theme/reader_theme_palette.dart';
 import 'reader_controller.dart';
 import 'reader_prefs_keys.dart';
 
@@ -61,6 +62,13 @@ class ReaderView extends StatefulWidget {
   /// before this exposure.
   final VoidCallback? onWordLearned;
 
+  /// Defaults to warm (this app's original palette) so existing tests and
+  /// call sites that don't care about theming keep working unchanged.
+  /// Drives the bookmark-jump highlight color and, for highContrast, also
+  /// raises the minimum font size and bolds reading text - see
+  /// ReaderThemePalette.isHighContrast.
+  final ReaderThemePalette themePalette;
+
   const ReaderView({
     super.key,
     required this.document,
@@ -69,6 +77,7 @@ class ReaderView extends StatefulWidget {
     this.ttsService,
     this.wordProgressRepository,
     this.onWordLearned,
+    this.themePalette = ReaderThemePalette.warm,
   });
 
   @override
@@ -89,11 +98,21 @@ class _ReaderViewState extends State<ReaderView> {
   static const _debounceDuration = Duration(milliseconds: 400);
   static const _minFontSize = 10.0;
   static const _maxFontSize = 32.0;
+  // The floor while ReaderThemePalette.highContrast is active - noticeably
+  // larger than the normal 10px floor, per that theme's accessibility
+  // intent. Only affects the floor, not the persisted preference itself:
+  // switching away from high contrast later restores whatever smaller size
+  // the reader had before, rather than permanently overwriting it.
+  static const _highContrastMinFontSize = 20.0;
   static const _autoReplaceBookmarkPrefsKey = 'auto_replace_bookmark';
   // Global, not per-document (like _prefsKey/scroll position) - font size
   // is a reading preference, not something tied to a particular document's
   // content, so it should carry over to the next book opened too.
   static const _fontSizePrefsKey = 'font_size';
+
+  bool get _highContrast => widget.themePalette.isHighContrast;
+  double get _effectiveMinFontSize => _highContrast ? _highContrastMinFontSize : _minFontSize;
+  double get _effectiveFontSize => _fontSize < _effectiveMinFontSize ? _effectiveMinFontSize : _fontSize;
 
   // ItemScrollController/ItemPositionsListener (scrollable_positioned_list),
   // not a plain ScrollController/ListView.builder: ListView.builder's
@@ -360,7 +379,7 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   void _adjustFontSize(double delta) {
-    final next = (_fontSize + delta).clamp(_minFontSize, _maxFontSize);
+    final next = (_fontSize + delta).clamp(_effectiveMinFontSize, _maxFontSize);
     setState(() => _fontSize = next);
     SharedPreferences.getInstance().then((prefs) => prefs.setDouble(_fontSizePrefsKey, next));
   }
@@ -393,9 +412,13 @@ class _ReaderViewState extends State<ReaderView> {
 
   Widget _buildToken(Token token) {
     final highlightColor = _highlightColorFor(token.tokenId);
+    final fontWeight = _highContrast ? FontWeight.bold : null;
     final germanText = widget.replacements[token.tokenId];
     if (germanText == null) {
-      return Text('${token.text} ', style: TextStyle(fontSize: _fontSize, backgroundColor: highlightColor));
+      return Text(
+        '${token.text} ',
+        style: TextStyle(fontSize: _effectiveFontSize, fontWeight: fontWeight, backgroundColor: highlightColor),
+      );
     }
 
     final showingGerman = !_toggledToEnglish.contains(token.tokenId);
@@ -411,7 +434,8 @@ class _ReaderViewState extends State<ReaderView> {
         child: Text(
           '${showingGerman ? germanText : token.text} ',
           style: TextStyle(
-            fontSize: _fontSize,
+            fontSize: _effectiveFontSize,
+            fontWeight: fontWeight,
             color: showingGerman ? Colors.blue : null,
             decoration: showingGerman ? TextDecoration.underline : null,
             backgroundColor: highlightColor,
@@ -797,9 +821,9 @@ class _ReaderViewState extends State<ReaderView> {
                 IconButton(
                   icon: const Icon(Icons.remove),
                   tooltip: 'Decrease font size',
-                  onPressed: _fontSize > _minFontSize ? () => _adjustFontSize(-2) : null,
+                  onPressed: _fontSize > _effectiveMinFontSize ? () => _adjustFontSize(-2) : null,
                 ),
-                Text('${_fontSize.round()}'),
+                Text('${_effectiveFontSize.round()}'),
                 IconButton(
                   icon: const Icon(Icons.add),
                   tooltip: 'Increase font size',
@@ -832,14 +856,14 @@ class _ReaderViewState extends State<ReaderView> {
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 400),
                             curve: Curves.easeOut,
-                            // A fixed highlighter color, not a theme-derived
-                            // tint: colorScheme.primaryContainer against this
-                            // app's warm cream/charcoal reading palette came
-                            // out close enough to the background to be nearly
-                            // invisible. Amber reads clearly as "you are
-                            // here" against either theme, matching the
-                            // existing search-match highlight style below.
-                            color: isFlashing ? Colors.amber.withValues(alpha: 0.55) : Colors.transparent,
+                            // Per-palette, not a theme-derived tint or a
+                            // single fixed color: colorScheme.primaryContainer
+                            // against this app's original warm cream/charcoal
+                            // palette came out close enough to the background
+                            // to be nearly invisible, and a single hue can't
+                            // be guaranteed to contrast well against every
+                            // palette - see ReaderThemePalette.bookmarkHighlightColor.
+                            color: isFlashing ? widget.themePalette.bookmarkHighlightColor : Colors.transparent,
                             padding: const EdgeInsets.only(bottom: 12),
                             child: Column(
                               children: paragraph.sentences.map((sentence) {

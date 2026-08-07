@@ -4,6 +4,7 @@ import 'package:immersive_reader/models/document_model.dart';
 import 'package:immersive_reader/models/token.dart';
 import 'package:immersive_reader/reader/reader_controller.dart';
 import 'package:immersive_reader/reader/reader_view.dart';
+import 'package:immersive_reader/theme/reader_theme_palette.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 DocumentModel _buildDocument({int paragraphCount = 200}) {
@@ -145,6 +146,35 @@ void main() {
     await tester.pump();
 
     expect(anyFlashing(), isFalse);
+  });
+
+  testWidgets('the flash color matches the active theme palette, not a fixed color', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: ReaderView(
+          document: _buildDocument(),
+          controller: ReaderController(),
+          themePalette: ReaderThemePalette.ocean,
+        ),
+      ),
+    ));
+    await tester.pump();
+
+    await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
+    await tester.pump();
+    await _openBookmarksList(tester);
+    await tester.tap(find.text('0% through'));
+    await tester.pump();
+
+    final flashed = tester
+        .widgetList<AnimatedContainer>(find.byType(AnimatedContainer))
+        .where((c) => (c.decoration as BoxDecoration?)?.color != Colors.transparent)
+        .toList();
+    expect(flashed, isNotEmpty);
+    expect(
+      (flashed.first.decoration as BoxDecoration).color,
+      ReaderThemePalette.ocean.bookmarkHighlightColor,
+    );
   });
 
   testWidgets('tapping the flashed paragraph dismisses the highlight immediately', (tester) async {

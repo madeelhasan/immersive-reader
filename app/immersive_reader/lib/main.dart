@@ -21,6 +21,7 @@ import 'reader/reader_view.dart';
 import 'replacement/replacement_engine.dart';
 import 'storage/document_cache_repository.dart';
 import 'storage/local_db.dart';
+import 'theme/reader_theme_palette.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
 void main() {
@@ -45,13 +46,16 @@ class ImmersiveReaderApp extends StatefulWidget {
 
 class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   static const _themeModePrefsKey = 'theme_mode';
+  static const _themePalettePrefsKey = 'theme_palette';
 
   ThemeMode _themeMode = ThemeMode.system;
+  ReaderThemePalette _themePalette = ReaderThemePalette.warm;
 
   @override
   void initState() {
     super.initState();
     _restoreThemeMode();
+    _restoreThemePalette();
   }
 
   Future<void> _restoreThemeMode() async {
@@ -62,18 +66,20 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
     setState(() => _themeMode = mode);
   }
 
-  // A warm, book-like palette instead of stock Material blue/white - cream
-  // "paper" in light mode, soft warm charcoal (not pure black) in dark
-  // mode, both easier on the eyes for long-form reading than high-contrast
-  // pure white/black. Georgia ships with Windows, so this needs no new
-  // font asset or runtime download, matching the app's offline-first bent.
+  Future<void> _restoreThemePalette() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getString(_themePalettePrefsKey);
+    final palette =
+        ReaderThemePalette.values.firstWhere((p) => p.name == saved, orElse: () => ReaderThemePalette.warm);
+    if (!mounted || palette == _themePalette) return;
+    setState(() => _themePalette = palette);
+  }
+
+  // Georgia ships with Windows, so a serif reading font needs no new font
+  // asset or runtime download, matching the app's offline-first bent -
+  // colors themselves come from the selected ReaderThemePalette
+  // (lib/theme/reader_theme_palette.dart), not fixed constants here.
   static const _readingFontFamily = 'Georgia';
-  static const _lightBackground = Color(0xFFFBF6EC);
-  static const _lightText = Color(0xFF2B2620);
-  static const _lightAccent = Color(0xFF8B5E34);
-  static const _darkBackground = Color(0xFF1E1B16);
-  static const _darkText = Color(0xFFEDE6D9);
-  static const _darkAccent = Color(0xFFD9A566);
 
   void _cycleThemeMode() {
     final next = switch (_themeMode) {
@@ -85,22 +91,24 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
     SharedPreferences.getInstance().then((prefs) => prefs.setString(_themeModePrefsKey, next.name));
   }
 
-  static ThemeData _buildTheme({
-    required Brightness brightness,
-    required Color background,
-    required Color text,
-    required Color accent,
-  }) {
+  void _setThemePalette(ReaderThemePalette palette) {
+    setState(() => _themePalette = palette);
+    SharedPreferences.getInstance().then((prefs) => prefs.setString(_themePalettePrefsKey, palette.name));
+  }
+
+  static ThemeData _buildTheme({required Brightness brightness, required PaletteColors colors}) {
     final base = ThemeData(
       brightness: brightness,
-      scaffoldBackgroundColor: background,
-      colorScheme: ColorScheme.fromSeed(seedColor: accent, brightness: brightness).copyWith(surface: background),
-      appBarTheme: AppBarTheme(backgroundColor: background, foregroundColor: text, elevation: 0),
+      scaffoldBackgroundColor: colors.background,
+      colorScheme: ColorScheme.fromSeed(seedColor: colors.accent, brightness: brightness)
+          .copyWith(surface: colors.background),
+      appBarTheme: AppBarTheme(backgroundColor: colors.background, foregroundColor: colors.text, elevation: 0),
     );
     return base.copyWith(
-      textTheme: base.textTheme.apply(fontFamily: _readingFontFamily, bodyColor: text, displayColor: text),
-      primaryTextTheme:
-          base.primaryTextTheme.apply(fontFamily: _readingFontFamily, bodyColor: text, displayColor: text),
+      textTheme:
+          base.textTheme.apply(fontFamily: _readingFontFamily, bodyColor: colors.text, displayColor: colors.text),
+      primaryTextTheme: base.primaryTextTheme
+          .apply(fontFamily: _readingFontFamily, bodyColor: colors.text, displayColor: colors.text),
     );
   }
 
@@ -109,20 +117,15 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
     return MaterialApp(
       title: 'Immersive Reader',
       debugShowCheckedModeBanner: false,
-      theme: _buildTheme(
-        brightness: Brightness.light,
-        background: _lightBackground,
-        text: _lightText,
-        accent: _lightAccent,
-      ),
-      darkTheme: _buildTheme(
-        brightness: Brightness.dark,
-        background: _darkBackground,
-        text: _darkText,
-        accent: _darkAccent,
-      ),
+      theme: _buildTheme(brightness: Brightness.light, colors: _themePalette.light),
+      darkTheme: _buildTheme(brightness: Brightness.dark, colors: _themePalette.dark),
       themeMode: _themeMode,
-      home: HomePage(themeMode: _themeMode, onToggleTheme: _cycleThemeMode),
+      home: HomePage(
+        themeMode: _themeMode,
+        onToggleTheme: _cycleThemeMode,
+        themePalette: _themePalette,
+        onThemePaletteChanged: _setThemePalette,
+      ),
     );
   }
 }
@@ -130,8 +133,16 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
 class HomePage extends StatefulWidget {
   final ThemeMode themeMode;
   final VoidCallback onToggleTheme;
+  final ReaderThemePalette themePalette;
+  final ValueChanged<ReaderThemePalette> onThemePaletteChanged;
 
-  const HomePage({super.key, required this.themeMode, required this.onToggleTheme});
+  const HomePage({
+    super.key,
+    required this.themeMode,
+    required this.onToggleTheme,
+    required this.themePalette,
+    required this.onThemePaletteChanged,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -474,56 +485,84 @@ class _HomePageState extends State<HomePage> {
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Text('Settings', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  ),
-                  const SizedBox(height: 8),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Text('APP', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
-                  ),
-                  ListTile(
-                    leading: Icon(_themeIcon),
-                    title: const Text('Theme'),
-                    subtitle: Text(_themeLabel),
-                    onTap: () {
-                      widget.onToggleTheme();
-                      setSheetState(() {});
-                    },
-                  ),
-                  const Divider(height: 24),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Text('READING & VOCABULARY', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
-                  ),
-                  RadioGroup<String>(
-                    groupValue: _germanLevel,
-                    onChanged: (selected) {
-                      if (selected == null) return;
-                      _setGermanLevel(selected);
-                      setSheetState(() {});
-                    },
-                    child: Column(
-                      children: [
-                        for (final level in ReplacementEngine.levelOrder)
-                          RadioListTile<String>(value: level, title: Text(level)),
-                      ],
+              // Scrollable, not a plain Column: with the theme-palette
+              // picker added alongside the CEFR level picker, the sheet's
+              // natural content height can exceed the available screen
+              // height - SingleChildScrollView lets it scroll instead of
+              // overflowing/clipping.
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Text('Settings', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(
-                      'Replacements are drawn from your level and everything below it, and get denser at higher levels. '
-                      'Level up automatically once every word at your current level is learned.',
-                      style: Theme.of(context).textTheme.bodySmall,
+                    const SizedBox(height: 8),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Text('APP', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
                     ),
-                  ),
-                ],
+                    ListTile(
+                      leading: Icon(_themeIcon),
+                      title: const Text('Theme'),
+                      subtitle: Text(_themeLabel),
+                      onTap: () {
+                        widget.onToggleTheme();
+                        setSheetState(() {});
+                      },
+                    ),
+                    RadioGroup<ReaderThemePalette>(
+                      groupValue: widget.themePalette,
+                      onChanged: (selected) {
+                        if (selected == null) return;
+                        widget.onThemePaletteChanged(selected);
+                        setSheetState(() {});
+                      },
+                      child: Column(
+                        children: [
+                          for (final palette in ReaderThemePalette.values)
+                            RadioListTile<ReaderThemePalette>(
+                              value: palette,
+                              title: Text(palette.label),
+                              subtitle: palette.isHighContrast
+                                  ? const Text('High contrast, bolder, larger minimum text')
+                                  : null,
+                            ),
+                        ],
+                      ),
+                    ),
+                    const Divider(height: 24),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Text('READING & VOCABULARY',
+                          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
+                    ),
+                    RadioGroup<String>(
+                      groupValue: _germanLevel,
+                      onChanged: (selected) {
+                        if (selected == null) return;
+                        _setGermanLevel(selected);
+                        setSheetState(() {});
+                      },
+                      child: Column(
+                        children: [
+                          for (final level in ReplacementEngine.levelOrder)
+                            RadioListTile<String>(value: level, title: Text(level)),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        'Replacements are drawn from your level and everything below it, and get denser at higher levels. '
+                        'Level up automatically once every word at your current level is learned.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -576,6 +615,7 @@ class _HomePageState extends State<HomePage> {
                   replacements: _replacements,
                   wordProgressRepository: _wordProgressRepository,
                   onWordLearned: _onWordLearned,
+                  themePalette: widget.themePalette,
                 ),
     );
   }
