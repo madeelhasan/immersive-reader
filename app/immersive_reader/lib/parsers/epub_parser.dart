@@ -1,10 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
 import 'package:path/path.dart' as p;
 
 import '../models/document_model.dart';
+import 'archive_safety.dart';
 import 'html_text_utils.dart';
 import 'parser_interface.dart';
 
@@ -115,5 +115,5 @@ class EpubParser extends DocumentParser {
     return htmlFiles.map(_decode).toList();
   }
 
-  String _decode(ArchiveFile file) => utf8.decode(file.content as List<int>);
+  String _decode(ArchiveFile file) => decodeArchiveEntrySafely(file);
 }

@@ -1,10 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
 import 'package:path/path.dart' as p;
 
 import '../models/document_model.dart';
+import 'archive_safety.dart';
 import 'parser_interface.dart';
 
 /// DOCX is a zip of XML files. We parse word/document.xml manually (rather
@@ -18,7 +18,7 @@ class DocxParser extends DocumentParser {
     final archive = ZipDecoder().decodeBytes(bytes);
     final documentXml = archive.files
         .firstWhere((f) => f.name == 'word/document.xml');
-    final xml = utf8.decode(documentXml.content as List<int>);
+    final xml = decodeArchiveEntrySafely(documentXml);
 
     final blocks = _paragraphText(xml).where((line) => line.isNotEmpty);
 
