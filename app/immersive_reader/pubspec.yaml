@@ -21,8 +21,32 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^4.0.0
   sqflite_common_ffi: ^2.3.3        # In-memory SQLite for testing LocalDb/WordProgressRepository (no plugin channel in widget tests)
+  msix: 2.7.3
+
+# msix's published pubspec.yaml misdeclares itself as a native Windows
+# plugin to current Flutter tooling, breaking `flutter run`/`build windows`
+# - see vendor/README.md for the full explanation. Drop this override if a
+# future msix release fixes it upstream.
+dependency_overrides:
+  msix:
+    path: vendor/msix
 
 flutter:
   uses-material-design: true
   assets:
     - assets/vocab/
+
+# Windows installer packaging (`dart run msix:create`) - see
+# packaging/windows/README.md. Unsigned/test-signed for now; real code
+# signing is a separate, still-open TODO item (unsigned .msix/.exe gets
+# SmartScreen-blocked on another machine, but this still produces a real,
+# installable package for local testing).
+msix_config:
+  display_name: Immersive Reader
+  publisher_display_name: Immersive Reader
+  identity_name: com.immersivereader.app
+  publisher: CN=ImmersiveReaderDev
+  logo_path: packaging/windows/app_icon.png
+  msix_version: 1.0.0.0
+  capabilities: internetClient
+  languages: en-us, de-de

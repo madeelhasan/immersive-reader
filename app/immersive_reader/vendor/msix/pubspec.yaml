@@ -1,0 +1,33 @@
+name: msix
+description: A command-line tool that create Msix installer from your flutter windows-build files.
+version: 2.7.3
+maintainer: Yehuda Kremer (yehudakremer@gmail.com)
+homepage: https://github.com/YehudaKremer/msix
+
+flutter:
+  plugin:
+    platforms:
+      windows:
+        dartPluginClass: Msix
+        # Upstream declares `pluginClass: none` here as a legacy placeholder
+        # for "dart-only, no native code" - current Flutter tooling's
+        # NativeOrDartPlugin.hasMethodChannel() only checks `pluginClass !=
+        # null`, with no special case for the literal string "none", so it
+        # misclassifies this as a native plugin and CMake fails looking for
+        # a nonexistent windows/ build dir inside the msix package. Omitting
+        # the key entirely (this package has no native code) fixes that.
+        # See vendor/README.md.
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ansicolor: ^2.0.1
+  args: ^2.3.0
+  yaml: ^3.1.0
+  path: ^1.8.0
+  package_config: ^2.0.2
+  injector: ^2.0.0
