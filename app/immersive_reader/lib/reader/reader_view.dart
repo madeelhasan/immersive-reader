@@ -52,6 +52,15 @@ class ReaderView extends StatefulWidget {
   State<ReaderView> createState() => _ReaderViewState();
 }
 
+/// A single search hit: which paragraph it's in (for the same
+/// fraction-based approximate jump used by chapter/bookmark navigation)
+/// and which token to highlight.
+class _SearchMatch {
+  final int paragraphIndex;
+  final String tokenId;
+  const _SearchMatch(this.paragraphIndex, this.tokenId);
+}
+
 class _ReaderViewState extends State<ReaderView> {
   static const _debounceDuration = Duration(milliseconds: 400);
   static const _minFontSize = 10.0;
@@ -64,6 +73,14 @@ class _ReaderViewState extends State<ReaderView> {
   List<Bookmark> _bookmarks = [];
   bool _autoReplaceBookmark = false;
   late final TtsService _ttsService;
+
+  bool _searchVisible = false;
+  final TextEditingController _searchController = TextEditingController();
+  final FocusNode _searchFocusNode = FocusNode();
+  String _searchQuery = '';
+  List<_SearchMatch> _searchMatches = [];
+  Set<String> _matchedTokenIds = {};
+  int _currentMatchIndex = -1;
 
   /// tokenIds the user has manually tapped back to English. Replaced tokens
   /// show German by default; toggling flips a single occurrence, not every
@@ -100,6 +117,8 @@ class _ReaderViewState extends State<ReaderView> {
     _saveDebounce?.cancel();
     _scrollController.dispose();
     _ttsService.dispose();
+    _searchController.dispose();
+    _searchFocusNode.dispose();
     super.dispose();
   }
 
@@ -287,9 +306,10 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   Widget _buildToken(Token token) {
+    final highlightColor = _highlightColorFor(token.tokenId);
     final germanText = widget.replacements[token.tokenId];
     if (germanText == null) {
-      return Text('${token.text} ', style: TextStyle(fontSize: _fontSize));
+      return Text('${token.text} ', style: TextStyle(fontSize: _fontSize, backgroundColor: highlightColor));
     }
 
     final showingGerman = !_toggledToEnglish.contains(token.tokenId);
@@ -313,6 +333,7 @@ class _ReaderViewState extends State<ReaderView> {
             fontSize: _fontSize,
             color: showingGerman ? Colors.blue : null,
             decoration: showingGerman ? TextDecoration.underline : null,
+            backgroundColor: highlightColor,
           ),
         ),
       ),
@@ -414,11 +435,134 @@ class _ReaderViewState extends State<ReaderView> {
     if (page != null) _jumpToFraction((page - 1) / totalPages);
   }
 
+  List<_SearchMatch> _findMatches(String query) {
+    if (query.trim().isEmpty) return [];
+    final lowerQuery = query.toLowerCase();
+    final matches = <_SearchMatch>[];
+    for (var i = 0; i < widget.document.paragraphs.length; i++) {
+      for (final sentence in widget.document.paragraphs[i].sentences) {
+        for (final token in sentence.tokens) {
+          if (token.isWord && token.text.toLowerCase().contains(lowerQuery)) {
+            matches.add(_SearchMatch(i, token.tokenId));
+          }
+        }
+      }
+    }
+    return matches;
+  }
+
+  void _runSearch(String query) {
+    setState(() {
+      _searchQuery = query;
+      _searchMatches = _findMatches(query);
+      _matchedTokenIds = _searchMatches.map((m) => m.tokenId).toSet();
+      _currentMatchIndex = _searchMatches.isEmpty ? -1 : 0;
+    });
+    if (_currentMatchIndex >= 0) _jumpToMatch(_currentMatchIndex);
+  }
+
+  void _jumpToMatch(int index) {
+    if (index < 0 || index >= _searchMatches.length) return;
+    final totalParagraphs = widget.document.paragraphs.length;
+    if (totalParagraphs == 0) return;
+    setState(() => _currentMatchIndex = index);
+    _jumpToFraction(_searchMatches[index].paragraphIndex / totalParagraphs);
+  }
+
+  void _nextMatch() {
+    if (_searchMatches.isEmpty) return;
+    _jumpToMatch((_currentMatchIndex + 1) % _searchMatches.length);
+  }
+
+  void _previousMatch() {
+    if (_searchMatches.isEmpty) return;
+    _jumpToMatch((_currentMatchIndex - 1 + _searchMatches.length) % _searchMatches.length);
+  }
+
+  void _openSearch() {
+    if (!_searchVisible) {
+      setState(() => _searchVisible = true);
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => _searchFocusNode.requestFocus());
+  }
+
+  void _closeSearch() {
+    setState(() {
+      _searchVisible = false;
+      _searchController.clear();
+      _searchQuery = '';
+      _searchMatches = [];
+      _matchedTokenIds = {};
+      _currentMatchIndex = -1;
+    });
+  }
+
+  Color? _highlightColorFor(String tokenId) {
+    if (_currentMatchIndex >= 0 && _searchMatches[_currentMatchIndex].tokenId == tokenId) {
+      return Colors.orange.shade400;
+    }
+    if (_matchedTokenIds.contains(tokenId)) {
+      return Colors.yellow.shade300;
+    }
+    return null;
+  }
+
+  Widget _buildSearchBar() {
+    final hasMatches = _searchMatches.isNotEmpty;
+    final hasQuery = _searchQuery.trim().isNotEmpty;
+    final resultText = hasMatches
+        ? '${_currentMatchIndex + 1}/${_searchMatches.length}'
+        : hasQuery
+            ? 'No results'
+            : '';
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _searchController,
+              focusNode: _searchFocusNode,
+              decoration: const InputDecoration(
+                hintText: 'Search in document',
+                prefixIcon: Icon(Icons.search),
+                isDense: true,
+              ),
+              onChanged: _runSearch,
+              onSubmitted: (_) => _nextMatch(),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(resultText),
+          IconButton(
+            icon: const Icon(Icons.keyboard_arrow_up),
+            tooltip: 'Previous match',
+            onPressed: hasMatches ? _previousMatch : null,
+          ),
+          IconButton(
+            icon: const Icon(Icons.keyboard_arrow_down),
+            tooltip: 'Next match',
+            onPressed: hasMatches ? _nextMatch : null,
+          ),
+          IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: 'Close search',
+            onPressed: _closeSearch,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return CallbackShortcuts(
       bindings: {
         const SingleActivator(LogicalKeyboardKey.keyG, control: true): _showGoToPageDialog,
+        const SingleActivator(LogicalKeyboardKey.keyF, control: true): _openSearch,
+        const SingleActivator(LogicalKeyboardKey.escape): () {
+          if (_searchVisible) _closeSearch();
+        },
       },
       child: Focus(
         autofocus: true,
@@ -441,6 +585,11 @@ class _ReaderViewState extends State<ReaderView> {
                   icon: const Icon(Icons.bookmarks_outlined),
                   tooltip: 'Bookmarks',
                   onPressed: _showBookmarksList,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.search),
+                  tooltip: 'Search (Ctrl+F)',
+                  onPressed: _openSearch,
                 ),
                 Expanded(
                   child: Padding(
@@ -495,6 +644,7 @@ class _ReaderViewState extends State<ReaderView> {
                 ),
               ],
             ),
+            if (_searchVisible) _buildSearchBar(),
             Expanded(
               child: Center(
                 child: ConstrainedBox(
