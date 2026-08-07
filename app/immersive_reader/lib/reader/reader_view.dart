@@ -90,6 +90,10 @@ class _ReaderViewState extends State<ReaderView> {
   static const _minFontSize = 10.0;
   static const _maxFontSize = 32.0;
   static const _autoReplaceBookmarkPrefsKey = 'auto_replace_bookmark';
+  // Global, not per-document (like _prefsKey/scroll position) - font size
+  // is a reading preference, not something tied to a particular document's
+  // content, so it should carry over to the next book opened too.
+  static const _fontSizePrefsKey = 'font_size';
 
   // ItemScrollController/ItemPositionsListener (scrollable_positioned_list),
   // not a plain ScrollController/ListView.builder: ListView.builder's
@@ -152,6 +156,14 @@ class _ReaderViewState extends State<ReaderView> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _restoreScrollPosition());
     _loadBookmarks();
     _loadAutoReplaceSetting();
+    _restoreFontSize();
+  }
+
+  Future<void> _restoreFontSize() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getDouble(_fontSizePrefsKey);
+    if (saved == null || !mounted) return;
+    setState(() => _fontSize = saved.clamp(_minFontSize, _maxFontSize));
   }
 
   @override
@@ -348,9 +360,9 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   void _adjustFontSize(double delta) {
-    setState(() {
-      _fontSize = (_fontSize + delta).clamp(_minFontSize, _maxFontSize);
-    });
+    final next = (_fontSize + delta).clamp(_minFontSize, _maxFontSize);
+    setState(() => _fontSize = next);
+    SharedPreferences.getInstance().then((prefs) => prefs.setDouble(_fontSizePrefsKey, next));
   }
 
   /// Records the exposure and, if it brought this word's status to
@@ -809,19 +821,33 @@ class _ReaderViewState extends State<ReaderView> {
                       itemBuilder: (context, index) {
                         final paragraph = widget.document.paragraphs[index];
                         final isFlashing = index == _flashParagraphIndex;
-                        return AnimatedContainer(
-                          duration: const Duration(milliseconds: 400),
-                          curve: Curves.easeOut,
-                          color: isFlashing
-                              ? Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.6)
-                              : Colors.transparent,
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: Column(
-                            children: paragraph.sentences.map((sentence) {
-                              return Wrap(
-                                children: sentence.tokens.map(_buildToken).toList(),
-                              );
-                            }).toList(),
+                        return GestureDetector(
+                          // translucent, not opaque: this still lets a tap
+                          // reach a token's own GestureDetector underneath
+                          // (to toggle English/German) - dismissing the
+                          // highlight is a side effect of any tap in the
+                          // paragraph, not something that competes with it.
+                          behavior: HitTestBehavior.translucent,
+                          onTap: isFlashing ? () => setState(() => _flashParagraphIndex = null) : null,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 400),
+                            curve: Curves.easeOut,
+                            // A fixed highlighter color, not a theme-derived
+                            // tint: colorScheme.primaryContainer against this
+                            // app's warm cream/charcoal reading palette came
+                            // out close enough to the background to be nearly
+                            // invisible. Amber reads clearly as "you are
+                            // here" against either theme, matching the
+                            // existing search-match highlight style below.
+                            color: isFlashing ? Colors.amber.withValues(alpha: 0.55) : Colors.transparent,
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Column(
+                              children: paragraph.sentences.map((sentence) {
+                                return Wrap(
+                                  children: sentence.tokens.map(_buildToken).toList(),
+                                );
+                              }).toList(),
+                            ),
                           ),
                         );
                       },

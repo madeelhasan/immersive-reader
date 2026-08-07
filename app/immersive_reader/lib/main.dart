@@ -44,7 +44,23 @@ class ImmersiveReaderApp extends StatefulWidget {
 }
 
 class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
+  static const _themeModePrefsKey = 'theme_mode';
+
   ThemeMode _themeMode = ThemeMode.system;
+
+  @override
+  void initState() {
+    super.initState();
+    _restoreThemeMode();
+  }
+
+  Future<void> _restoreThemeMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getString(_themeModePrefsKey);
+    final mode = ThemeMode.values.firstWhere((m) => m.name == saved, orElse: () => ThemeMode.system);
+    if (!mounted || mode == _themeMode) return;
+    setState(() => _themeMode = mode);
+  }
 
   // A warm, book-like palette instead of stock Material blue/white - cream
   // "paper" in light mode, soft warm charcoal (not pure black) in dark
@@ -60,13 +76,13 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   static const _darkAccent = Color(0xFFD9A566);
 
   void _cycleThemeMode() {
-    setState(() {
-      _themeMode = switch (_themeMode) {
-        ThemeMode.light => ThemeMode.dark,
-        ThemeMode.dark => ThemeMode.system,
-        ThemeMode.system => ThemeMode.light,
-      };
-    });
+    final next = switch (_themeMode) {
+      ThemeMode.light => ThemeMode.dark,
+      ThemeMode.dark => ThemeMode.system,
+      ThemeMode.system => ThemeMode.light,
+    };
+    setState(() => _themeMode = next);
+    SharedPreferences.getInstance().then((prefs) => prefs.setString(_themeModePrefsKey, next.name));
   }
 
   static ThemeData _buildTheme({

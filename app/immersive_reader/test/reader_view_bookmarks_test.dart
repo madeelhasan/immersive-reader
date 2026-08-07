@@ -147,6 +147,31 @@ void main() {
     expect(anyFlashing(), isFalse);
   });
 
+  testWidgets('tapping the flashed paragraph dismisses the highlight immediately', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(body: ReaderView(document: _buildDocument(), controller: ReaderController())),
+    ));
+    await tester.pump();
+
+    await tester.tap(find.byIcon(Icons.bookmark_add_outlined));
+    await tester.pump();
+
+    bool anyFlashing() => tester
+        .widgetList<AnimatedContainer>(find.byType(AnimatedContainer))
+        .any((c) => (c.decoration as BoxDecoration?)?.color != Colors.transparent);
+
+    await _openBookmarksList(tester);
+    await tester.tap(find.text('0% through'));
+    await tester.pump();
+
+    expect(anyFlashing(), isTrue);
+
+    await tester.tap(find.textContaining('word0_0').first);
+    await tester.pump();
+
+    expect(anyFlashing(), isFalse);
+  });
+
   testWidgets('deleting a bookmark removes it from the list', (tester) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(body: ReaderView(document: _buildDocument(), controller: ReaderController())),

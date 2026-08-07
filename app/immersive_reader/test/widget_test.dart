@@ -80,4 +80,40 @@ void main() {
       expect(find.text(level), findsOneWidget);
     }
   });
+
+  testWidgets('changing the theme persists it, and a fresh launch restores it',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    // Defaults to "Match system" - one tap on the Theme tile cycles to Light.
+    await tester.tap(find.text('Theme'));
+    await tester.pumpAndSettle();
+
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('theme_mode'), 'light');
+
+    // Close the sheet before relaunching - a still-open modal's barrier
+    // would otherwise swallow a tap aimed at the AppBar underneath it.
+    await tester.tap(find.byType(ModalBarrier).last);
+    await tester.pumpAndSettle();
+
+    // A fresh app instance (simulating a relaunch) should restore it rather
+    // than default back to "Match system" - a distinct Key is required
+    // here, not just a second identical `const ImmersiveReaderApp()`: same
+    // type + same (null) key means the element tree just updates the
+    // existing State rather than disposing and recreating it, so initState
+    // (and the restore logic in it) would never run a second time.
+    await tester.pumpWidget(ImmersiveReaderApp(key: UniqueKey()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+    expect(find.text('Light'), findsOneWidget);
+  });
 }
