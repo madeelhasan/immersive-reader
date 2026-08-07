@@ -355,38 +355,21 @@ class _ReaderViewState extends State<ReaderView> {
   // per-item heights in a lazy ListView.builder for Phase 1. Shared by
   // chapter jumps and the Ctrl+G go-to-page dialog below.
   //
-  // ListView.builder only knows the real height of whatever's actually been
-  // laid out - maxScrollExtent for everything else is an ESTIMATE
-  // extrapolated from those built items. Jumping straight from near the top
-  // of a document with many thousands of paragraphs to, say, 90% using an
-  // estimate built from the first few on-screen paragraphs can land nowhere
-  // near the real target if paragraph density varies across the document.
-  // Jumping repeatedly lets the estimate refine using items actually near
-  // the target each time, converging on the right spot; the final hop is
-  // animated for a smooth landing.
-  Future<void> _jumpToFraction(double fraction) async {
+  // A single jumpTo, not animateTo and not a refinement loop: ListView
+  // .builder's SliverList has to synchronously build/measure a large span
+  // of off-screen content whenever it's asked to land far from whatever's
+  // currently realized - measured directly, a single far jump already
+  // costs low seconds on a 9000-paragraph document, while a nearby jump is
+  // near-instant. animateTo sweeps through every intermediate scroll
+  // position (multiplying that cost across many frames), and a
+  // multi-iteration refinement loop that was tried here measured at 14+
+  // seconds for the same document - both are worse, not better. A single
+  // jumpTo trades some accuracy on documents with very uneven paragraph
+  // density for the app never freezing.
+  void _jumpToFraction(double fraction) {
     if (!_scrollController.hasClients) return;
-    final clampedFraction = fraction.clamp(0.0, 1.0);
-
-    double target = clampedFraction * _scrollController.position.maxScrollExtent;
-    for (var i = 0; i < 6; i++) {
-      if (!_scrollController.hasClients) return;
-      target = target.clamp(0.0, _scrollController.position.maxScrollExtent);
-      _scrollController.jumpTo(target);
-      await WidgetsBinding.instance.endOfFrame;
-      if (!_scrollController.hasClients) return;
-      final refined =
-          (clampedFraction * _scrollController.position.maxScrollExtent).clamp(0.0, _scrollController.position.maxScrollExtent);
-      if ((refined - target).abs() < 1.0) break;
-      target = refined;
-    }
-
-    if (!_scrollController.hasClients) return;
-    await _scrollController.animateTo(
-      target.clamp(0.0, _scrollController.position.maxScrollExtent),
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-    );
+    final target = fraction.clamp(0.0, 1.0) * _scrollController.position.maxScrollExtent;
+    _scrollController.jumpTo(target.clamp(0.0, _scrollController.position.maxScrollExtent));
   }
 
   void _jumpToChapter(ChapterMarker chapter) {
