@@ -1,0 +1,446 @@
+[
+  {
+    "en": "laconic",
+    "de": "wortkarg",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sardonic",
+    "de": "sardonisch",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ephemeral",
+    "de": "vergänglich",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "quixotic",
+    "de": "weltfremd",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sycophant",
+    "de": "Speichellecker",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "obsequious",
+    "de": "unterwürfig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "mellifluous",
+    "de": "wohlklingend",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ineffable",
+    "de": "unaussprechlich",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "surreptitious",
+    "de": "heimlich",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ubiquitous",
+    "de": "allgegenwärtig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "cacophony",
+    "de": "Kakophonie",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dichotomy",
+    "de": "Dichotomie",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "paradigm",
+    "de": "Paradigma",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "synthesis",
+    "de": "Synthese",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "antithesis",
+    "de": "Antithese",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "rhetoric",
+    "de": "Rhetorik",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "eloquent",
+    "de": "redegewandt",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "perspicacious",
+    "de": "scharfsinnig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "sagacious",
+    "de": "weise",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "erudite",
+    "de": "gelehrt",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "pedantic",
+    "de": "pedantisch",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "dogmatic",
+    "de": "dogmatisch",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "eclectic",
+    "de": "eklektisch",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "idiosyncratic",
+    "de": "eigenwillig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "quintessential",
+    "de": "typisch",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "paradoxical",
+    "de": "paradox",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "ambivalent",
+    "de": "zwiespältig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "equivocal",
+    "de": "mehrdeutig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "unequivocal",
+    "de": "eindeutig",
+    "cefr_level": "C2",
+    "part_of_speech": "adjective"
+  },
+  {
+    "en": "conundrum",
+    "de": "Rätsel",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "enigma",
+    "de": "Rätsel",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "paradox",
+    "de": "Paradoxon",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "oxymoron",
+    "de": "Oxymoron",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hyperbole",
+    "de": "Übertreibung",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "litotes",
+    "de": "Litotes",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "metonymy",
+    "de": "Metonymie",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "synecdoche",
+    "de": "Synekdoche",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "apostrophe",
+    "de": "Apostrophe",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "allusion",
+    "de": "Anspielung",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "innuendo",
+    "de": "Anspielung",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "euphemism",
+    "de": "Euphemismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "dysphemism",
+    "de": "Dysphemismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "circumlocution",
+    "de": "Umschreibung",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "periphrasis",
+    "de": "Periphrase",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tautology",
+    "de": "Tautologie",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pleonasm",
+    "de": "Pleonasmus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "anaphora",
+    "de": "Anapher",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "epistrophe",
+    "de": "Epipher",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "chiasmus",
+    "de": "Chiasmus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "zeugma",
+    "de": "Zeugma",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "asyndeton",
+    "de": "Asyndeton",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "polysyndeton",
+    "de": "Polysyndeton",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ellipsis",
+    "de": "Ellipse",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "aposiopesis",
+    "de": "Aposiopese",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "anacoluthon",
+    "de": "Anakoluth",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "solecism",
+    "de": "Solezismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "barbarism",
+    "de": "Barbarismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "archaism",
+    "de": "Archaismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "neologism",
+    "de": "Neologismus",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "portmanteau",
+    "de": "Kofferwort",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "palimpsest",
+    "de": "Palimpsest",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "mise-en-scène",
+    "de": "Mise-en-scène",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "tableau",
+    "de": "Tableau",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "vignette",
+    "de": "Vignette",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "denouement",
+    "de": "Auflösung",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "peripeteia",
+    "de": "Peripetie",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "anagnorisis",
+    "de": "Anagnorisis",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "catharsis",
+    "de": "Katharsis",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hamartia",
+    "de": "Hamartia",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "hubris",
+    "de": "Hybris",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "nemesis",
+    "de": "Nemesis",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "pathos",
+    "de": "Pathos",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "ethos",
+    "de": "Ethos",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  },
+  {
+    "en": "logos",
+    "de": "Logos",
+    "cefr_level": "C2",
+    "part_of_speech": "noun"
+  }
+]
