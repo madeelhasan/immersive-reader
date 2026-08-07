@@ -50,7 +50,7 @@ void main() {
   test('every entry has a valid cefr_level and non-empty fields', () async {
     final raw = await rootBundle.loadString('assets/vocab/en_de_starter.json');
     final List<dynamic> entries = jsonDecode(raw) as List<dynamic>;
-    const validLevels = {'A1', 'A2', 'B1', 'B2'};
+    const validLevels = {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'};
 
     for (final entry in entries) {
       final map = entry as Map<String, dynamic>;
