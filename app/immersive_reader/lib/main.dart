@@ -236,6 +236,16 @@ class _HomePageState extends State<HomePage> {
     }
 
     setState(() => _loadingFileName = p.basename(path));
+    // Without this, the spinner frame setState() just scheduled doesn't
+    // actually get painted before parser.parse() runs: awaiting
+    // file.readAsBytes() below resumes as a microtask, and everything
+    // after it (decompression, regex extraction, tokenization) is
+    // synchronous with no further yield point - so the whole parse runs to
+    // completion in that one continuation before the engine ever gets a
+    // chance to paint the frame the setState scheduled. Explicitly waiting
+    // for a real frame here first is what makes the spinner actually
+    // appear before the heavy synchronous work below blocks the UI thread.
+    await WidgetsBinding.instance.endOfFrame;
 
     try {
       final parser = ParserRegistry.forFileName(path);
