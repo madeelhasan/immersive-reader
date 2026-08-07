@@ -1,6 +1,6 @@
 # Immersive Reader
 
-A cross-platform Flutter app that will eventually teach German through progressive word replacement while reading English documents. Opens TXT, DOCX, EPUB, and PDF files, extracts and reflows their text into a clean, paginated reading view. Full product spec and locked architecture decisions live in [`spec/SPEC.md`](spec/SPEC.md); the app itself is in [`app/immersive_reader/`](app/immersive_reader/).
+A cross-platform Flutter app that will eventually teach German through progressive word replacement while reading English documents. Opens TXT, DOCX, EPUB, PDF, and HTML files, extracts and reflows their text into a clean, paginated reading view. Full product spec and locked architecture decisions live in [`spec/SPEC.md`](spec/SPEC.md); the app itself is in [`app/immersive_reader/`](app/immersive_reader/). New to the app and just want to know how to use it? See [`app/immersive_reader/WALKTHROUGH.md`](app/immersive_reader/WALKTHROUGH.md).
 
 This README doubles as a case study: this project was built primarily through AI coding agents (Claude Code, Qwen Code CLI, and Aider — first against a local model, later against DeepSeek's hosted API), with a human directing scope, reviewing output, and making architecture calls. The sections below document what that actually looked like in practice — including where it went wrong.
 
