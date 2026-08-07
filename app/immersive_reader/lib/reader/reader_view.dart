@@ -54,11 +54,12 @@ class ReaderView extends StatefulWidget {
 
 /// A single search hit: which paragraph it's in (for the same
 /// fraction-based approximate jump used by chapter/bookmark navigation)
-/// and which token to highlight.
+/// and which token(s) to highlight - more than one for a multi-word query
+/// that spans a run of consecutive tokens.
 class _SearchMatch {
   final int paragraphIndex;
-  final String tokenId;
-  const _SearchMatch(this.paragraphIndex, this.tokenId);
+  final List<String> tokenIds;
+  const _SearchMatch(this.paragraphIndex, this.tokenIds);
 }
 
 class _ReaderViewState extends State<ReaderView> {
@@ -81,6 +82,12 @@ class _ReaderViewState extends State<ReaderView> {
   List<_SearchMatch> _searchMatches = [];
   Set<String> _matchedTokenIds = {};
   int _currentMatchIndex = -1;
+  Timer? _searchDebounce;
+  bool _searchInProgress = false;
+  // Bumped on every new search request so a slow/stale search (superseded
+  // by further typing, or by closing the search bar) can detect it's no
+  // longer wanted and discard its result instead of clobbering newer state.
+  int _searchGeneration = 0;
 
   /// tokenIds the user has manually tapped back to English. Replaced tokens
   /// show German by default; toggling flips a single occurrence, not every
@@ -115,6 +122,7 @@ class _ReaderViewState extends State<ReaderView> {
   @override
   void dispose() {
     _saveDebounce?.cancel();
+    _searchDebounce?.cancel();
     _scrollController.dispose();
     _ttsService.dispose();
     _searchController.dispose();
@@ -346,12 +354,37 @@ class _ReaderViewState extends State<ReaderView> {
   // Exact pixel-perfect jumps aren't worth the complexity of tracking
   // per-item heights in a lazy ListView.builder for Phase 1. Shared by
   // chapter jumps and the Ctrl+G go-to-page dialog below.
-  void _jumpToFraction(double fraction) {
+  //
+  // ListView.builder only knows the real height of whatever's actually been
+  // laid out - maxScrollExtent for everything else is an ESTIMATE
+  // extrapolated from those built items. Jumping straight from near the top
+  // of a document with many thousands of paragraphs to, say, 90% using an
+  // estimate built from the first few on-screen paragraphs can land nowhere
+  // near the real target if paragraph density varies across the document.
+  // Jumping repeatedly lets the estimate refine using items actually near
+  // the target each time, converging on the right spot; the final hop is
+  // animated for a smooth landing.
+  Future<void> _jumpToFraction(double fraction) async {
     if (!_scrollController.hasClients) return;
-    final target = fraction * _scrollController.position.maxScrollExtent;
-    _scrollController.animateTo(
+    final clampedFraction = fraction.clamp(0.0, 1.0);
+
+    double target = clampedFraction * _scrollController.position.maxScrollExtent;
+    for (var i = 0; i < 6; i++) {
+      if (!_scrollController.hasClients) return;
+      target = target.clamp(0.0, _scrollController.position.maxScrollExtent);
+      _scrollController.jumpTo(target);
+      await WidgetsBinding.instance.endOfFrame;
+      if (!_scrollController.hasClients) return;
+      final refined =
+          (clampedFraction * _scrollController.position.maxScrollExtent).clamp(0.0, _scrollController.position.maxScrollExtent);
+      if ((refined - target).abs() < 1.0) break;
+      target = refined;
+    }
+
+    if (!_scrollController.hasClients) return;
+    await _scrollController.animateTo(
       target.clamp(0.0, _scrollController.position.maxScrollExtent),
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 200),
       curve: Curves.easeInOut,
     );
   }
@@ -435,28 +468,81 @@ class _ReaderViewState extends State<ReaderView> {
     if (page != null) _jumpToFraction((page - 1) / totalPages);
   }
 
-  List<_SearchMatch> _findMatches(String query) {
-    if (query.trim().isEmpty) return [];
-    final lowerQuery = query.toLowerCase();
+  // Scans in small paragraph batches, yielding to the event loop between
+  // batches, so a huge document doesn't block a single frame long enough to
+  // stall scrolling/animations elsewhere in the reader - unlike a single
+  // tight synchronous loop, the UI stays responsive throughout. [generation]
+  // is checked after every yield so an old search abandons its work as soon
+  // as it's superseded, rather than racing a newer one to completion.
+  static const _searchYieldBatchSize = 20;
+
+  Future<List<_SearchMatch>> _findMatchesAsync(String query, int generation) async {
+    final trimmedQuery = query.trim();
+    if (trimmedQuery.isEmpty) return [];
+    final lowerQuery = trimmedQuery.toLowerCase();
     final matches = <_SearchMatch>[];
-    for (var i = 0; i < widget.document.paragraphs.length; i++) {
-      for (final sentence in widget.document.paragraphs[i].sentences) {
-        for (final token in sentence.tokens) {
-          if (token.isWord && token.text.toLowerCase().contains(lowerQuery)) {
-            matches.add(_SearchMatch(i, token.tokenId));
-          }
+    final paragraphs = widget.document.paragraphs;
+    for (var i = 0; i < paragraphs.length; i++) {
+      for (final sentence in paragraphs[i].sentences) {
+        final tokens = sentence.tokens;
+        // Join the sentence's tokens the same way _buildToken renders them
+        // ("text " per token), tracking each token's [start, end) offset in
+        // that string, so a multi-word query can match a run of consecutive
+        // tokens - not just a single token's own text.
+        final buffer = StringBuffer();
+        final starts = <int>[];
+        final ends = <int>[];
+        for (final token in tokens) {
+          starts.add(buffer.length);
+          buffer.write(token.text);
+          ends.add(buffer.length);
+          buffer.write(' ');
         }
+        final sentenceText = buffer.toString().toLowerCase();
+
+        var searchFrom = 0;
+        while (true) {
+          final matchStart = sentenceText.indexOf(lowerQuery, searchFrom);
+          if (matchStart == -1) break;
+          final matchEnd = matchStart + lowerQuery.length;
+          final matchedTokenIds = <String>[
+            for (var t = 0; t < tokens.length; t++)
+              if (starts[t] < matchEnd && ends[t] > matchStart) tokens[t].tokenId,
+          ];
+          if (matchedTokenIds.isNotEmpty) {
+            matches.add(_SearchMatch(i, matchedTokenIds));
+          }
+          searchFrom = matchStart + 1;
+        }
+      }
+      if (i % _searchYieldBatchSize == _searchYieldBatchSize - 1) {
+        await Future<void>.delayed(Duration.zero);
+        if (generation != _searchGeneration) return matches;
       }
     }
     return matches;
   }
 
   void _runSearch(String query) {
+    _searchDebounce?.cancel();
+    setState(() => _searchQuery = query);
+
+    final generation = ++_searchGeneration;
+    _searchDebounce = Timer(_debounceDuration, () => _executeSearch(query, generation));
+  }
+
+  Future<void> _executeSearch(String query, int generation) async {
+    if (!mounted || generation != _searchGeneration) return;
+    setState(() => _searchInProgress = true);
+
+    final matches = await _findMatchesAsync(query, generation);
+
+    if (!mounted || generation != _searchGeneration) return;
     setState(() {
-      _searchQuery = query;
-      _searchMatches = _findMatches(query);
-      _matchedTokenIds = _searchMatches.map((m) => m.tokenId).toSet();
-      _currentMatchIndex = _searchMatches.isEmpty ? -1 : 0;
+      _searchMatches = matches;
+      _matchedTokenIds = matches.expand((m) => m.tokenIds).toSet();
+      _currentMatchIndex = matches.isEmpty ? -1 : 0;
+      _searchInProgress = false;
     });
     if (_currentMatchIndex >= 0) _jumpToMatch(_currentMatchIndex);
   }
@@ -487,6 +573,8 @@ class _ReaderViewState extends State<ReaderView> {
   }
 
   void _closeSearch() {
+    _searchDebounce?.cancel();
+    _searchGeneration++; // invalidate any search still in flight
     setState(() {
       _searchVisible = false;
       _searchController.clear();
@@ -494,11 +582,12 @@ class _ReaderViewState extends State<ReaderView> {
       _searchMatches = [];
       _matchedTokenIds = {};
       _currentMatchIndex = -1;
+      _searchInProgress = false;
     });
   }
 
   Color? _highlightColorFor(String tokenId) {
-    if (_currentMatchIndex >= 0 && _searchMatches[_currentMatchIndex].tokenId == tokenId) {
+    if (_currentMatchIndex >= 0 && _searchMatches[_currentMatchIndex].tokenIds.contains(tokenId)) {
       return Colors.orange.shade400;
     }
     if (_matchedTokenIds.contains(tokenId)) {
@@ -533,16 +622,27 @@ class _ReaderViewState extends State<ReaderView> {
             ),
           ),
           const SizedBox(width: 8),
-          Text(resultText),
+          // A fixed-size slot so the spinner replacing the match-count text
+          // while a large document is still being searched doesn't shift
+          // the buttons next to it around.
+          SizedBox(
+            width: 56,
+            child: _searchInProgress
+                ? const Align(
+                    alignment: Alignment.centerLeft,
+                    child: SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2)),
+                  )
+                : Text(resultText),
+          ),
           IconButton(
             icon: const Icon(Icons.keyboard_arrow_up),
             tooltip: 'Previous match',
-            onPressed: hasMatches ? _previousMatch : null,
+            onPressed: hasMatches && !_searchInProgress ? _previousMatch : null,
           ),
           IconButton(
             icon: const Icon(Icons.keyboard_arrow_down),
             tooltip: 'Next match',
-            onPressed: hasMatches ? _nextMatch : null,
+            onPressed: hasMatches && !_searchInProgress ? _nextMatch : null,
           ),
           IconButton(
             icon: const Icon(Icons.close),

@@ -18,6 +18,13 @@ DocumentModel _buildDocument({int paragraphCount = 200}) {
     paragraphs: List.generate(paragraphCount, (i) {
       final words = List.generate(20, (j) => 'word${i}_$j');
       if (i == 0) words[0] = 'target';
+      // "open the door" spans three consecutive tokens - a multi-word query
+      // must match across tokens, not within a single one.
+      if (i == 0) {
+        words[1] = 'open';
+        words[2] = 'the';
+        words[3] = 'door';
+      }
       if (i == 5) words[3] = 'needle';
       if (i == 150) words[7] = 'needle';
       return ParagraphModel(
@@ -50,6 +57,18 @@ Future<void> _pumpReaderView(
     ),
   ));
   await tester.pump();
+}
+
+// Typing debounces (see _runSearch's Timer), and pumpAndSettle() alone
+// doesn't reliably wait through a bare Timer that isn't itself driven by a
+// scheduled frame - it can return before the debounce fires. Explicitly
+// advancing the clock past the debounce window first, then settling the
+// resulting async search + jump animation, is what actually waits for a
+// search to complete.
+Future<void> _typeSearchQuery(WidgetTester tester, String query) async {
+  await tester.enterText(find.byType(TextField), query);
+  await tester.pump(const Duration(milliseconds: 500));
+  await tester.pumpAndSettle();
 }
 
 void main() {
@@ -89,8 +108,7 @@ void main() {
 
     expect(find.text('0%'), findsOneWidget);
 
-    await tester.enterText(find.byType(TextField), 'needle');
-    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'needle');
 
     expect(find.text('1/2'), findsOneWidget);
     expect(find.text('0%'), findsNothing);
@@ -102,8 +120,7 @@ void main() {
     await tester.tap(find.byTooltip('Search (Ctrl+F)'));
     await tester.pumpAndSettle();
 
-    await tester.enterText(find.byType(TextField), 'doesnotexist');
-    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'doesnotexist');
 
     expect(find.text('No results'), findsOneWidget);
   });
@@ -113,8 +130,7 @@ void main() {
 
     await tester.tap(find.byTooltip('Search (Ctrl+F)'));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField), 'needle');
-    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'needle');
 
     expect(find.text('1/2'), findsOneWidget);
 
@@ -136,8 +152,7 @@ void main() {
 
     await tester.tap(find.byTooltip('Search (Ctrl+F)'));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField), 'needle');
-    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'needle');
 
     await tester.tap(find.byTooltip('Close search'));
     await tester.pumpAndSettle();
@@ -173,10 +188,32 @@ void main() {
 
     await tester.tap(find.byTooltip('Search (Ctrl+F)'));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField), 'target');
-    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'target');
 
     expect(find.text('1/1'), findsOneWidget);
     expect(find.textContaining('Ziel'), findsOneWidget);
+  });
+
+  testWidgets('a multi-word query matches a phrase spanning several tokens', (tester) async {
+    await _pumpReaderView(tester, _buildDocument());
+
+    await tester.tap(find.byTooltip('Search (Ctrl+F)'));
+    await tester.pumpAndSettle();
+    await _typeSearchQuery(tester, 'the door');
+
+    expect(find.text('1/1'), findsOneWidget);
+    expect(find.text('No results'), findsNothing);
+  });
+
+  testWidgets('a multi-word query matching across a token boundary highlights both tokens', (tester) async {
+    await _pumpReaderView(tester, _buildDocument());
+
+    await tester.tap(find.byTooltip('Search (Ctrl+F)'));
+    await tester.pumpAndSettle();
+    // Spans the tail of "open" and the head of "the" - only possible if
+    // matching happens on the joined sentence text, not per-token.
+    await _typeSearchQuery(tester, 'en the');
+
+    expect(find.text('1/1'), findsOneWidget);
   });
 }
