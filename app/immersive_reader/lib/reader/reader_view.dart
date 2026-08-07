@@ -451,7 +451,29 @@ class _ReaderViewState extends State<ReaderView> {
                         final fraction = _currentFraction;
                         return Row(
                           children: [
-                            Expanded(child: LinearProgressIndicator(value: fraction)),
+                            Expanded(
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  void seekToLocalX(double dx) {
+                                    final target = (dx / constraints.maxWidth).clamp(0.0, 1.0);
+                                    _jumpToFraction(target);
+                                  }
+
+                                  return MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: GestureDetector(
+                                      behavior: HitTestBehavior.opaque,
+                                      onTapDown: (details) => seekToLocalX(details.localPosition.dx),
+                                      onHorizontalDragUpdate: (details) => seekToLocalX(details.localPosition.dx),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: 8),
+                                        child: LinearProgressIndicator(value: fraction),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
                             const SizedBox(width: 8),
                             Text('${(fraction * 100).round()}%'),
                           ],
