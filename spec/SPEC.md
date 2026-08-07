@@ -9,7 +9,7 @@
 
 A book-reader app that:
 - Opens TXT, DOCX, EPUB, PDF, and HTML files and displays them in a clean, reflowed reading view (not a visual facsimile of the original file).
-- Lets the reader declare their current German proficiency (CEFR level A1–B2), which gates which vocabulary is eligible for replacement and how dense that replacement is (see section 4).
+- Lets the reader declare their current German proficiency (CEFR level A1–C2), which gates which vocabulary is eligible for replacement and how dense that replacement is (see section 4). Once every word eligible at the reader's current level has reached `learned` status, the level auto-advances one step (section 4.3) — the reader can still override it manually at any time.
 - Randomly replaces certain English words with their German equivalents as the user reads.
 - Lets the user tap any translated word to toggle it back to English.
 - Tracks per-word exposure and increases replacement frequency for words the user has "learned," and increases overall replacement density as the user progresses deeper into a document.
@@ -79,7 +79,7 @@ Every input format (TXT/DOCX/EPUB/PDF/HTML) is parsed into this common structure
 }
 ```
 
-Start with ~1,500–2,000 entries across A1–B2. This can be bootstrapped once (offline, not at runtime) using an LLM or DeepL, then hand-reviewed — do not call a translation API per word during reading.
+Start with ~1,500–2,000 entries across A1–B2 (reached — see the app README's Status section for current counts); C1/C2 were added later as a smaller top-up on the same dataset, not held to the same per-level volume as A1–B2. This can be bootstrapped once (offline, not at runtime) using an LLM or DeepL, then hand-reviewed — do not call a translation API per word during reading.
 
 ### 3.3 User Progress (local SQLite, never synced — see the `user_id` note below)
 
@@ -110,7 +110,7 @@ CREATE TABLE word_progress (
 
 ### 3.4 User Level Setting
 
-The reader declares their current German level — one of `A1`, `A2`, `B1`, `B2` — via a UI control (Phase 2: a simple selector; not tied to any account system — the app doesn't have one, section 1). Stored as a single local preference (`SharedPreferences`, key `german_level`), not in the `word_progress` table above — it's a coarse, manually-set starting point, distinct from the per-word `status` progress `word_progress` tracks via Phase 4's adaptive engine. Defaults to `A1` for a new install. See section 4 for how it affects replacement.
+The reader declares their current German level — one of `A1`, `A2`, `B1`, `B2`, `C1`, `C2` — via a UI control (Phase 2: a simple selector; not tied to any account system — the app doesn't have one, section 1). Stored as a single local preference (`SharedPreferences`, key `german_level`), not in the `word_progress` table above — it's a coarse, manually-set starting point, distinct from the per-word `status` progress `word_progress` tracks via Phase 4's adaptive engine. Defaults to `A1` for a new install. Can also change automatically (section 4.3), not just via this control. See section 4 for how the level affects replacement.
 
 ### 3.5 Recent Documents (Phase 3.5 — spec'd, not yet built)
 
@@ -137,8 +137,8 @@ The reader declares their current German level — one of `A1`, `A2`, `B1`, `B2`
 
 The reader's declared level (section 3.4) determines which vocabulary entries are even eligible for replacement, and the flat base rate applied to them:
 
-- **Eligibility is cumulative**: a reader at level `N` sees replacements from every CEFR level at or below `N` — e.g. a `B1` reader gets `A1` + `A2` + `B1` words, never `B2`. This matches CEFR's own cumulative-curriculum design and keeps a beginner from being shown vocabulary far above them, while a `B2` reader still draws from the full dataset.
-- **Base rate scales with level**: `A1: 10%`, `A2: 15%`, `B1: 20%`, `B2: 25%` (per-occurrence, independent rolls — same flat-rate mechanic as before, just level-parameterized instead of a single constant). Rationale: a more advanced reader is both drawing from a larger eligible pool and ready for denser replacement.
+- **Eligibility is cumulative**: a reader at level `N` sees replacements from every CEFR level at or below `N` — e.g. a `B1` reader gets `A1` + `A2` + `B1` words, never `B2`/`C1`/`C2`. This matches CEFR's own cumulative-curriculum design and keeps a beginner from being shown vocabulary far above them, while a `C2` reader draws from the full dataset.
+- **Base rate scales with level**: `A1: 10%`, `A2: 15%`, `B1: 20%`, `B2: 25%`, `C1: 30%`, `C2: 35%` (per-occurrence, independent rolls — same flat-rate mechanic as before, just level-parameterized instead of a single constant). Rationale: a more advanced reader is both drawing from a larger eligible pool and ready for denser replacement.
 - Implemented in `ReplacementEngine.selectReplacements(tokens, vocabulary, germanLevel: ...)` — still a pure function, still fully isolated from the renderer, still no depth/word-status logic. `levelOrder`/`levelRates` live as constants on `ReplacementEngine`.
 
 ### 4.2 Depth and word-status multipliers (Phase 4, built)
@@ -160,6 +160,12 @@ new / introduced:     return depth                           # depth as-is
 Implemented as `ReplacementEngine.selectReplacementsWithProgress()` (`lib/replacement/replacement_engine.dart`) - a **second method added alongside** the original flat-rate `selectReplacements()` from section 4.1, not a hard replacement of it (both still exist; 4.1's eligibility filter — which words are eligible at all — is shared by both and stays unchanged). `HomePage` calls `selectReplacementsWithProgress` once the local progress repository (`WordProgressRepository`, backed by `LocalDb`) has finished its async initialization, falling back to the flat-rate `selectReplacements` otherwise (e.g. briefly at app startup, or wherever no progress data is available) - graceful degradation rather than a hard cutover, so nothing breaks waiting on progress data to become ready.
 
 This logic lives in one isolated module (`replacement_engine`) so it's independently testable and tunable without touching the renderer.
+
+### 4.3 Automatic level advancement
+
+Once every vocabulary entry eligible at the reader's *current* declared level (section 4.1's cumulative pool — not just that level in isolation) has reached `learned` status (section 3.3), the declared level (section 3.4) automatically advances one step (`A1→A2→B1→B2→C1→C2`), with an on-screen notification so the change isn't silent. `C2` is the ceiling — nothing to advance to past it. This is a convenience default, not a lock: the reader can still change their level manually at any time via the existing selector, including back down, and a manual change doesn't get overridden by this logic afterward — it only fires again once *that* new level's pool is also fully learned.
+
+Doesn't apply retroactively on its own at app startup for a reader who already meets the criteria from before this feature existed - it's evaluated when word-progress state changes (i.e. after an exposure/toggle updates a word to `learned`), not on a timer or on every launch.
 
 ---
 

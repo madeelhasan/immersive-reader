@@ -40,6 +40,13 @@ class ReaderView extends StatefulWidget {
   /// which the caller (HomePage) does once and passes down.
   final WordProgressRepository? wordProgressRepository;
 
+  /// Fired whenever an exposure just recorded here brought a word's status
+  /// to 'learned' - HomePage uses this to check whether every word eligible
+  /// at the reader's current CEFR level is now learned (SPEC.md 4.3), not
+  /// just this one word. Not fired for words that were already learned
+  /// before this exposure.
+  final VoidCallback? onWordLearned;
+
   const ReaderView({
     super.key,
     required this.document,
@@ -47,6 +54,7 @@ class ReaderView extends StatefulWidget {
     this.replacements = const {},
     this.ttsService,
     this.wordProgressRepository,
+    this.onWordLearned,
   });
 
   @override
@@ -321,6 +329,18 @@ class _ReaderViewState extends State<ReaderView> {
     });
   }
 
+  /// Records the exposure and, if it brought this word's status to
+  /// 'learned', tells HomePage so it can check whether that completes the
+  /// reader's current CEFR level (SPEC.md 4.3). Kept as a fire-and-forget
+  /// Future from both call sites, same as before this existed - the check
+  /// is a courtesy notification, not something either caller blocks on.
+  Future<void> _recordExposure(String enWord, ExposureOutcome outcome) async {
+    final progress = await widget.wordProgressRepository?.recordExposure(enWord, outcome);
+    if (progress?.status == 'learned') {
+      widget.onWordLearned?.call();
+    }
+  }
+
   void _toggleToken(Token token) {
     final tokenId = token.tokenId;
     final wasShowingGerman = !_toggledToEnglish.contains(tokenId);
@@ -332,12 +352,7 @@ class _ReaderViewState extends State<ReaderView> {
     final outcome = wasShowingGerman
         ? ExposureOutcome.toggledBack
         : ExposureOutcome.toggledForward;
-    unawaited(
-      widget.wordProgressRepository?.recordExposure(
-        token.text.toLowerCase(),
-        outcome,
-      ),
-    );
+    unawaited(_recordExposure(token.text.toLowerCase(), outcome));
   }
 
   Widget _buildToken(Token token) {
@@ -349,12 +364,7 @@ class _ReaderViewState extends State<ReaderView> {
 
     final showingGerman = !_toggledToEnglish.contains(token.tokenId);
     if (showingGerman && _exposedTokenIds.add(token.tokenId)) {
-      unawaited(
-        widget.wordProgressRepository?.recordExposure(
-          token.text.toLowerCase(),
-          ExposureOutcome.neutral,
-        ),
-      );
+      unawaited(_recordExposure(token.text.toLowerCase(), ExposureOutcome.neutral));
     }
     return GestureDetector(
       onTap: () => _toggleToken(token),

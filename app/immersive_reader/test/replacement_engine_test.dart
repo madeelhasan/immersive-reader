@@ -100,7 +100,7 @@ void main() {
       expect(result.keys, {'house', 'journey', 'employment'});
     });
 
-    test('B2 level makes every level eligible', () {
+    test('B2 level makes every A1-B2 word eligible (cumulative up to B2)', () {
       final result = ReplacementEngine().selectReplacements(
         tokens,
         mixedVocabulary,
@@ -111,11 +111,86 @@ void main() {
       expect(result.keys, {'house', 'journey', 'employment', 'sovereignty'});
     });
 
+    test('a C1 word is not eligible below C1, and C2 draws from every level', () {
+      final vocabularyWithAdvancedLevels = {
+        ...mixedVocabulary,
+        'discourse': VocabularyEntry(en: 'discourse', de: 'der Diskurs', cefrLevel: 'C1', partOfSpeech: 'noun'),
+        'epistemology': VocabularyEntry(en: 'epistemology', de: 'die Epistemologie', cefrLevel: 'C2', partOfSpeech: 'noun'),
+      };
+      final tokensWithAdvancedLevels = vocabularyWithAdvancedLevels.keys.map(_token).toList();
+
+      final atB2 = ReplacementEngine().selectReplacements(
+        tokensWithAdvancedLevels,
+        vocabularyWithAdvancedLevels,
+        germanLevel: 'B2',
+        rate: 1.0,
+        random: Random(1),
+      );
+      expect(atB2.keys, {'house', 'journey', 'employment', 'sovereignty'});
+
+      final atC2 = ReplacementEngine().selectReplacements(
+        tokensWithAdvancedLevels,
+        vocabularyWithAdvancedLevels,
+        germanLevel: 'C2',
+        rate: 1.0,
+        random: Random(1),
+      );
+      expect(atC2.keys, {'house', 'journey', 'employment', 'sovereignty', 'discourse', 'epistemology'});
+    });
+
     test('base rate scales with germanLevel when rate is not overridden', () {
       expect(ReplacementEngine.levelRates['A1'], 0.10);
       expect(ReplacementEngine.levelRates['A2'], 0.15);
       expect(ReplacementEngine.levelRates['B1'], 0.20);
       expect(ReplacementEngine.levelRates['B2'], 0.25);
+      expect(ReplacementEngine.levelRates['C1'], 0.30);
+      expect(ReplacementEngine.levelRates['C2'], 0.35);
+    });
+  });
+
+  group('nextLevelIfComplete (SPEC.md section 4.3)', () {
+    final vocabulary = {
+      'house': VocabularyEntry(en: 'house', de: 'Haus', cefrLevel: 'A1', partOfSpeech: 'noun'),
+      'bread': VocabularyEntry(en: 'bread', de: 'Brot', cefrLevel: 'A1', partOfSpeech: 'noun'),
+      'journey': VocabularyEntry(en: 'journey', de: 'die Reise', cefrLevel: 'A2', partOfSpeech: 'noun'),
+    };
+    const learned = WordProgress(status: 'learned');
+    const introduced = WordProgress(status: 'introduced');
+
+    test('returns the next level once every eligible word is learned', () {
+      final progress = {'house': learned, 'bread': learned};
+      expect(ReplacementEngine().nextLevelIfComplete('A1', vocabulary, progress), 'A2');
+    });
+
+    test('returns null if any eligible word is not yet learned', () {
+      final progress = {'house': learned, 'bread': introduced};
+      expect(ReplacementEngine().nextLevelIfComplete('A1', vocabulary, progress), isNull);
+    });
+
+    test('a word with no progress row at all counts as not-learned', () {
+      final progress = {'house': learned}; // 'bread' never seen
+      expect(ReplacementEngine().nextLevelIfComplete('A1', vocabulary, progress), isNull);
+    });
+
+    test('eligibility is cumulative - advancing past A2 requires A1 words learned too', () {
+      final progress = {'house': learned, 'bread': learned, 'journey': learned};
+      expect(ReplacementEngine().nextLevelIfComplete('A2', vocabulary, progress), 'B1');
+
+      final missingA1Word = {'house': learned, 'journey': learned}; // 'bread' missing
+      expect(ReplacementEngine().nextLevelIfComplete('A2', vocabulary, missingA1Word), isNull);
+    });
+
+    test('returns null at the C2 ceiling regardless of progress', () {
+      final allLearned = {for (final word in vocabulary.keys) word: learned};
+      expect(ReplacementEngine().nextLevelIfComplete('C2', vocabulary, allLearned), isNull);
+    });
+
+    test('returns null for an unrecognized level', () {
+      expect(ReplacementEngine().nextLevelIfComplete('not-a-level', vocabulary, {}), isNull);
+    });
+
+    test('returns null if there are no eligible words at all', () {
+      expect(ReplacementEngine().nextLevelIfComplete('A1', {}, {}), isNull);
     });
   });
 

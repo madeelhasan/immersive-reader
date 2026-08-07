@@ -9,8 +9,8 @@ class ReplacementEngine {
   // handle every level below N (SPEC.md section 4). Index in this list is
   // used both to test eligibility (entry level <= selected level) and to
   // look up the level's base replacement rate.
-  static const levelOrder = ['A1', 'A2', 'B1', 'B2'];
-  static const levelRates = {'A1': 0.10, 'A2': 0.15, 'B1': 0.20, 'B2': 0.25};
+  static const levelOrder = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  static const levelRates = {'A1': 0.10, 'A2': 0.15, 'B1': 0.20, 'B2': 0.25, 'C1': 0.30, 'C2': 0.35};
 
   // Phase 4 depth/status constants (SPEC.md section 4.2)
   static const double depthBaseRate = 0.05;
@@ -69,6 +69,35 @@ class ReplacementEngine {
       default: // 'new', 'introduced', or any unrecognized status
         return depth;
     }
+  }
+
+  /// SPEC.md 4.3: the next CEFR level if every vocabulary entry eligible at
+  /// [currentLevel] - the same cumulative pool selectReplacements draws
+  /// from, section 4.1 - has status 'learned' in [progress]; null if not
+  /// every eligible word is learned yet, if [currentLevel] isn't recognized,
+  /// or if it's already the last (highest) entry in levelOrder. A word with
+  /// no entry in [progress] at all (never encountered) counts as
+  /// not-learned - this can only return non-null once reading has actually
+  /// covered the full eligible vocabulary for the level, not just whatever
+  /// a single document happened to contain.
+  String? nextLevelIfComplete(
+    String currentLevel,
+    Map<String, VocabularyEntry> vocabulary,
+    Map<String, WordProgress> progress,
+  ) {
+    final currentIndex = levelOrder.indexOf(currentLevel);
+    if (currentIndex == -1 || currentIndex >= levelOrder.length - 1) {
+      return null;
+    }
+
+    final eligibleWords = <String>{
+      for (final entry in vocabulary.entries)
+        if (levelOrder.indexOf(entry.value.cefrLevel) <= currentIndex) entry.key,
+    };
+    if (eligibleWords.isEmpty) return null;
+
+    final allLearned = eligibleWords.every((word) => progress[word]?.status == 'learned');
+    return allLearned ? levelOrder[currentIndex + 1] : null;
   }
 
   Map<String, String> selectReplacementsWithProgress(

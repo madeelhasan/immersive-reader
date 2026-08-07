@@ -124,6 +124,7 @@ class _HomePageState extends State<HomePage> {
   WordProgressRepository? _wordProgressRepository;
   DocumentCacheRepository? _documentCacheRepository;
   List<RecentDocument> _recentDocuments = [];
+  Timer? _levelAdvanceDebounce;
 
   bool get _isLoading => _loadingFileName != null;
 
@@ -133,6 +134,12 @@ class _HomePageState extends State<HomePage> {
     _restoreGermanLevel();
     _initLocalDb();
     _loadRecentDocuments();
+  }
+
+  @override
+  void dispose() {
+    _levelAdvanceDebounce?.cancel();
+    super.dispose();
   }
 
   Future<void> _loadRecentDocuments() async {
@@ -183,6 +190,38 @@ class _HomePageState extends State<HomePage> {
     _recomputeReplacements();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_germanLevelPrefsKey, level);
+  }
+
+  /// ReaderView calls this whenever an exposure just brought some word to
+  /// 'learned' - debounced since several words can cross that threshold in
+  /// quick succession while reading, and each check below re-fetches the
+  /// full vocabulary and progress tables, not worth doing for every single
+  /// one individually.
+  void _onWordLearned() {
+    _levelAdvanceDebounce?.cancel();
+    _levelAdvanceDebounce = Timer(const Duration(seconds: 2), _checkAutoLevelAdvance);
+  }
+
+  /// SPEC.md 4.3: once every vocabulary entry eligible at the reader's
+  /// current level is 'learned', advance one level automatically. The rule
+  /// itself (ReplacementEngine.nextLevelIfComplete) is a pure function, unit
+  /// tested directly - this is just fetching its inputs and applying the
+  /// resulting side effects (persist the new level, notify the reader).
+  Future<void> _checkAutoLevelAdvance() async {
+    final repository = _wordProgressRepository;
+    if (repository == null) return;
+
+    final vocabulary = await _vocabularyRepository.load();
+    final progress = await repository.getAllProgress();
+    final nextLevel = ReplacementEngine().nextLevelIfComplete(_germanLevel, vocabulary, progress);
+    if (nextLevel == null) return;
+
+    final completedLevel = _germanLevel;
+    await _setGermanLevel(nextLevel);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("You've learned every $completedLevel word - leveled up to $nextLevel!")),
+    );
   }
 
   /// Re-rolls replacements for the currently open document against the
@@ -403,6 +442,7 @@ class _HomePageState extends State<HomePage> {
                   controller: _controller,
                   replacements: _replacements,
                   wordProgressRepository: _wordProgressRepository,
+                  onWordLearned: _onWordLearned,
                 ),
     );
   }
