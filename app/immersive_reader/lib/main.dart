@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'library/reading_progress_lookup.dart';
 import 'library/recent_documents_repository.dart';
@@ -22,6 +24,15 @@ import 'storage/local_db.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
 void main() {
+  // sqflite's own platform-channel implementation only covers Android/iOS/
+  // macOS - Windows and Linux have no native backend, so openDatabase()
+  // would throw immediately without this, silently disabling both document
+  // caching and word-progress tracking (see _initLocalDb's catch-and-degrade
+  // below, which otherwise makes that failure invisible).
+  if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
   runApp(const ImmersiveReaderApp());
 }
 
@@ -192,7 +203,14 @@ class _HomePageState extends State<HomePage> {
       final userId = await getOrCreateLocalUserId();
       wordProgressRepository = WordProgressRepository(db, userId);
       documentCacheRepository = DocumentCacheRepository(db);
-    } catch (_) {
+    } catch (e) {
+      // Genuinely expected on platforms with no sqflite backend at all
+      // (plain widget tests) - degrading silently there is correct. On a
+      // real desktop run this should never fire (main() wires up
+      // databaseFactoryFfi first); debugPrint means a regression here is
+      // at least visible in the console instead of silently disabling
+      // caching/progress-tracking again with no trace.
+      debugPrint('LocalDb.init() failed - document caching and word-progress tracking are disabled: $e');
       return;
     }
     if (!mounted) return;

@@ -11,6 +11,11 @@ dependencies:
   archive: ^3.6.1                  # Manual DOCX/EPUB zip/XML parsing (docx_to_text/epubx conflict with syncfusion's xml version)
   path: ^1.9.1
   sqflite: ^2.4.3
+  # sqflite's own platform-channel implementation only covers Android/iOS/
+  # macOS (via sqflite_darwin) - Windows and Linux have no native backend at
+  # all, so this is a real runtime dependency (main() wires it in as the
+  # databaseFactory on those platforms), not just an in-memory test double.
+  sqflite_common_ffi: ^2.3.3
   file_picker: ^8.0.0
   shared_preferences: ^2.3.2       # Per-document scroll position persistence
   http: ^1.2.0                     # Phase 3: fetch vocabulary from the backend API
@@ -21,7 +26,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  sqflite_common_ffi: ^2.3.3        # In-memory SQLite for testing LocalDb/WordProgressRepository (no plugin channel in widget tests)
   msix: 2.7.3
 
 # msix's published pubspec.yaml misdeclares itself as a native Windows
