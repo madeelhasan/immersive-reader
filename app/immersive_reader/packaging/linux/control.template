@@ -5,8 +5,8 @@ Priority: optional
 Architecture: amd64
 Installed-Size: @INSTALLED_SIZE@
 Depends: libgtk-3-0, libglib2.0-0
-Maintainer: Immersive Reader <noreply@example.com>
+Maintainer: Lesefluss <noreply@example.com>
 Description: Read English documents while learning German
- Immersive Reader is a desktop app that teaches German through progressive
+ Lesefluss is a desktop app that teaches German through progressive
  word replacement while reading TXT, DOCX, EPUB, PDF, and HTML documents.
  Everything runs locally - no account required.

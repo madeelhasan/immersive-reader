@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Builds a .deb package for Immersive Reader.
+# Builds a .deb package for Lesefluss. Package/binary names stay
+# immersive-reader/immersive_reader deliberately (internal identifiers,
+# not what users see - the .desktop entry's Name=Lesefluss is what
+# actually shows in an app launcher/menu).
 #
 # MUST be run on a real Linux machine (or Linux CI runner) with Flutter's
 # Linux desktop toolchain installed - `flutter build linux` links against

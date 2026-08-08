@@ -6,8 +6,8 @@ Status as of this pass (built from a Windows dev machine - see each script's own
 
 | Platform | Format | Build-tested here? | Notes |
 |---|---|---|---|
-| Windows | `.msix` | **Yes** - built and verified locally | `windows/` - via `dart run msix:create`, config lives in `pubspec.yaml`'s `msix_config` block |
+| Windows | `.msix` | **Partially** - builds cleanly (`build\windows\runner\Release\immersive_reader.msix`), but local install verification (`Add-AppPackage`) needs an elevated shell to complete the self-signing step (`0x800B0100, No signature was present in the subject` otherwise) - not yet confirmed to actually install on this machine | `windows/` - via `dart run msix:create`, config lives in `pubspec.yaml`'s `msix_config` block |
 | Linux | `.deb` | No - needs a real Linux host (GTK/glib toolchain) | `linux/build_deb.sh` |
 | macOS | `.dmg` | No - needs a real Mac with Xcode | `macos/build_dmg.sh` |
 
-`windows/app_icon.png` is a stopgap: it's upscaled from the existing 48x48 `windows/runner/resources/app_icon.ico` (itself the stock Flutter template icon, not custom branding) rather than a real high-resolution app icon. Reused as-is for the Linux/macOS icons below for consistency. Designing an actual app icon is a separate, still-open task - swap this file out (and rerun the relevant build script) once one exists; nothing else needs to change.
+`windows/app_icon.png` is the real Lesefluss logo (book + language-accent mark), reused as-is for the Linux/macOS icons above for cross-platform consistency.

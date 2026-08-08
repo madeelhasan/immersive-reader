@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds a .dmg installer for Immersive Reader.
+# Builds a .dmg installer for Lesefluss.
 #
 # MUST be run on a real Mac with Xcode (and its command-line tools)
 # installed - `flutter build macos` shells out to `xcodebuild`, which has
@@ -21,7 +21,7 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/../.."  # -> app/immersive_reader/
 
 VERSION=$(grep '^version:' pubspec.yaml | sed -E 's/version:\s*([0-9.]+).*/\1/')
-APP_NAME="Immersive Reader"
+APP_NAME="Lesefluss"
 DIST_DIR="packaging/macos/dist"
 OUT_DMG="$DIST_DIR/ImmersiveReader-${VERSION}.dmg"
 STAGING="$DIST_DIR/staging"
