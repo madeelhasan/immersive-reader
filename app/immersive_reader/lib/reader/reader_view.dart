@@ -12,6 +12,7 @@ import '../models/token.dart';
 import '../progress/sm2_scheduler.dart';
 import '../progress/word_progress_repository.dart';
 import '../tts/tts_service.dart';
+import '../theme/reader_font.dart';
 import '../theme/reader_theme_palette.dart';
 import 'reader_controller.dart';
 import 'reader_prefs_keys.dart';
@@ -69,6 +70,11 @@ class ReaderView extends StatefulWidget {
   /// ReaderThemePalette.isHighContrast.
   final ReaderThemePalette themePalette;
 
+  /// Defaults to Georgia (this app's original/only font) so existing tests
+  /// and call sites that don't care about font choice keep working
+  /// unchanged. Only affects reading content, not the app's own UI chrome.
+  final ReaderFont readerFont;
+
   const ReaderView({
     super.key,
     required this.document,
@@ -78,6 +84,7 @@ class ReaderView extends StatefulWidget {
     this.wordProgressRepository,
     this.onWordLearned,
     this.themePalette = ReaderThemePalette.warm,
+    this.readerFont = ReaderFont.georgia,
   });
 
   @override
@@ -417,7 +424,12 @@ class _ReaderViewState extends State<ReaderView> {
     if (germanText == null) {
       return Text(
         '${token.text} ',
-        style: TextStyle(fontSize: _effectiveFontSize, fontWeight: fontWeight, backgroundColor: highlightColor),
+        style: TextStyle(
+          fontSize: _effectiveFontSize,
+          fontFamily: widget.readerFont.fontFamily,
+          fontWeight: fontWeight,
+          backgroundColor: highlightColor,
+        ),
       );
     }
 
@@ -435,6 +447,7 @@ class _ReaderViewState extends State<ReaderView> {
           '${showingGerman ? germanText : token.text} ',
           style: TextStyle(
             fontSize: _effectiveFontSize,
+            fontFamily: widget.readerFont.fontFamily,
             fontWeight: fontWeight,
             color: showingGerman ? Colors.blue : null,
             decoration: showingGerman ? TextDecoration.underline : null,

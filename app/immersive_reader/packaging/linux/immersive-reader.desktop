@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Immersive Reader
+Comment=Read English documents while learning German
+Exec=immersive-reader
+Icon=immersive-reader
+Terminal=false
+Categories=Education;Office;
+StartupWMClass=immersive_reader

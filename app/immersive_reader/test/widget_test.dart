@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:immersive_reader/main.dart';
+import 'package:immersive_reader/theme/reader_font.dart';
 import 'package:immersive_reader/theme/reader_theme_palette.dart';
 
 void main() {
   testWidgets('App starts on the empty-library home screen', (WidgetTester tester) async {
     await tester.pumpWidget(const ImmersiveReaderApp());
 
-    expect(find.text('Immersive Reader'), findsOneWidget);
+    expect(find.text('Lesefluss'), findsOneWidget);
     expect(find.byIcon(Icons.folder_open), findsOneWidget);
   });
 
@@ -26,6 +27,46 @@ void main() {
     // ListView builds eagerly - scroll it into the cached/visible range.
     await tester.scrollUntilVisible(find.text("Let's open your first book!"), 300);
     expect(find.text("Let's open your first book!"), findsOneWidget);
+  });
+
+  testWidgets('the current German level is always visible in the AppBar', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    // A1 is the default - previously only discoverable via the settings
+    // gear's tooltip or by opening Settings.
+    expect(find.text('A1'), findsOneWidget);
+  });
+
+  testWidgets('first-time import prompts for a starting level before opening the file picker',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.scrollUntilVisible(find.text("Let's open your first book!"), 300);
+    await tester.tap(find.text("Let's open your first book!"));
+    await tester.pumpAndSettle();
+
+    expect(find.text("What's your German level?"), findsOneWidget);
+    // A1 (the current default) also appears in the always-visible AppBar
+    // chip behind the dialog.
+    expect(find.text('A1'), findsNWidgets(2));
+    for (final level in ['A2', 'B1', 'B2', 'C1', 'C2']) {
+      expect(find.text(level), findsOneWidget);
+    }
+
+    await tester.tap(find.text('B2'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Continue'));
+    await tester.pumpAndSettle();
+
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('german_level'), 'B2');
+    expect(find.text('B2'), findsOneWidget); // now shown in the AppBar chip
   });
 
   testWidgets('onboarding does not reappear once dismissed', (WidgetTester tester) async {
@@ -49,9 +90,13 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Settings'), findsOneWidget);
-    // A1 is the default level, shown selected among the radio options.
-    expect(find.text('A1'), findsOneWidget);
+    // A1 is the default level - shown both in the always-visible AppBar
+    // chip and selected among the settings sheet's radio options.
+    expect(find.text('A1'), findsNWidgets(2));
 
+    // The font picker section pushes the CEFR level list below the fold -
+    // scroll it into view before tapping (plain tap() doesn't auto-scroll).
+    await tester.scrollUntilVisible(find.text('B1'), 200);
     await tester.tap(find.text('B1'));
     await tester.pumpAndSettle();
 
@@ -76,8 +121,10 @@ void main() {
     expect(find.text('APP'), findsOneWidget);
     expect(find.text('READING & VOCABULARY'), findsOneWidget);
     expect(find.text('Theme'), findsOneWidget);
-    // All six CEFR levels should be offered.
-    for (final level in ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']) {
+    // All six CEFR levels should be offered. A1 (the default/current
+    // level) also appears in the always-visible AppBar chip.
+    expect(find.text('A1'), findsNWidgets(2));
+    for (final level in ['A2', 'B1', 'B2', 'C1', 'C2']) {
       expect(find.text(level), findsOneWidget);
     }
   });
@@ -162,5 +209,49 @@ void main() {
     final radio =
         tester.widget<RadioGroup<ReaderThemePalette>>(find.byType(RadioGroup<ReaderThemePalette>));
     expect(radio.groupValue, ReaderThemePalette.ocean);
+  });
+
+  testWidgets('Settings sheet offers all five reader fonts', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    for (final label in ['Georgia', 'Cambria', 'Constantia', 'Calibri', 'Segoe UI']) {
+      expect(find.text(label), findsOneWidget);
+    }
+  });
+
+  testWidgets('selecting a reader font persists it, and a fresh launch restores it',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({'has_seen_onboarding': true});
+
+    await tester.pumpWidget(const ImmersiveReaderApp());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    await tester.scrollUntilVisible(find.text('Calibri'), 200);
+    await tester.tap(find.text('Calibri'));
+    await tester.pumpAndSettle();
+
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('reader_font'), 'calibri');
+
+    await tester.tap(find.byType(ModalBarrier).last);
+    await tester.pumpAndSettle();
+
+    await tester.pumpWidget(ImmersiveReaderApp(key: UniqueKey()));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.settings_outlined));
+    await tester.pumpAndSettle();
+
+    final radio = tester.widget<RadioGroup<ReaderFont>>(find.byType(RadioGroup<ReaderFont>));
+    expect(radio.groupValue, ReaderFont.calibri);
   });
 }

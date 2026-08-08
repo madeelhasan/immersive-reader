@@ -40,6 +40,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/vocab/
+    - assets/branding/
 
 # Windows installer packaging (`dart run msix:create`) - see
 # packaging/windows/README.md. Unsigned/test-signed for now; real code
@@ -47,10 +48,10 @@ flutter:
 # SmartScreen-blocked on another machine, but this still produces a real,
 # installable package for local testing).
 msix_config:
-  display_name: Immersive Reader
-  publisher_display_name: Immersive Reader
-  identity_name: com.immersivereader.app
-  publisher: CN=ImmersiveReaderDev
+  display_name: Lesefluss
+  publisher_display_name: Lesefluss
+  identity_name: com.lesefluss.app
+  publisher: CN=LeseflussDev
   logo_path: packaging/windows/app_icon.png
   msix_version: 1.0.0.0
   capabilities: internetClient

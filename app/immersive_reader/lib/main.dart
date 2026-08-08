@@ -21,6 +21,7 @@ import 'reader/reader_view.dart';
 import 'replacement/replacement_engine.dart';
 import 'storage/document_cache_repository.dart';
 import 'storage/local_db.dart';
+import 'theme/reader_font.dart';
 import 'theme/reader_theme_palette.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
@@ -47,15 +48,18 @@ class ImmersiveReaderApp extends StatefulWidget {
 class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   static const _themeModePrefsKey = 'theme_mode';
   static const _themePalettePrefsKey = 'theme_palette';
+  static const _readerFontPrefsKey = 'reader_font';
 
   ThemeMode _themeMode = ThemeMode.system;
   ReaderThemePalette _themePalette = ReaderThemePalette.warm;
+  ReaderFont _readerFont = ReaderFont.georgia;
 
   @override
   void initState() {
     super.initState();
     _restoreThemeMode();
     _restoreThemePalette();
+    _restoreReaderFont();
   }
 
   Future<void> _restoreThemeMode() async {
@@ -73,6 +77,14 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
         ReaderThemePalette.values.firstWhere((p) => p.name == saved, orElse: () => ReaderThemePalette.warm);
     if (!mounted || palette == _themePalette) return;
     setState(() => _themePalette = palette);
+  }
+
+  Future<void> _restoreReaderFont() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getString(_readerFontPrefsKey);
+    final font = ReaderFont.values.firstWhere((f) => f.name == saved, orElse: () => ReaderFont.georgia);
+    if (!mounted || font == _readerFont) return;
+    setState(() => _readerFont = font);
   }
 
   // Georgia ships with Windows, so a serif reading font needs no new font
@@ -96,6 +108,11 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
     SharedPreferences.getInstance().then((prefs) => prefs.setString(_themePalettePrefsKey, palette.name));
   }
 
+  void _setReaderFont(ReaderFont font) {
+    setState(() => _readerFont = font);
+    SharedPreferences.getInstance().then((prefs) => prefs.setString(_readerFontPrefsKey, font.name));
+  }
+
   static ThemeData _buildTheme({required Brightness brightness, required PaletteColors colors}) {
     final base = ThemeData(
       brightness: brightness,
@@ -115,7 +132,7 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Immersive Reader',
+      title: 'Lesefluss',
       debugShowCheckedModeBanner: false,
       theme: _buildTheme(brightness: Brightness.light, colors: _themePalette.light),
       darkTheme: _buildTheme(brightness: Brightness.dark, colors: _themePalette.dark),
@@ -125,6 +142,8 @@ class _ImmersiveReaderAppState extends State<ImmersiveReaderApp> {
         onToggleTheme: _cycleThemeMode,
         themePalette: _themePalette,
         onThemePaletteChanged: _setThemePalette,
+        readerFont: _readerFont,
+        onReaderFontChanged: _setReaderFont,
       ),
     );
   }
@@ -135,6 +154,8 @@ class HomePage extends StatefulWidget {
   final VoidCallback onToggleTheme;
   final ReaderThemePalette themePalette;
   final ValueChanged<ReaderThemePalette> onThemePaletteChanged;
+  final ReaderFont readerFont;
+  final ValueChanged<ReaderFont> onReaderFontChanged;
 
   const HomePage({
     super.key,
@@ -142,6 +163,8 @@ class HomePage extends StatefulWidget {
     required this.onToggleTheme,
     required this.themePalette,
     required this.onThemePaletteChanged,
+    required this.readerFont,
+    required this.onReaderFontChanged,
   });
 
   @override
@@ -472,6 +495,61 @@ class _HomePageState extends State<HomePage> {
         ThemeMode.system => 'Match system',
       };
 
+  /// Asks a first-time reader to pick their starting German level before
+  /// their very first import, instead of silently defaulting to A1 with no
+  /// prompt - the level is otherwise easy to miss (previously only visible
+  /// inside Settings). Dismissing without choosing (tapping outside) just
+  /// keeps the A1 default, same as before this existed - it's a nudge
+  /// toward a more accurate starting point, not a gate.
+  Future<void> _showFirstLevelPickerThenOpenFile() async {
+    var selected = _germanLevel;
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialogState) => AlertDialog(
+          title: const Text("What's your German level?"),
+          // Scrollable, not a plain Column: AlertDialog doesn't scroll its
+          // content by default, and six RadioListTiles plus the intro text
+          // overflow its default height on a modest window/test viewport.
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "We'll start you with the right amount of German - "
+                  'you can always change this later in Settings.',
+                ),
+                const SizedBox(height: 16),
+                RadioGroup<String>(
+                  groupValue: selected,
+                  onChanged: (level) {
+                    if (level == null) return;
+                    setDialogState(() => selected = level);
+                  },
+                  child: Column(
+                    children: [
+                      for (final level in ReplacementEngine.levelOrder)
+                        RadioListTile<String>(value: level, title: Text(level)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            FilledButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: const Text('Continue'),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (selected != _germanLevel) await _setGermanLevel(selected);
+    _dismissOnboarding();
+    _openFile();
+  }
+
   /// One sheet, two clearly separate sections: settings that affect the app
   /// itself (currently just theme) versus settings about the reader/learner
   /// (currently just CEFR level) - previously both sat as flat, equal-weight
@@ -539,6 +617,31 @@ class _HomePageState extends State<HomePage> {
                       child: Text('READING & VOCABULARY',
                           style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
                     ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 16, top: 8),
+                      child: Text('Font', style: TextStyle(fontSize: 12, letterSpacing: 1)),
+                    ),
+                    RadioGroup<ReaderFont>(
+                      groupValue: widget.readerFont,
+                      onChanged: (selected) {
+                        if (selected == null) return;
+                        widget.onReaderFontChanged(selected);
+                        setSheetState(() {});
+                      },
+                      child: Column(
+                        children: [
+                          for (final font in ReaderFont.values)
+                            RadioListTile<ReaderFont>(
+                              value: font,
+                              title: Text(font.label, style: TextStyle(fontFamily: font.fontFamily, fontSize: 18)),
+                            ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 16, top: 8),
+                      child: Text('German level', style: TextStyle(fontSize: 12, letterSpacing: 1)),
+                    ),
                     RadioGroup<String>(
                       groupValue: _germanLevel,
                       onChanged: (selected) {
@@ -582,8 +685,19 @@ class _HomePageState extends State<HomePage> {
                 onPressed: _isLoading ? null : _closeDocument,
               )
             : null,
-        title: Text(_document?.title ?? 'Immersive Reader'),
+        title: Text(_document?.title ?? 'Lesefluss'),
         actions: [
+          // Always-visible level indicator - previously only discoverable
+          // by opening Settings or hovering the gear icon's tooltip.
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: ActionChip(
+              label: Text(_germanLevel),
+              tooltip: 'Your German level - tap to change',
+              onPressed: _showSettingsSheet,
+            ),
+          ),
+          const SizedBox(width: 8),
           IconButton(
             icon: const Icon(Icons.settings_outlined),
             tooltip: 'Settings (currently $_germanLevel, ${widget.themeMode.name} theme)',
@@ -616,6 +730,7 @@ class _HomePageState extends State<HomePage> {
                   wordProgressRepository: _wordProgressRepository,
                   onWordLearned: _onWordLearned,
                   themePalette: widget.themePalette,
+                  readerFont: widget.readerFont,
                 ),
     );
   }
@@ -675,6 +790,8 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         padding: const EdgeInsets.all(24),
         children: [
+          Image.asset('assets/branding/logo.png', height: 96),
+          const SizedBox(height: 16),
           Text('Willkommen! 🎉', style: Theme.of(context).textTheme.headlineMedium),
           const SizedBox(height: 8),
           Text(
@@ -705,10 +822,7 @@ class _HomePageState extends State<HomePage> {
             ),
           const SizedBox(height: 8),
           FilledButton.icon(
-            onPressed: () {
-              _dismissOnboarding();
-              _openFile();
-            },
+            onPressed: _showFirstLevelPickerThenOpenFile,
             icon: const Icon(Icons.folder_open),
             label: const Text("Let's open your first book!"),
           ),
