@@ -64,7 +64,22 @@ Two independent safety nets sit underneath all of this regardless of which model
 
 **Delegated content generation overshot instead of undershooting, for the first time.** Every previously-documented DeepSeek vocabulary-batch failure mode was some flavor of *too little* — truncation, format confusion, getting stuck. Asked for ~75 new C1-level words on a topic the existing dataset didn't cover yet, one batch instead returned 309 entries: real internal duplicates, plus systematic word-family variants (adjective/adverb/noun forms of the same root) it hadn't been asked for. Since the extra content was already generated and paid for (this specific batch cost about 3 cents total), the fix wasn't to discard the overage — it was deduplicating by lowercased headword and excluding anything already present at another level, which turned out to net *more* usable vocabulary than the original ask, not less.
 
-## Running it
+## Installation
+
+Packaging scripts live in `app/immersive_reader/packaging/` (one subfolder per OS). None of these builds are signed/notarized yet — see `TODO.md`'s "Client distribution" section for that still-open work — and only Windows has actually been build-tested so far, since Flutter desktop builds don't cross-compile: producing a real Linux or macOS installer needs an actual machine running that OS.
+
+**Windows (`.msix`):**
+
+```
+cd app/immersive_reader
+./packaging/windows/build_msix.ps1
+```
+
+Produces `build\windows\runner\Release\immersive_reader.msix`. It's self-signed with msix's own test certificate rather than a real code-signing cert, so Windows will refuse to install it until that test certificate is trusted — either run the install from an elevated (Administrator) PowerShell, so `msix:create`'s own signing step can register the certificate itself, or manually import `vendor/msix/lib/assets/test_certificate.pfx` (password `1234`) into `Cert:\LocalMachine\Root` first. A real release build still needs either a purchased EV code-signing certificate or a Microsoft Store developer account — see `packaging/windows/README.md`.
+
+**Linux (`.deb`) and macOS (`.dmg`):** `packaging/linux/build_deb.sh` and `packaging/macos/build_dmg.sh` are written and reviewed but not yet build-tested end-to-end — run once on a real Linux/macOS host and fix forward from whatever `flutter build linux`/`flutter build macos` actually complains about there. See each script's header comment for host requirements (GTK3/glib dev libraries for Linux; Xcode command-line tools for macOS).
+
+## Running it (from source)
 
 ```
 cd app/immersive_reader
