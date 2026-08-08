@@ -49,6 +49,7 @@ Some words in the text will appear **blue and underlined** — that's the German
 
 - **Tap** a blue word to flip it back to English temporarily (tap it again to flip it back to German). This is per-occurrence: if the same word appears three times on a page, toggling one doesn't affect the other two.
 - **Long-press** a blue word to hear it spoken aloud in German, using your computer's built-in text-to-speech voice — no internet connection needed for this.
+- **Right-click any word** (German or still-English) to look up its dictionary definition in a small popup — this uses a bundled offline dictionary, so it works with no internet connection either. The very first right-click in a session takes a moment longer while the dictionary sets itself up; every one after that is instant.
 
 ### How many words get replaced, and which ones
 

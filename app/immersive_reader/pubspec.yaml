@@ -41,6 +41,8 @@ flutter:
   assets:
     - assets/vocab/
     - assets/branding/
+    - assets/dictionary/
+    - assets/dictionary/licenses/
 
 # Windows installer packaging (`dart run msix:create`) - see
 # packaging/windows/README.md. Unsigned/test-signed for now; real code

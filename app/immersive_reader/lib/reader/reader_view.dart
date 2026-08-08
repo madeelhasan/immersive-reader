@@ -6,6 +6,8 @@ import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../dictionary/dictionary_entry.dart';
+import '../dictionary/dictionary_repository.dart';
 import '../models/bookmark.dart';
 import '../models/document_model.dart';
 import '../models/token.dart';
@@ -75,6 +77,13 @@ class ReaderView extends StatefulWidget {
   /// unchanged. Only affects reading content, not the app's own UI chrome.
   final ReaderFont readerFont;
 
+  /// Injectable; null means right-click lookup is simply not offered (no
+  /// GestureDetector added for it) - used in tests and before HomePage has
+  /// finished constructing it. Unlike wordProgressRepository, this needs
+  /// no async setup to construct (only actually decompresses the bundled
+  /// dictionary lazily, on first lookup), so HomePage can create it eagerly.
+  final DictionaryRepository? dictionaryRepository;
+
   const ReaderView({
     super.key,
     required this.document,
@@ -85,6 +94,7 @@ class ReaderView extends StatefulWidget {
     this.onWordLearned,
     this.themePalette = ReaderThemePalette.warm,
     this.readerFont = ReaderFont.georgia,
+    this.dictionaryRepository,
   });
 
   @override
@@ -422,7 +432,7 @@ class _ReaderViewState extends State<ReaderView> {
     final fontWeight = _highContrast ? FontWeight.bold : null;
     final germanText = widget.replacements[token.tokenId];
     if (germanText == null) {
-      return Text(
+      final text = Text(
         '${token.text} ',
         style: TextStyle(
           fontSize: _effectiveFontSize,
@@ -430,6 +440,11 @@ class _ReaderViewState extends State<ReaderView> {
           fontWeight: fontWeight,
           backgroundColor: highlightColor,
         ),
+      );
+      if (!token.isWord || widget.dictionaryRepository == null) return text;
+      return GestureDetector(
+        onSecondaryTapUp: (details) => _showDictionaryLookup(token.text, details.globalPosition),
+        child: text,
       );
     }
 
@@ -440,8 +455,10 @@ class _ReaderViewState extends State<ReaderView> {
     return GestureDetector(
       onTap: () => _toggleToken(token),
       onLongPress: () => _ttsService.speak(germanText),
+      onSecondaryTapUp:
+          widget.dictionaryRepository == null ? null : (details) => _showDictionaryLookup(token.text, details.globalPosition),
       child: Tooltip(
-        message: 'Tap to toggle English/German · Long-press to hear pronunciation',
+        message: 'Tap to toggle English/German · Long-press to hear pronunciation · Right-click to look up',
         triggerMode: TooltipTriggerMode.manual,
         child: Text(
           '${showingGerman ? germanText : token.text} ',
@@ -455,6 +472,69 @@ class _ReaderViewState extends State<ReaderView> {
           ),
         ),
       ),
+    );
+  }
+
+  /// [enWord] is always the token's original English text (Token.text),
+  /// regardless of whether German or English is currently displayed for
+  /// it - the dictionary is English -> German, so the lookup key is always
+  /// the English form. Shows a small popup near the click position rather
+  /// than a centered dialog, closer to how a real right-click context menu
+  /// behaves; dismissed by tapping anywhere outside it.
+  Future<void> _showDictionaryLookup(String enWord, Offset position) async {
+    final repository = widget.dictionaryRepository;
+    if (repository == null) return;
+    final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+    final entriesFuture = repository.lookup(enWord);
+    await showMenu<void>(
+      context: context,
+      position: RelativeRect.fromRect(position & const Size(1, 1), Offset.zero & overlay.size),
+      items: [
+        PopupMenuItem<void>(
+          enabled: false,
+          child: SizedBox(
+            width: 320,
+            child: FutureBuilder<List<DictionaryEntry>>(
+              future: entriesFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
+                        SizedBox(width: 12),
+                        Text('Looking up…'),
+                      ],
+                    ),
+                  );
+                }
+                final entries = snapshot.data ?? const [];
+                if (entries.isEmpty) {
+                  return Text('No dictionary entry for "$enWord"');
+                }
+                return ConstrainedBox(
+                  constraints: const BoxConstraints(maxHeight: 320),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        for (final entry in entries) ...[
+                          Text(entry.headword, style: const TextStyle(fontWeight: FontWeight.bold)),
+                          Text(entry.definition),
+                          const SizedBox(height: 8),
+                        ],
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 

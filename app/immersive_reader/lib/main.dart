@@ -8,6 +8,7 @@ import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'dictionary/dictionary_repository.dart';
 import 'library/reading_progress_lookup.dart';
 import 'library/recent_documents_repository.dart';
 import 'models/document_model.dart';
@@ -186,6 +187,10 @@ class _HomePageState extends State<HomePage> {
   String? _loadingFileName;
   WordProgressRepository? _wordProgressRepository;
   DocumentCacheRepository? _documentCacheRepository;
+  // Unlike the two above, needs no async setup to construct - it only
+  // decompresses the bundled FreeDict asset lazily, on first lookup - so
+  // it's created eagerly here rather than inside _initLocalDb.
+  final DictionaryRepository _dictionaryRepository = DictionaryRepository();
   List<RecentDocument> _recentDocuments = [];
   /// Recently-opened documents that still have a bookmark and aren't
   /// finished yet (SPEC.md section 7 addendum) - a subset of
@@ -731,6 +736,7 @@ class _HomePageState extends State<HomePage> {
                   onWordLearned: _onWordLearned,
                   themePalette: widget.themePalette,
                   readerFont: widget.readerFont,
+                  dictionaryRepository: _dictionaryRepository,
                 ),
     );
   }
