@@ -21,6 +21,7 @@ dependencies:
   http: ^1.2.0                     # Phase 3: fetch vocabulary from the backend API
   flutter_tts: ^4.2.0              # German pronunciation playback for replaced words
   scrollable_positioned_list: ^0.3.8
+  path_provider: ^2.1.0             # Pins sqflite's on-disk path to a stable per-user directory (see main.dart)
 
 dev_dependencies:
   flutter_test:

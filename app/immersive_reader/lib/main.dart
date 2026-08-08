@@ -5,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart' show compute, debugPrint, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -26,15 +27,29 @@ import 'theme/reader_font.dart';
 import 'theme/reader_theme_palette.dart';
 import 'vocabulary/vocabulary_repository.dart';
 
-void main() {
+Future<void> main() async {
   // sqflite's own platform-channel implementation only covers Android/iOS/
   // macOS - Windows and Linux have no native backend, so openDatabase()
   // would throw immediately without this, silently disabling both document
   // caching and word-progress tracking (see _initLocalDb's catch-and-degrade
   // below, which otherwise makes that failure invisible).
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
+    WidgetsFlutterBinding.ensureInitialized();
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
+    // sqflite_common_ffi's default database directory is relative to the
+    // process's *working directory*
+    // (.dart_tool/sqflite_common_ffi/databases) - correct for a normal
+    // shortcut/double-click launch (Windows sets cwd to the exe's own
+    // folder), but silently wrong, and unrecoverable by an uninstaller,
+    // for any launch path that doesn't. Pinning it to the same stable
+    // per-user directory shared_preferences already uses means there's
+    // exactly one place on disk this app ever writes to, regardless of how
+    // it's launched - found while verifying the Windows installer's
+    // uninstall actually cleans up everything it creates.
+    final supportDir = await getApplicationSupportDirectory();
+    // ignore: deprecated_member_use
+    await databaseFactory.setDatabasesPath(supportDir.path);
   }
   runApp(const ImmersiveReaderApp());
 }

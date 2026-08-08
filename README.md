@@ -68,14 +68,16 @@ Two independent safety nets sit underneath all of this regardless of which model
 
 Packaging scripts live in `app/immersive_reader/packaging/` (one subfolder per OS). None of these builds are signed/notarized yet — see `TODO.md`'s "Client distribution" section for that still-open work — and only Windows has actually been build-tested so far, since Flutter desktop builds don't cross-compile: producing a real Linux or macOS installer needs an actual machine running that OS.
 
-**Windows (`.msix`):**
+**Windows — recommended: `Setup.exe` (Inno Setup).** This is the simple, double-click path: download or build `LesefflussSetup-<version>.exe`, run it, click through the one-time Windows SmartScreen "unknown publisher" warning (`More info` → `Run anyway` — expected for an app without a paid code-signing certificate, not a sign anything's wrong), and the installer handles everything else itself. It installs per-user (no admin/UAC prompt needed at all), adds a Start Menu entry and optional desktop shortcut, and — importantly — its uninstaller removes *everything* the app creates, not just what it installs: both the Start Menu/install-directory files and the app's local data (word progress, cached documents, the offline dictionary, preferences), which all live in one pinned per-user folder for exactly this reason. Build it yourself with:
 
 ```
 cd app/immersive_reader
-./packaging/windows/build_msix.ps1
+./packaging/windows/build_installer.ps1
 ```
 
-Produces `build\windows\runner\Release\immersive_reader.msix`. It's self-signed with msix's own test certificate rather than a real code-signing cert, so Windows will refuse to install it until that test certificate is trusted — either run the install from an elevated (Administrator) PowerShell, so `msix:create`'s own signing step can register the certificate itself, or manually import `vendor/msix/lib/assets/test_certificate.pfx` (password `1234`) into `Cert:\LocalMachine\Root` first. A real release build still needs either a purchased EV code-signing certificate or a Microsoft Store developer account — see `packaging/windows/README.md`.
+Produces `packaging/windows/dist/LesefflussSetup-<version>.exe`. Requires Inno Setup 6's compiler (`winget install --id JRSoftware.InnoSetup -e`), installed once per build machine.
+
+**Windows — alternative: `.msix`.** More "properly Windows-native" (integrates with Windows' own App Installer/Apps & Features), but currently self-signed with a throwaway test certificate rather than a real one, so it needs an elevated (Administrator) PowerShell to install — `msix:create`'s certificate-trust step needs admin rights, and without it Windows refuses to install the package at all (not just warns). Build with `./packaging/windows/build_msix.ps1` (produces `build\windows\runner\Release\immersive_reader.msix`); see `packaging/windows/README.md` for the full signing story. A real release on either path still needs either a purchased code-signing certificate or a Microsoft Store developer account to remove the trust warnings entirely.
 
 **Linux (`.deb`) and macOS (`.dmg`):** `packaging/linux/build_deb.sh` and `packaging/macos/build_dmg.sh` are written and reviewed but not yet build-tested end-to-end — run once on a real Linux/macOS host and fix forward from whatever `flutter build linux`/`flutter build macos` actually complains about there. See each script's header comment for host requirements (GTK3/glib dev libraries for Linux; Xcode command-line tools for macOS).
 
