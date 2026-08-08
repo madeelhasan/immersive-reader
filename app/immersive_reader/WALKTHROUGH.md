@@ -1,4 +1,4 @@
-# Immersive Reader — a walkthrough
+# Lesefluss — a walkthrough
 
 This is a plain-language guide to what the app does and how to use it. If you're a developer looking for architecture details, see `PROJECT_OVERVIEW.md` or `../CLAUDE.md` instead — this file is written for someone who just wants to read a book and pick up some German along the way.
 
@@ -8,9 +8,9 @@ You open a document you already want to read — a novel, an article, whatever �
 
 ## Opening something to read
 
-When you start the app, you'll see either a short instruction ("Open a file to start reading") or, once you've read anything before, a **Recent** list of documents you can tap to jump back into.
+The very first time you open the app, you'll see a short welcome screen explaining each feature, ending with a **"Let's open your first book!"** button. Tapping it first asks you to pick your starting German level (see below) — you can always change it later — then opens the file picker. After that first time, you'll see either a short instruction ("Open a file to start reading") or a **Recent** list of documents you can tap to jump back into.
 
-To open something new, click the folder icon in the top-right corner. You can pick:
+To open something new at any time, click the folder icon in the top-right corner. You can pick:
 
 - **.txt** — plain text
 - **.docx** — Word documents
@@ -22,7 +22,9 @@ The app strips out formatting and lays the text out in a single clean, readable 
 
 ## The recent list
 
-Every file you open gets remembered (the 8 most recent), so you can close the app and pick up where you left off later — it even scrolls back to roughly the spot you were at. Each entry shows when you last opened it ("2h ago," "3d ago," etc.).
+Every file you open gets remembered (the 8 most recent), so you can close the app and pick up where you left off later — it even scrolls back to roughly the spot you were at, and reopens instantly rather than re-processing the file from scratch. Each entry shows when you last opened it ("2h ago," "3d ago," etc.).
+
+If any of your recent books still has an active bookmark and isn't finished yet, it also shows up in a separate **"Continue reading"** section above the full list, so books you're actively partway through don't get lost among ones you only opened briefly.
 
 - **Tap an entry** to resume reading it.
 - **Tap the trash icon** on an entry to remove it from the list. This only forgets that it's "recent" — it does not delete or move the actual file on your computer.
@@ -36,7 +38,7 @@ Once a document is open, a toolbar sits above the text with a few controls:
 
 - **Chapters** (list icon) — only shown for ebooks that have chapter markers; tap to jump straight to one.
 - **Bookmark this page** (bookmark-plus icon) — drops a bookmark at your current scroll position.
-- **Bookmarks** (bookmarks icon) — opens the list of everywhere you've bookmarked in this document. Tap one to jump there, or the trash icon next to it to remove it. There's also a toggle here, **"Auto-replace forward bookmarks"**: when it's on, bookmarking further ahead moves your one "current position" marker forward instead of piling up a new bookmark every time — useful if you just want a single "where am I" marker rather than a list of favorite passages. If it accidentally overwrites one you wanted to keep, an "Undo" option appears briefly after.
+- **Bookmarks** (bookmarks icon) — opens the list of everywhere you've bookmarked in this document. Tap one to jump there — the paragraph you land on flashes with a highlight so it's obvious where to pick up reading; it fades once you scroll away or tap it — or the trash icon next to it to remove it. There's also a toggle here, **"Auto-replace forward bookmarks"**: when it's on, bookmarking further ahead moves your one "current position" marker forward instead of piling up a new bookmark every time — useful if you just want a single "where am I" marker rather than a list of favorite passages. If it accidentally overwrites one you wanted to keep, an "Undo" option appears briefly after.
 - A **progress bar** in the middle shows roughly how far through the document you are, as a percentage.
 - **+ / −** buttons on the right adjust the text size.
 - **Ctrl+G** opens a "Go to page" box where you can type a page number directly and jump there.
@@ -50,13 +52,21 @@ Some words in the text will appear **blue and underlined** — that's the German
 
 ### How many words get replaced, and which ones
 
-In the top-right corner is a level selector (A1, A2, B1, B2 — the standard beginner-to-intermediate scale for language learning). This sets how advanced the German vocabulary you're shown is, and roughly how often words get swapped — a higher level replaces more words, more often. Change it any time; the document you're reading will immediately re-roll which words are shown in German.
+Your current level (A1 through C2 — the standard CEFR scale used for language learning, from complete beginner to near-native) is always shown as a small chip in the top bar, next to the settings gear. Tap either one to open Settings and change it. A higher level replaces more words, more often, and draws from a wider vocabulary pool (every level at or below your own — a B1 reader sees A1, A2, and B1 words, never anything above B1). Change it any time; the document you're reading will immediately re-roll which words are shown in German. Once you've learned every word available at your current level, the app bumps you up to the next one automatically.
 
 The app also quietly pays attention to which words you tend to toggle back to English (meaning you probably don't know them yet) versus ones you leave in German (meaning you're comfortable with them). Words you already seem to know will keep showing up in German more consistently; words you're still learning appear more gradually. You don't have to do anything for this to work — it happens in the background as you read and tap.
 
-## Appearance
+## Settings
 
-Click the sun/moon icon in the top bar to cycle through **light, dark, and system-default** themes. The app uses a warm, book-like look (cream paper / soft charcoal, not stark white/black) designed to be easy on the eyes for long reading sessions.
+Tap the gear icon in the top bar to open Settings, split into two sections:
+
+**App**
+- **Theme** — cycles through light, dark, and system-default brightness.
+- **Color palette** — four full-color themes, not just light/dark variants of one look: the original warm palette (cream paper / soft charcoal), two additional soft options (a cool sage green, a soft ocean blue), and a dedicated **High Contrast** theme for low vision — true black/white, bolder text, and a larger minimum font size. Each has its own light and dark version, so it combines with the Theme setting above rather than replacing it.
+
+**Reading & Vocabulary**
+- **Font** — five reading fonts to choose from (Georgia, Cambria, Constantia, Calibri, Segoe UI). Only affects the book text itself, not the app's own menus/buttons.
+- **German level** — the same A1–C2 selector described above.
 
 ## A few things worth knowing
 

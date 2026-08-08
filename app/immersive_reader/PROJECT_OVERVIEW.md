@@ -1,14 +1,12 @@
-# Immersive Reader — project overview
+# Immersive Reader ("Lesefluss" in the UI) — project overview
 
-Flutter desktop app (Windows/macOS first) that will eventually teach German through progressive word replacement while reading English documents. Full product spec and locked architecture decisions live at `../../spec/SPEC.md` — read that first; this file just orients you in the actual code as it exists today.
+Flutter desktop app (Windows/macOS first) that teaches German through progressive word replacement while reading English documents. Branded "Lesefluss" in the UI; the underlying package/repo name stayed `immersive_reader` deliberately (internal identifier, not user-facing). Full product spec and locked architecture decisions live at `../../spec/SPEC.md` — read that first. **This file describes the Phase 1/2-era architecture and is not kept up to date session-to-session — `../CLAUDE.md` is the actively-maintained, current source of truth; treat anything here that contradicts it as stale.**
 
-## Where things stand
+## Where things stand (see `../CLAUDE.md` for the current, detailed version)
 
-Phase 1 (SPEC.md section 5) is functionally complete: opens TXT/DOCX/EPUB/PDF, adjustable font size, light/dark/system theme, persisted per-document scroll position, and EPUB chapter navigation. The parser pipeline and reader view work end-to-end and are tested against real files. `../CLAUDE.md`'s "Delegating to other coding agents" section documents the design/dependency pitfalls hit while building the last four items.
+Phase 1 (reader) and Phase 2 (vocabulary + tap-to-toggle + flat-rate replacement) are complete. Phase 3 (backend) is backend-complete, client only calls the vocabulary endpoint. Phase 4 (SM-2 adaptive progress tracking) is functionally complete and wired end-to-end as of 2026-08-08 (a real bug meant it silently never activated in production before that - see `../CLAUDE.md`). Phase 5 (mobile) is out of scope. The vocabulary dataset is at 1,977 entries across CEFR A1-C2 (the range was extended beyond the original A1-B2 spec) - not the 100-entry A1-only placeholder this file used to describe.
 
-Phase 2 (SPEC.md section 6: vocabulary dataset + tap-to-toggle UI + flat-rate random replacement, no adaptivity) is also functionally complete - see the "Vocabulary and replacement" section below. The vocabulary dataset itself is a 100-entry A1-only placeholder, not the full ~1,500-2,000 entries across A1-B2 that SPEC.md 3.2 calls for; expanding it is genuine remaining work.
-
-Phases 3–5 (backend, SM-2 adaptive progress tracking, mobile) are out of scope — don't build toward them yet.
+The reader has also grown substantially beyond the phased spec since this file was last accurate: `scrollable_positioned_list` replaced `ListView.builder` for the main reading view, in-document search, multi-bookmark support with a jump-to highlight, a "Continue reading" home-screen section, four selectable color themes plus a dedicated high-contrast/low-vision one, five selectable reading fonts, custom app branding/icon, an always-visible CEFR level indicator, and background-isolate parsing so large files no longer freeze the UI. See `../CLAUDE.md` for all of it in detail.
 
 ## Directory structure
 
@@ -27,17 +25,18 @@ lib/
     pdf_parser.dart                # syncfusion_flutter_pdf text extraction per page, then buildParagraphs()
   reader/
     reader_controller.dart       # ChangeNotifier: scrollPosition, positionIndex (in-memory only)
-    reader_view.dart              # ListView.builder over paragraphs; font size, scroll persistence
-                                   # (SharedPreferences, debounced), chapter-nav bottom sheet, and
+    reader_view.dart              # ScrollablePositionedList over paragraphs (not ListView.builder - see
+                                   # ../CLAUDE.md for why); font size, scroll persistence (SharedPreferences,
+                                   # debounced), chapter-nav bottom sheet, bookmarks, search, and
                                    # tap-to-toggle replacement rendering all live here
   vocabulary/
     vocabulary_repository.dart   # loads assets/vocab/en_de_starter.json into a lowercase-en-keyed map
   replacement/
     replacement_engine.dart      # pure flat-rate word selection, no Flutter imports (SPEC.md section 7)
   storage/
-    local_db.dart                 # sqflite word_progress table (SPEC.md section 3.3) — defined but NOT wired
-                                   # into the app anywhere yet; it's Phase 3/4 vocabulary-progress storage,
-                                   # not scroll-position storage
+    local_db.dart                 # sqflite word_progress + document_cache tables, actually wired and
+                                   # working as of 2026-08-08 (a real bug meant it silently never
+                                   # initialized on a real Windows/Linux run before then - see ../CLAUDE.md)
 test/
   fixtures/                      # REAL files to test against, not just synthetic strings
     A Court of Thorns and Roses - PDF Room.pdf   # ~500-page novel, exercises the paragraph-cap logic

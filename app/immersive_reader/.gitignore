@@ -33,6 +33,10 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Packaging build output (installers are built artifacts, not source)
+/packaging/linux/dist/
+/packaging/macos/dist/
+
 # Symbolication related
 app.*.symbols
 
